@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Sistemas de Trading Eficientes LLC - Expertos en trading manual y algorítmico. Estrategias personalizadas, gestión de riesgo y formación psicológica para traders. Oficinas en Sheridan, WY, EE.UU.">
+  <meta name="keywords" content="trading algorítmico, sistemas de trading, gestión de riesgo, psicología del trader, estrategias trading, backtesting, análisis de mercados">
+  <meta name="author" content="Sistemas de Trading Eficientes LLC">
+  <meta property="og:title" content="Sistemas de Trading Eficientes LLC - Trading Manual y Algorítmico">
+  <meta property="og:description" content="Expertos en desarrollo de estrategias de trading personalizadas con sede en EE.UU.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sistemasdetradingeficientes.com">
+  <meta property="og:image" content="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/Logo%20Blanco%20512x512.webp">
+  <meta property="og:site_name" content="Sistemas de Trading Eficientes LLC">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sistemas de Trading Eficientes LLC">
+  <meta name="twitter:description" content="Expertos en trading manual y algorítmico con sede en EE.UU.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/Logo%20Blanco%20512x512.webp">
+  <title>Sistemas de Trading Eficientes LLC - Trading Manual y Algorítmico</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/Logo%20Blanco%20512x512.webp" type="image/png">
+  <link rel="canonical" href="https://sistemasdetradingeficientes.com">
+  <link rel="preconnect" href="https://raw.githubusercontent.com">
+  <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
+  <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/ImagenPortada.webp" as="image">
+  
+  <style>
+    /* ========================
+       ESTILOS GENERALES OPTIMIZADOS
+       ======================== */
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      position: relative;
+      color: #333;
+    }
+    header {
+      background-color: #1a1a2e;
+      color: white;
+      text-align: center;
+      padding: 50px 20px 30px;
+      position: relative;
+    }
+    .logo-container {
+      margin-bottom: 20px;
+    }
+    .logo {
+      height: 100px;
+      width: 100px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 10px 0 0;
+      line-height: 1.2;
+    }
+    .company-name-line {
+      display: inline;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #bbb;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #fff;
+      border: 1px solid #1a1a2e;
+      color: #1a1a2e;
+      padding: 8px 15px;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .lang-switch:hover {
+      background-color: #1a1a2e;
+      color: white;
+      border-color: white;
+    }
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #1a1a2e;
+      padding-bottom: 10px;
+    }
+    p, li {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 10px;
+      padding-left: 32px;
+      position: relative;
+      min-height: 24px;
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231a1a2e' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      display: block;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      will-change: transform;
+    }
+    /* ========================
+       FOOTER & CONTACTO
+       ======================== */
+    .footer-container {
+      background-color: #1a1a2e;
+      padding: 30px 0 20px;
+      margin-top: 80px;
+    }
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      color: white;
+      text-align: center;
+    }
+    .footer-contact h3 {
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+    .footer-contact p {
+      margin: 8px 0;
+      color: #ddd;
+      text-align: center;
+    }
+    .contact-form-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .contact-form-btn:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+    .footer-address {
+      color: #bbb;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .copyright {
+      color: #999;
+      font-size: 0.8rem;
+    }
+    .copyright .mobile-line {
+      display: none;
+    }
+    /* -------------------------
+       BOTÓN VOLVER ARRIBA
+       ------------------------- */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #1a1a2e;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      opacity: 0.9;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .scroll-top-btn:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+      background-color: #16213e;
+    }
+    .scroll-top-btn.visible {
+      display: flex;
+    }
+    /* ------------------------
+       POPUP DEL FORMULARIO OPTIMIZADO
+       ------------------------ */
+    #formPopup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 10000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    #formPopup .form-container {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      margin: auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    #formPopup h2 {
+      color: #1a1a2e;
+      margin-top: 0;
+      font-size: 1.5rem;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    #formPopup input,
+    #formPopup textarea,
+    #formPopup select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      font-family: "Segoe UI", sans-serif;
+    }
+    #formPopup textarea {
+      font-family: "Segoe UI", sans-serif;
+      resize: vertical;
+      min-height: 120px;
+    }
+    input[name="_gotcha"],
+    input[name="_honey"] {
+      display: none !important;
+    }
+    #formPopup button {
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    #formPopup button[type="submit"] {
+      background: #1a1a2e;
+      color: white;
+    }
+    #formPopup button[type="button"] {
+      background: #f0f2f5;
+      color: #1a1a2e;
+      border: 1px solid #ddd;
+      margin-top: 5px;
+    }
+    .g-recaptcha {
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+    }
+    /* -------------------------
+       POPUP DE CONFIRMACIÓN
+       ------------------------- */
+    .confirmation-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 10001;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .confirmation-content {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    .confirmation-content p {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .confirmation-btn {
+      background: #1a1a2e;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    /* ========================
+       MEDIA QUERIES PARA MÓVIL OPTIMIZADAS
+       ======================== */
+    @media (max-width: 600px) {
+      header {
+        padding: 30px 15px 20px;
+      }
+      header h1 {
+        font-size: 1.8rem;
+        margin: 5px 0 0;
+        display: block;
+      }
+      .company-name-line {
+        display: block;
+        line-height: 1.2;
+      }
+      header p {
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+      .logo {
+        height: 55px;
+        width: 55px;
+      }
+      .lang-switch {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+      .hero-image {
+        max-height: 250px;
+      }
+      .scroll-top-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      #formPopup {
+        padding: 10px;
+      }
+      #formPopup .form-container {
+        padding: 20px;
+      }
+      #formPopup input,
+      #formPopup textarea,
+      #formPopup button {
+        padding: 10px;
+        font-size: 0.95rem;
+      }
+      #formPopup h2 {
+        font-size: 1.3rem;
+      }
+      .confirmation-content {
+        padding: 20px;
+      }
+      .confirmation-content p {
+        font-size: 1rem;
+      }
+      .confirmation-btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+      }
+      li {
+        padding-left: 28px;
+        min-height: 20px;
+      }
+      li::before {
+        width: 18px;
+        height: 18px;
+        top: 1px;
+      }
+      .copyright {
+        display: flex;
+        flex-direction: column;
+      }
+      .copyright .desktop-line {
+        display: none;
+      }
+      .copyright .mobile-line {
+        display: block;
+      }
+      .footer-address,
+      .copyright {
+        font-size: 0.7rem;
+        white-space: normal;
+        text-overflow: clip;
+        overflow: visible;
+      }
+      .footer-info {
+        padding: 0 10px;
+      }
+    }
+    @media (max-width: 375px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      .company-name-line {
+        font-size: inherit;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      .logo {
+        height: 35px;
+        width: 35px;
+      }
+      .hero-image {
+        max-height: 200px;
+      }
+      #formPopup .form-container {
+        padding: 15px;
+      }
+      #formPopup h2 {
+        font-size: 1.2rem;
+      }
+      #formPopup input,
+      #formPopup textarea {
+        padding: 8px;
+        font-size: 0.9rem;
+      }
+      li {
+        padding-left: 24px;
+        min-height: 18px;
+      }
+      li::before {
+        width: 16px;
+        height: 16px;
+      }
+      .footer-address,
+      .copyright {
+        font-size: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Schema Markup para SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sistemas de Trading Eficientes LLC",
+    "url": "https://sistemasdetradingeficientes.com",
+    "logo": "https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/Logo%20Blanco%20512x512.webp",
+    "description": "Especialistas en sistemas de trading manual y algorítmico con sede en EE.UU.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "30 N Gould St",
+      "addressLocality": "Sheridan",
+      "addressRegion": "WY",
+      "postalCode": "82801",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "info@sistemasdetradingeficientes.com"
+    }
+  }
+  </script>
+
+  <!-- BOTÓN PARA CAMBIAR IDIOMA -->
+  <button class="lang-switch" onclick="switchLang()">EN</button>
+
+  <!-- HEADER CON LOGO OPTIMIZADO -->
+  <header>
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/logo%20blanco%2C%20sin%20fondo.webp" 
+           alt="Logo Sistemas de Trading Eficientes LLC" 
+           class="logo"
+           width="100"
+           height="100"
+           loading="lazy">
+    </div>
+    <h1 id="companyName">
+      <span class="company-name-line">Sistemas de</span>
+      <span class="company-name-line">Trading Eficientes LLC</span>
+    </h1>
+    <p id="tagline">Trading Manual y Algorítmico</p>
+  </header>
+
+  <!-- SECCIÓN HERO Y SOBRE NOSOTROS CON IMAGEN OPTIMIZADA -->
+  <section>
+    <img class="hero-image" 
+         src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC.github.io/main/ImagenPortada.webp" 
+         alt="Imagen Portada - Sistemas de Trading Eficientes LLC"
+         width="800"
+         height="400"
+         loading="lazy">
+    <h2 id="aboutTitle">Sobre Nosotros</h2>
+    <p id="aboutText">
+      Sistemas de Trading Eficientes LLC es una empresa con sede en EE. UU. especializada en el desarrollo de estrategias de trading tanto manuales como algorítmicas, análisis de mercados, gestión de riesgo y psicología del trader, fundamentales para desarrollar una operativa rentable y consistente.
+    </p>
+  </section>
+
+  <!-- SECCIÓN DE SERVICIOS -->
+  <section>
+    <h2 id="servicesTitle">Nuestros Servicios</h2>
+    <ul>
+      <li id="service1">Sistemas de trading manual y algorítmico personalizados.</li>
+      <li id="service2">Gestión de riesgos y análisis de rendimiento.</li>
+      <li id="service3">Investigación de mercados y consultoría.</li>
+      <li id="service4">Soluciones de asignación estratégica y backtesting.</li>
+      <li id="service5">Fortalecimiento psicológico adaptado al trading para lograr un alto rendimiento y resiliencia en entornos adversos.</li>
+    </ul>
+  </section>
+
+  <!-- FOOTER: CONTACTO Y DATOS -->
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-contact">
+        <h3 id="contactTitle">Contacto</h3>
+        <p id="contactEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85ecebe3eac5f6ecf6f1e0e8e4f6e1e0f1f7e4e1ecebe2e0e3ece6ece0ebf1e0f6abe6eae8">[email&#160;protected]</a></p>
+        <button class="contact-form-btn" onclick="toggleContactForm()" id="contactToggle">Formulario de contacto</button>
+      </div>
+      <div class="footer-info">
+        <p class="footer-address" id="contactAddress">Dirección registrada: 30 N Gould St, Sheridan, WY 82801, EE.UU.</p>
+        <p class="copyright" id="copyright">
+          <span class="desktop-line">© 2025 Sistemas de Trading Eficientes LLC. Todos los derechos reservados</span>
+          <span class="mobile-line">© 2025 Sistemas de Trading Eficientes LLC.</span>
+          <span class="mobile-line">Todos los derechos reservados</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button class="scroll-top-btn" onclick="scrollToTop()" id="scrollTopBtn">Volver Arriba</button>
+
+  <!-- POPUP DEL FORMULARIO DE CONTACTO OPTIMIZADO -->
+  <div id="formPopup">
+    <div class="form-container">
+      <h2 id="formTitle">Contáctenos</h2>
+      <form id="contactForm" action="https://formspree.io/f/xkgjlqnr" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+        <input type="hidden" name="_gotcha">
+        <input type="hidden" name="_honey" value="">
+        
+        <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
+        <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
+        <select name="interest" required title="Por favor, selecciona una opción">
+          <option value="" disabled selected>¿En qué estás interesado?</option>
+          <option value="trading_manual">Trading Manual</option>
+          <option value="trading_algoritmico">Trading Algorítmico</option>
+          <option value="gestion_riesgo">Gestión de Riesgo</option>
+          <option value="psicologia_trader">Psicología del Trader</option>
+          <option value="otros">Otros</option>
+        </select>
+        <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
+        
+        <!-- reCAPTCHA v2 -->
+        <div class="g-recaptcha" data-sitekey="6LcpgBwrAAAAAJGX3hxe5bIW_S0jOtH37RyYKhNG"></div>
+        
+        <button type="submit" id="submitBtn">Enviar mensaje</button>
+        <button type="button" onclick="closeForm()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- POPUP DE CONFIRMACIÓN -->
+  <div class="confirmation-popup" id="confirmationPopup">
+    <div class="confirmation-content">
+      <h2 id="confirmTitle">¡Gracias!</h2>
+      <p id="confirmMessage">Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
+      <button class="confirmation-btn" onclick="closeConfirmation()" id="confirmBtn">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <!-- reCAPTCHA API -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    // Objeto de traducciones optimizado
+    const translations = {
+      en: {
+        companyNameLine1: "Sistemas de",
+        companyNameLine2: "Trading Eficientes LLC",
+        tagline: "Manual & Algorithmic Trading",
+        aboutTitle: "About Us",
+        aboutText: "Sistemas de Trading Eficientes LLC is a US-based company specializing in the development of both manual and algorithmic trading strategies, market analysis, risk management, and trader psychology – all essential for consistent and profitable trading.",
+        servicesTitle: "Our Services",
+        service1: "Custom-built manual and algorithmic trading systems.",
+        service2: "Risk management and performance analytics.",
+        service3: "Market research and consulting.",
+        service4: "Strategic allocation and backtesting solutions.",
+        service5: "Psychological strengthening tailored to trading for high performance and resilience in adverse market conditions.",
+        contactTitle: "Contact",
+        contactEmail: "info@sistemasdetradingeficientes.com",
+        contactAddress: "Registered Address: 30 N Gould St, Sheridan, WY 82801, USA",
+        contactFormBtn: "Contact Form",
+        formTitle: "Contact Us",
+        placeholderName: "Your Name",
+        placeholderEmail: "Your Email",
+        placeholderInterest: "What are you interested in?",
+        interestOptions: {
+          trading_manual: "Manual Trading",
+          trading_algoritmico: "Algorithmic Trading",
+          gestion_riesgo: "Risk Management",
+          psicologia_trader: "Trader Psychology",
+          otros: "Other"
+        },
+        placeholderMessage: "Your Message",
+        requiredField: "Please fill out this field",
+        submitBtn: "Send Message",
+        cancelBtn: "Cancel",
+        sendingMessage: "Sending...",
+        confirmBtn: "OK",
+        confirmTitle: "Thank you!",
+        confirmMessage: "Your message has been sent successfully. We will contact you as soon as possible.",
+        copyrightDesktop: "© 2025 Sistemas de Trading Eficientes LLC. All rights reserved",
+        copyrightLine1: "© 2025 Sistemas de Trading Eficientes LLC.",
+        copyrightLine2: "All rights reserved",
+        scrollTop: "Scroll to top",
+        errorMessage: "Error sending message. Please try again later."
+      },
+      es: {
+        companyNameLine1: "Sistemas de",
+        companyNameLine2: "Trading Eficientes LLC",
+        tagline: "Trading Manual y Algorítmico",
+        aboutTitle: "Sobre Nosotros",
+        aboutText: "Sistemas de Trading Eficientes LLC es una empresa con sede en EE. UU. especializada en el desarrollo de estrategias de trading tanto manuales como algorítmicas, análisis de mercados, gestión de riesgo y psicología del trader, fundamentales para desarrollar una operativa rentable y consistente.",
+        servicesTitle: "Nuestros Servicios",
+        service1: "Sistemas de trading manual y algorítmico personalizados.",
+        service2: "Gestión de riesgos y análisis de rendimiento.",
+        service3: "Investigación de mercados y consultoría.",
+        service4: "Soluciones de asignación estratégica y backtesting.",
+        service5: "Fortalecimiento psicológico adaptado al trading para lograr un alto rendimiento y resiliencia en entornos adversos.",
+        contactTitle: "Contacto",
+        contactEmail: "info@sistemasdetradingeficientes.com",
+        contactAddress: "Dirección registrada: 30 N Gould St, Sheridan, WY 82801, EE.UU.",
+        contactFormBtn: "Formulario de contacto",
+        formTitle: "Contáctenos",
+        placeholderName: "Tu nombre",
+        placeholderEmail: "Tu email",
+        placeholderInterest: "¿En qué estás interesado?",
+        interestOptions: {
+          trading_manual: "Trading Manual",
+          trading_algoritmico: "Trading Algorítmico",
+          gestion_riesgo: "Gestión de Riesgo",
+          psicologia_trader: "Psicología del Trader",
+          otros: "Otros"
+        },
+        placeholderMessage: "Tu mensaje",
+        requiredField: "Por favor, completa este campo",
+        submitBtn: "Enviar mensaje",
+        cancelBtn: "Cancelar",
+        sendingMessage: "Enviando...",
+        confirmBtn: "Aceptar",
+        confirmTitle: "¡Gracias!",
+        confirmMessage: "Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo lo antes posible.",
+        copyrightDesktop: "© 2025 Sistemas de Trading Eficientes LLC. Todos los derechos reservados",
+        copyrightLine1: "© 2025 Sistemas de Trading Eficientes LLC.",
+        copyrightLine2: "Todos los derechos reservados",
+        scrollTop: "Volver Arriba",
+        errorMessage: "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
+      }
+    };
+
+    let currentLanguage = 'es';
+
+    function updateContent() {
+      const t = translations[currentLanguage];
+      document.getElementById("tagline").innerText = t.tagline;
+      document.getElementById("aboutTitle").innerText = t.aboutTitle;
+      document.getElementById("aboutText").innerText = t.aboutText;
+      document.getElementById("servicesTitle").innerText = t.servicesTitle;
+      document.getElementById("service1").innerText = t.service1;
+      document.getElementById("service2").innerText = t.service2;
+      document.getElementById("service3").innerText = t.service3;
+      document.getElementById("service4").innerText = t.service4;
+      document.getElementById("service5").innerText = t.service5;
+      document.getElementById("contactTitle").innerText = t.contactTitle;
+      document.getElementById("contactEmail").innerText = t.contactEmail;
+      document.getElementById("contactAddress").innerText = t.contactAddress;
+      document.getElementById("contactToggle").innerText = t.contactFormBtn;
+      document.getElementById("formTitle").innerText = t.formTitle;
+      document.getElementById("submitBtn").innerText = t.submitBtn;
+      document.querySelector('#formPopup button[type="button"]').innerText = t.cancelBtn;
+      document.getElementById("confirmBtn").innerText = t.confirmBtn;
+      document.getElementById("confirmTitle").innerText = t.confirmTitle;
+      document.getElementById("confirmMessage").innerText = t.confirmMessage;
+      
+      // Actualizar copyright
+      document.querySelector('.copyright .desktop-line').textContent = t.copyrightDesktop;
+      document.querySelectorAll('.copyright .mobile-line')[0].textContent = t.copyrightLine1;
+      document.querySelectorAll('.copyright .mobile-line')[1].textContent = t.copyrightLine2;
+      
+      document.getElementById('scrollTopBtn').textContent = t.scrollTop;
+
+      // Actualizar placeholders y mensajes de validación
+      const nameField = document.querySelector('#formPopup input[name="name"]');
+      const emailField = document.querySelector('#formPopup input[name="email"]');
+      const interestField = document.querySelector('#formPopup select[name="interest"]');
+      const messageField = document.querySelector('#formPopup textarea');
+
+      nameField.placeholder = t.placeholderName;
+      emailField.placeholder = t.placeholderEmail;
+      interestField.placeholder = t.placeholderInterest;
+      messageField.placeholder = t.placeholderMessage;
+
+      // Actualizar opciones del select
+      const options = interestField.querySelectorAll('option');
+      options[1].textContent = t.interestOptions.trading_manual;
+      options[2].textContent = t.interestOptions.trading_algoritmico;
+      options[3].textContent = t.interestOptions.gestion_riesgo;
+      options[4].textContent = t.interestOptions.psicologia_trader;
+      options[5].textContent = t.interestOptions.otros;
+
+      // Configurar mensajes de validación personalizados
+      nameField.title = t.requiredField;
+      emailField.title = t.requiredField;
+      interestField.title = t.requiredField;
+      messageField.title = t.requiredField;
+
+      nameField.oninvalid = (e) => {
+        e.target.setCustomValidity(t.requiredField);
+      };
+      emailField.oninvalid = (e) => {
+        e.target.setCustomValidity(t.requiredField);
+      };
+      interestField.oninvalid = (e) => {
+        e.target.setCustomValidity(t.requiredField);
+      };
+      messageField.oninvalid = (e) => {
+        e.target.setCustomValidity(t.requiredField);
+      };
+
+      nameField.oninput = (e) => e.target.setCustomValidity('');
+      emailField.oninput = (e) => e.target.setCustomValidity('');
+      interestField.oninput = (e) => e.target.setCustomValidity('');
+      messageField.oninput = (e) => e.target.setCustomValidity('');
+    }
+
+    function switchLang() {
+      currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
+      document.querySelector('.lang-switch').innerText = currentLanguage.toUpperCase();
+      updateContent();
+    }
+
+    function toggleContactForm() {
+      const formPopup = document.getElementById("formPopup");
+      formPopup.style.display = "flex";
+      updateContent();
+    }
+
+    function closeForm() {
+      document.getElementById("formPopup").style.display = "none";
+    }
+
+    function showConfirmation() {
+      document.getElementById("confirmationPopup").style.display = "flex";
+    }
+
+    function closeConfirmation() {
+      document.getElementById("confirmationPopup").style.display = "none";
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    window.addEventListener('scroll', function() {
+      const scrollBtn = document.getElementById('scrollTopBtn');
+      if (window.pageYOffset > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Verificar reCAPTCHA
+      const response = grecaptcha.getResponse();
+      if(response.length == 0) {
+        alert(translations[currentLanguage].requiredField);
+        return false;
+      }
+
+      const form = e.target;
+      const submitBtn = document.getElementById("submitBtn");
+      const originalBtnText = submitBtn.textContent;
+      const t = translations[currentLanguage];
+      
+      submitBtn.textContent = t.sendingMessage;
+      submitBtn.disabled = true;
+      
+      const urlWithCacheBuster = `${form.action}?t=${Date.now()}`;
+      
+      fetch(urlWithCacheBuster, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json',
+          'Cache-Control': 'no-cache'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          showConfirmation();
+          closeForm();
+          form.reset();
+          grecaptcha.reset();
+        } else {
+          throw new Error('Error en el envío');
+        }
+      })
+      .catch(error => {
+        console.error("Error con fetch:", error);
+        if (navigator.sendBeacon) {
+          const formData = new FormData(form);
+          if (navigator.sendBeacon(form.action, formData)) {
+            showConfirmation();
+            closeForm();
+            form.reset();
+            grecaptcha.reset();
+            return;
+          }
+        }
+        alert(t.errorMessage);
+      })
+      .finally(() => {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      updateContent();
+      
+      // Prevenir spam en el campo honey
+      document.querySelector('input[name="_honey"]').addEventListener('input', function(e) {
+        if(e.target.value) {
+          // Si un bot llena este campo oculto, no enviar el formulario
+          document.getElementById("contactForm").removeAttribute('action');
+        }
+      });
+    });
+  </script>
+  <script>
+    // Desactivar el clic derecho
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>
