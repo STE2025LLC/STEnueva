@@ -2780,6 +2780,11 @@
       document.getElementById("aboutTitle").innerText = t.aboutTitle;
       document.getElementById("aboutText").innerText = t.aboutText;
 
+      // Actualizar botones small header
+      document.getElementById("nav-products-text").textContent = t.navProductsText;
+      document.getElementById("nav-simulator-text").textContent = t.navSimulatorText;
+      document.getElementById("nav-contact-text").textContent = t.navContactText;
+
       // Actualizar Sección "La clave del éxito"
       document.getElementById("keySectionTitle").innerText = t.keySectionTitle;
       document.getElementById("keyPoint1Title").innerText = t.keyPoint1Title;
@@ -2858,7 +2863,7 @@
 
       // Actualizar sección de contacto
       document.getElementById("contactTitle").innerText = t.contactTitle;
-      document.getElementById("contactFormBtn").innerHTML = `<i class="fas fa-envelope"></i><span>${t.contactFormBtn}</span>`;
+      document.getElementById("contacto-btn").innerHTML = `<i class="fas fa-envelope"></i><span>${t.contactFormBtn}</span>`;
 
       // Actualizar formulario
       document.getElementById("formTitle").innerText = t.formTitle;
