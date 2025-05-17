@@ -1,0 +1,3195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Simulador Probabilístico de Trading - Proyecta resultados potenciales basados en estadísticas y probabilidades">
+    <meta name="keywords" content="simulador trading, probabilidades trading, esperanza matemática, gestión de riesgo">
+    <meta name="author" content="Sistemas de Trading Eficientes LLC">
+    <title>Sistemas de Trading Eficientes LLC - Simulador de Trading</title>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/chart.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
+    <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+    <style>
+    /* ========================
+       VARIABLES Y ESTILOS BASE
+       ======================== */
+    :root {
+      /* Colores base claros */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-tertiary: #e9ecef;
+      --text-primary: #333333;
+      --text-secondary: #555555;
+      --accent-color: #1a56a7;
+      --accent-hover: #0d47a1;
+      --border-color: #dee2e6;
+      --border-light: rgba(0,0,0,0.1);
+      --shadow-dark: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-medium: 0 8px 25px rgba(0,0,0,0.08);
+      --radius-small: 6px;
+      --radius-medium: 12px;
+      --radius-large: 16px;
+      --transition-fast: 0.2s ease;
+      --transition-medium: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition-slow: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+      /* Específicos para modo oscuro */
+      --dark-bg-primary: #121212;
+      --dark-bg-secondary: #1e1e1e;
+      --dark-bg-tertiary: #252525;
+      --dark-text-primary: #e0e0e0;
+      --dark-text-secondary: #a0a0a0;
+      --dark-accent-color: #4a89dc;
+      --dark-accent-hover: #5d9cec;
+      --dark-border-color: #333333;
+      --dark-border-light: rgba(255,255,255,0.1);
+      --dark-shadow-dark: 0 4px 12px rgba(0,0,0,0.3);
+      --dark-shadow-medium: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 0;
+      padding-top: 330px;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    body.dark-mode {
+      --bg-primary: var(--dark-bg-primary);
+      --bg-secondary: var(--dark-bg-secondary);
+      --bg-tertiary: var(--dark-bg-tertiary);
+      --text-primary: var(--dark-text-primary);
+      --text-secondary: var(--dark-text-secondary);
+      --accent-color: var(--dark-accent-color);
+      --accent-hover: var(--dark-accent-hover);
+      --border-color: var(--dark-border-color);
+      --border-light: var(--dark-border-light);
+      --shadow-dark: var(--dark-shadow-dark);
+      --shadow-medium: var(--dark-shadow-medium);
+    }
+
+    /* TIPOGRAFÍA */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.8em;
+      color: var(--text-primary);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      border-radius: 3px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2em;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* ENCABEZADO */
+    header {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      color: white;
+      padding: 30px 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-dark);
+      text-align: center;
+      transition: all 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+    }
+
+    .logo-container {
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      height: 100px;
+      width: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+      margin: 0 auto;
+      display: block;
+      margin-top: 15px;
+      transform: translateY(15px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .header-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: white;
+      line-height: 1.1; 
+      transform: translateY(21px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    header p#tagline {
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 10px;
+      color: #bbb;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    /* Header pequeño */
+    header.small-header {
+      padding: 0 20px;
+      height: 80px;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 20px;
+    }
+    
+    .header-small-back-btn {
+      display: none; /* Ocultar inicialmente */
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 12px;
+      border-radius: var(--radius-small);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all var(--transition-medium);
+      white-space: nowrap;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      z-index: 2;
+    }
+
+    .header-small-back-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    header.small-header .header-small-back-btn {
+      display: block; /* Mostrar solo en encabezado pequeño */
+    }   
+
+    header.small-header .logo-container {
+      margin-right: 15px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      padding-top: 0;
+      transform: translateY(6px);
+      align-self: center;
+      z-index: 1;
+    }    
+    
+    header.small-header .company-name {
+      font-size: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      transform: translateY(-5px);
+    }
+  
+    header.small-header .trading-types {
+      font-size: 0.8rem;
+      color: #bbb;
+    }
+    
+    header.small-header .logo {
+      height: 55px;
+      width: 55px;
+      margin: 0;
+      transform: translateY(-5px);
+    }
+    
+    .header-title-container {
+      margin-bottom: 30px;
+    }
+        
+    header.small-header .header-home-btn-container {
+      display: none; 
+    }
+     
+    .header-small-text {
+      display: none;
+      flex-direction: column;
+      margin-left: 12px;
+      text-align: left;
+      line-height: 1.2;
+    } 
+    
+    .header-small-text .company-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+    }
+    
+    .header-small-text .trading-types {
+      font-size: 0.8rem;
+      color: #bbb;
+    } 
+    
+    header.small-header .header-small-text {
+      display: flex;
+      flex-direction: column;
+      margin-left: 12px;
+      text-align: left;
+      line-height: 1.2;
+      z-index: 1;
+    }  
+        
+    header.small-header .header-title-container {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      transform: translateY(15px);
+      align-self: center;
+    }
+
+    header.small-header .header-content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
+    
+    header.small-header h1 {
+      font-size: 1.1rem;
+      margin: 0;
+      margin-bottom: 0;
+      line-height: 1.2;
+      transform: translateY(-5px); 
+      white-space: nowrap;
+    }
+
+    header.small-header p#tagline {
+      font-size: 0.8rem;
+      margin-top: 0;
+      margin: 0;
+      text-align: left;
+      line-height: 1.2;
+      transform: translateY(-4px);
+    }
+
+    body.small-header-padding {
+      padding-top: 200px;
+    }
+
+    /* CONTROLES */
+    .header-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 11003;
+      display: flex;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .lang-switch, .theme-toggle {
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(26, 26, 46, 0.2);
+      color: #1a1a2e;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all var(--transition-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-small);
+    }
+
+    .lang-switch {
+      padding: 8px 15px;
+      font-size: 1rem;
+      gap: 8px;
+    }
+
+    .theme-toggle {
+      padding: 8px;
+      width: 36px;
+      height: 36px;
+    }
+
+    .lang-switch:hover, .theme-toggle:hover {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .dark-mode .theme-toggle svg {
+      color: #333;
+    }
+    
+    /* BOTÓN VOLVER */
+    .back-home-container {
+      text-align: center;
+      margin: 5px auto;
+      padding: 0 20px;
+      max-width: 1200px;
+      background-color: transparent;
+    }
+
+    .back-home-btn, .mobile-back-btn {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 8px 20px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 15px;
+      transition: all var(--transition-medium);
+      font-weight: 500;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .back-home-btn:hover, .mobile-back-btn:hover {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+        
+    /* SIMULADOR */
+    .simulator-section {
+      background-color: var(--bg-secondary);
+      padding: 40px;
+      border-radius: var(--radius-large);
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      margin: 30px auto 20px;
+      max-width: 1200px;
+    }
+    
+    .centered-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 20px;
+    }
+
+    .main-title {
+      color: var(--accent-color);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .simulator-title {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .simulator-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      border-radius: 3px;
+    }
+
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .simulator-control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .simulator-label {
+      font-weight: 500;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .simulator-input, .simulator-select {
+      padding: 12px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-small);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      transition: all var(--transition-medium);
+      width: 100%;
+      height: 45px;
+    }
+
+    .simulator-input:focus, .simulator-select:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(26, 86, 167, 0.2);
+    }
+
+    .simulator-button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: var(--radius-small);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-medium);
+      font-size: 1rem;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .simulator-button:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* RESULTADOS */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .compact-results {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .result-card {
+      background-color: var(--bg-primary);
+      border-radius: var(--radius-small);
+      padding: 15px;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      overflow: hidden; /* Asegura que el contenido no se salga */
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 120px;
+    }
+
+    .result-card .label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      min-height: 40px;
+    }
+
+    .result-card .label span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .result-card .value {
+      font-size: 1rem;
+      font-weight: 700 !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 5px 0;
+      transition: font-size 0.2s ease;
+    }
+
+    .result-card .label.two-lines {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 40px;
+      line-height: 1.2;
+    }
+    
+    .result-card .label.two-lines span {
+      display: block;
+      white-space: normal;
+      word-break: break-word;
+      padding: 0 5px;
+    }
+
+    .result-card .value-large {
+      font-size: 1.1rem !important;
+      margin: 5px 0 !important;
+    }
+    
+    /* Estilos para números muy grandes */
+    .result-card .value.large-number {
+      font-size: 0.9rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+    
+    .result-card .value-large.large-number {
+      font-size: 1rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+    
+    .result-card .value.very-large-number {
+      font-size: 0.8rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+    
+    .result-card .value-large.very-large-number {
+      font-size: 0.9rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+    
+    .result-card.has-large-number {
+      padding: 10px 5px;
+    }
+    
+    .result-details {
+      font-size: 0.85rem; /* Tamaño consistente */
+      margin: 5px 0;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: font-size 0.2s ease;
+    }
+    
+    .result-details.large-number {
+      font-size: 0.8rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+    
+    .result-details.very-large-number {
+      font-size: 0.7rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .tab {
+      padding: 12px 25px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-secondary);
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+      transition: all var(--transition-medium);
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: var(--accent-color);
+      border-bottom-color: var(--accent-color);
+    }
+
+    .tab:hover:not(.active) {
+      color: var(--text-primary);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TABLAS */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 20px;
+      border-radius: var(--radius-small);
+      box-shadow: var(--shadow-medium);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--bg-primary);
+    }
+
+    th {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 12px 15px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    tr:hover {
+      background-color: rgba(26, 86, 167, 0.05);
+    }
+
+    /* GRÁFICO */
+    .chart-container {
+      margin-top: 30px;
+      height: 400px;
+      background-color: var(--bg-primary);
+      border-radius: var(--radius-small);
+      padding: 20px;
+      position: relative;
+      width: 100%;
+      box-shadow: var(--shadow-medium);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .chart-container canvas {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* BOTÓN TOGGLE */
+    .toggle-rows-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin: 15px auto; 
+      display: block;
+      transition: all var(--transition-medium);
+      text-align: center;
+    }
+
+    .toggle-rows-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* MODO OSCURO */
+    .dark-mode .simulator-input, 
+    .dark-mode .simulator-select {
+      background-color: var(--dark-bg-tertiary);
+      border-color: var(--dark-border-color);
+    }
+
+    .dark-mode .simulator-input:focus,
+    .dark-mode .simulator-select:focus {
+      box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+    }
+
+    /* COLORES */
+    .positive {
+      color: #28a745;
+    }
+
+    .negative {
+      color: #dc3545;
+    }
+    
+    .dark-mode .positive {
+      color: #4CAF50;
+    }
+    
+    .dark-mode .negative {
+      color: #F44336;
+    }
+
+    .footer-container {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      padding: 40px 0 20px;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 25px;
+      color: white;
+      text-align: center;
+    }
+
+    .footer-contact h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      color: white !important;
+    }
+
+    .footer-contact p {
+      margin: 8px 0;
+      color: #bbb;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .contact-form-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 15px;
+      transition: all var(--transition-medium), transform 0.3s ease;
+      font-weight: 500;
+      min-height: 40px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .contact-form-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      transform: translateX(5px) translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-address {
+      color: #bbb;
+      font-size: 0.75rem;
+      margin: 15px 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .copyright {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+
+    .risk-disclaimer-link {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 900;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+        
+    .risk-disclaimer-link.visible {
+      opacity: 1;
+    }
+
+    .risk-disclaimer-link a {
+      color: #5c5a52;
+      text-decoration: underline;
+      font-size: 0.75rem;
+      transition: color 0.3s ease;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    .risk-disclaimer-link a:hover {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+/* Estilo para el popup de riesgo */
+.risk-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
+  z-index: 10002;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.risk-popup-content {
+  background: var(--bg-primary);
+  padding: 30px;
+  border-radius: var(--radius-medium);
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  animation: fadeInUp 0.4s ease;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.risk-popup h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.risk-popup p {
+  margin-bottom: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.risk-popup strong {
+  color: var(--text-primary);
+}
+
+.risk-popup-close {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  font-weight: 500;
+  display: block;
+  margin: 25px auto 0;
+  transition: all var(--transition-medium);
+}
+
+.risk-popup-close:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Estilos para el popup del formulario */
+#formPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
+  z-index: 10002;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.form-container {
+  background: var(--bg-primary);
+  padding: 30px;
+  border-radius: var(--radius-medium);
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  animation: fadeInUp 0.4s ease;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.form-container h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-small);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  transition: all var(--transition-medium);
+}
+
+.form-container input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(26, 86, 167, 0.2);
+}
+
+.form-container textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-container .form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-container button {
+  padding: 12px 20px;
+  border-radius: var(--radius-small);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  border: none;
+  flex: 1;
+}
+
+.form-container button[type="submit"] {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: var(--accent-hover);
+}
+
+.form-container button[type="button"] {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.form-container button[type="button"]:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.recaptcha-error {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  display: none;
+  text-align: center;
+}
+
+    /* SCROLL TOP */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 1000;
+      display: none;
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: var(--radius-small);
+      font-size: 0.95rem;
+      font-weight: 500;
+      min-height: 40px;
+      transition: all var(--transition-medium);
+      box-shadow: var(--shadow-medium);
+      cursor: pointer;
+    }
+
+    .dark-mode .scroll-top-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .scroll-top-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+
+    .dark-mode .scroll-top-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      cursor: pointer;
+    }
+
+    .scroll-top-btn.visible {
+      display: block;
+    }
+        
+    /* DISPOSITIVOS MÓVILES */
+    @media (max-width: 768px) {
+      body {
+        font-size: 0.9rem;
+        padding-top: 195px;
+      }
+      
+      body.small-header-padding {
+        padding-top: 190px;
+      }
+  
+      header {
+        height: 180px;
+        padding: 15px 10px;
+      }
+      
+      .logo {
+        height: 70px;
+        width: 70px;
+        margin-top: 15px;
+      }
+      
+      .logo-container {
+        margin-top: 5px;
+        transform: translateY(0);
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+        margin-bottom: 2px;
+        line-height: 1.2;
+        transform: translateY(-10px);
+        margin-top: 6px;
+      }
+      
+      header p#tagline {
+        font-size: 1rem;
+        margin-bottom: 2px;
+        line-height: 1.2;
+        transform: translateY(-5px);
+        margin-top: 0;
+      }
+      
+      .header-title-container {
+        margin-top: 12px;
+        transform: translateY(0);        
+      }
+    
+      header.small-header {
+        height: 80px;
+        padding: 10px 20px;
+      }
+    
+      header.small-header .logo {
+        height: 55px;  
+        width: 55px;
+        margin-left: 1px;  
+        margin-top: 8px;
+        transform: translateY(0);
+      }
+      
+      header.small-header .logo-container {
+        width: 40px;
+        height: 40px;
+      }
+      
+      header.small-header p#tagline, 
+      header.small-header h1 {
+        transform: translateX(1px);
+      }
+      
+      header.small-header .company-name {
+        font-size: 0.9rem;
+      }
+    
+      header.small-header .trading-types {
+        font-size: 0.75rem;
+      }      
+
+      .header-controls {
+        top: 30px;
+        right: 10px;
+        gap: 0;
+        padding: 0;
+      }
+      
+      .theme-toggle, .lang-switch {
+        transform: scale(0.70);
+        transform-origin: top right;
+        margin: 0 -2px;
+        z-index: 10003 !important;
+        position: relative;
+      }
+
+      .theme-toggle {
+        width: 36px;
+        height: 32px;
+        padding: 6px;
+      }
+
+      .lang-switch {
+        padding: 5px 10px;
+        font-size: 0.8rem;  
+      }      
+
+      .company-name-line {
+        display: block;
+        line-height: 1.2;
+      }
+
+      section {
+        margin: 20px auto;
+        padding: 0 15px;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+
+      .simulator-section {
+        padding: 20px;
+      }
+      
+      .centered-container {
+        padding: 0 20px;
+      }
+    
+      .main-title {
+        font-size: 1.2rem;
+      }
+    
+      .subtitle {
+        font-size: 0.8rem;
+      }
+      
+      .results-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .simulator-title {
+        font-size: 1.2rem;
+      }
+
+      .scroll-top-btn {
+        display: none !important;
+      }
+      
+      .simulator-row {
+        flex-direction: column;
+      }
+      
+      .tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .tab {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .results-container {
+        grid-template-columns: repeat(2, 1fr);
+      }  
+
+      .chart-container {
+        height: 300px;
+      }
+      
+      /* Ajustes para móviles en las cajas de resultados */
+      .result-card {
+        min-height: 110px;
+        padding: 10px;
+      }
+      
+      .result-card .value {
+        font-size: 0.9rem;
+      }
+      
+      .result-card .value-large {
+        font-size: 1rem;
+      }
+      
+      .result-card .value.large-number {
+        font-size: 0.8rem;
+      }
+      
+      .result-card .value-large.large-number {
+        font-size: 0.9rem;
+      }
+      
+      .result-card .value.very-large-number {
+        font-size: 0.7rem;
+      }
+      
+      .result-card .value-large.very-large-number {
+        font-size: 0.8rem;
+      }
+      
+      .result-details {
+        font-size: 0.8rem;
+      }
+      
+      .result-details.large-number {
+        font-size: 0.7rem;
+      }
+      
+      .result-details.very-large-number {
+        font-size: 0.6rem;
+      }
+            
+      header.small-header .header-small-back-btn {
+        display: none;
+      }
+      
+      .risk-disclaimer-link {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 42px;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center !important;
+        padding: 8px 0;
+        z-index: 900;
+      }
+  
+      .risk-disclaimer-link a {
+        color: #5c5a52;
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+
+      .form-container {
+        padding: 20px;
+      }
+      
+      .form-container .form-buttons {
+        flex-direction: column;
+      }
+      
+      .form-container button {
+        width: 100%;
+      }
+      
+      .contact-form-btn {
+        background-color: transparent;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 8px 20px;
+        border-radius: var(--radius-small);
+        cursor: pointer;
+        font-size: 0.95rem;
+        margin-top: 15px;
+        transition: all var(--transition-medium);
+        font-weight: 500;
+        min-height: 40px;
+    }
+
+    }
+
+    @media (min-width: 769px) {
+      .mobile-back-btn-container {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1349px) {
+      .header-small-back-btn {
+        display: none !important;
+      }
+      
+      header.small-header .header-small-back-btn {
+        display: none;
+      }
+      
+      .mobile-back-btn-container {
+        display: block;
+        text-align: center;
+        margin: 10px auto 5px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin-bottom: -10px;
+      }
+    
+      .mobile-back-btn {
+        padding: 6px 20px;
+        min-height: 36px;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 0.7rem;
+      }
+      
+      header h1 {
+        font-size: 1.2rem;
+      }
+      
+      header.small-header h1 {
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .logo {
+        height: 60px;
+        width: 60px;
+      }
+
+      .main-title {
+        font-size: 1rem;
+      }
+    
+      .subtitle {
+        font-size: 0.6rem;
+      }
+
+      .simulator-title {
+        font-size: 1rem;
+      }
+      
+      .simulator-input {
+        padding: 10px 12px;
+      }
+      
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .scroll-top-btn {
+        display: none;
+      }
+      
+      .tab {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .results-row {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-container {
+        height: 250px;
+      }
+      
+      /* Ajustes adicionales para móviles pequeños */
+      .result-card {
+        padding: 10px;
+        min-height: 100px;
+      }
+      
+      .result-card .value {
+        font-size: 0.8rem;
+      }
+      
+      .result-card .value-large {
+        font-size: 0.9rem;
+      }
+      
+      .result-card .value.large-number {
+        font-size: 0.7rem;
+      }
+      
+      .result-card .value-large.large-number {
+        font-size: 0.8rem;
+      }
+      
+      .result-card .value.very-large-number {
+        font-size: 0.6rem;
+      }
+      
+      .result-card .value-large.very-large-number {
+        font-size: 0.7rem;
+      }
+      
+      .result-details {
+        font-size: 0.7rem;
+      }
+      
+      .result-details.large-number {
+        font-size: 0.6rem;
+      }
+      
+      .result-details.very-large-number {
+        font-size: 0.5rem;
+      }
+      
+      .mobile-back-btn {
+        padding: 4px 16px;
+        font-size: 0.9rem;
+        min-height: 32px;
+        gap: 6px;
+      }
+    }
+
+    .simulator-row {
+      display: flex;
+      gap: 20px;
+      grid-column: 1 / -1;
+    }
+    
+    .simulator-row-item {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .simulation-button-container {
+      display: flex;
+      align-items: flex-end;
+      flex-grow: 1;
+    }
+
+    .simulation-type-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    
+    .results-container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .results-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Nuevo estilo para quitar flecha del select deshabilitado */
+    .simulator-select[disabled] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    
+    /* Estilo para Max Drawdown */
+    .result-card .value.negative,
+    .result-card .value.positive {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .result-card .result-details.negative,
+    .result-card .result-details.positive {
+      font-size: 0.85rem;
+      margin-top: 0;
+    }
+
+    /* Ajuste para números muy grandes */
+    .result-card .value.large-number {
+      font-size: 0.9rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+
+    .result-card .value.very-large-number {
+      font-size: 0.8rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+
+  </style>
+</head>
+<body>
+    
+    <div class="header-controls">
+       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+             <path class="sun" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>
+          </svg>
+       </button>
+       
+       <button class="lang-switch" onclick="toggleLanguage()">
+          <span id="current-lang">EN</span>
+       </button>
+    </div>    
+    <div class="header-small-btn-container"></div>
+   
+    <header>
+      <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" alt="Logo Sistemas de Trading Eficientes LLC" class="logo" width="70" height="70" loading="lazy">
+      </div>
+      
+      <div class="header-title-container">
+        <h1 id="companyName">Sistemas de Trading Eficientes LLC</h1>
+        <p id="tagline">Trading Manual y Algorítmico</p>
+      </div>
+    
+      <button class="header-small-back-btn" id="headerBackBtn">
+        <i class="fas fa-home"></i>
+        <span id="header-home-text">Volver a la página principal</span>
+      </button>
+    </header>    
+   
+    <main>
+        <section>
+            <div class="centered-container">
+               <h1 class="main-title" id="main-title">SIMULADOR PROBABILÍSTICO DE TRADING</h1>
+               <p class="subtitle" id="subtitle">Herramienta para proyectar resultados potenciales basados en estadísticas y probabilidades</p>
+            </div> 
+            
+            <div class="simulator-section">
+                <h2 class="simulator-title" id="params-title">Parámetros Probabilísticos</h2>
+                
+                <div class="simulator-grid">
+                    <div class="simulator-control-group">
+                        <label for="capital" class="simulator-label"><i class="fas fa-wallet"></i> <span id="capital-label">Capital Inicial ($)</span></label>
+                        <input type="number" id="capital" class="simulator-input" value="10000" min="1" aria-describedby="capital-label">
+                    </div>
+                    
+                    <div class="simulator-control-group">
+                        <label for="risk-percent" class="simulator-label"><i class="fas fa-exclamation-triangle"></i> <span id="risk-label">% Riesgo por Operación</span></label>
+                        <input type="number" id="risk-percent" class="simulator-input" value="1" min="0.1" max="5" step="0.1" aria-describedby="risk-label">
+                    </div>
+                    
+                    <div class="simulator-control-group">
+                        <label for="win-rate" class="simulator-label"><i class="fas fa-bullseye"></i> <span id="winrate-label">% de Aciertos (0-100)</span></label>
+                        <input type="number" id="win-rate" class="simulator-input" value="55" min="0" max="100" step="0.1" aria-describedby="winrate-label">
+                    </div>
+                    
+                    <div class="simulator-control-group">
+                        <label for="risk-reward" class="simulator-label"><i class="fas fa-balance-scale"></i> <span id="rr-label">Ratio Beneficio/Riesgo</span></label>
+                        <input type="number" id="risk-reward" class="simulator-input" value="1" min="0.5" max="10" step="0.1" aria-describedby="rr-label">
+                    </div>
+                    
+                    <div class="simulator-row">
+                        <div class="simulator-row-item simulator-control-group simulation-type-group">
+                            <label for="simulation-type" class="simulator-label"><i class="fas fa-cog"></i> <span id="simtype-label">Tipo de Simulación</span></label>
+                            <select id="simulation-type" class="simulator-select" disabled aria-describedby="simtype-label">
+                                <option value="compuesto" id="compuesto-option" selected>Interés Compuesto</option>
+                            </select>
+                        </div>
+                        
+                        <div class="simulator-row-item simulation-button-container">
+                            <button id="simulate-btn" class="simulator-button simulator-button-large"><i class="fas fa-play"></i> <span id="simulate-text">Ejecutar Simulación</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-grid" style="margin-top: 20px;">
+                    <div class="result-card">
+                        <div class="label" id="risk-per-op-label">Riesgo por Operación</div>
+                        <div class="value" id="risk-per-op">$100.00</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label" id="fail-rate-label">Tasa de Fallo</div>
+                        <div class="value" id="fail-rate">45%</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="label" id="expected-value-label">Esperanza Matemática</div>
+                        <div class="value" id="expected-value">0.10%</div>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="30" role="tab" aria-selected="true"><i class="fas fa-chart-line"></i> <span id="ops30-tab-label">30 Operaciones</span></div>
+                    <div class="tab" data-tab="60" role="tab" aria-selected="false"><i class="fas fa-chart-line"></i> <span id="ops60-tab-label">60 Operaciones</span></div>
+                    <div class="tab" data-tab="200" role="tab" aria-selected="false"><i class="fas fa-chart-line"></i> <span id="ops200-tab-label">200 Operaciones</span></div>
+                    <div class="tab" data-tab="600" role="tab" aria-selected="false"><i class="fas fa-chart-line"></i> <span id="ops600-tab-label">600 Operaciones</span></div>
+                    <div class="tab" data-tab="1000" role="tab" aria-selected="false"><i class="fas fa-chart-line"></i> <span id="ops1000-tab-label">1000 Operaciones</span></div>
+                </div>
+                
+                <!-- Contenido de las pestañas -->
+                
+                <!-- Pestaña 30 Operaciones -->
+                   <div class="tab-content active" id="30-tab" role="tabpanel">
+                       <div class="chart-container">
+                           <canvas id="chart-30" aria-label="Gráfico de evolución del capital para 30 operaciones"></canvas>
+                   </div>
+    
+                       <div class="results-container">
+                           <!-- Operaciones Ganadoras (2 líneas) -->
+                           <div class="result-card">
+                               <div class="label two-lines">
+                                   <span>Operaciones</span>
+                                   <span>Ganadoras</span>
+                               </div>
+                               <div class="value value-large positive" id="wins-30">0</div>
+                               <div class="result-details positive" id="wins-amount-30">+$0.00</div>
+                           </div>
+        
+                <!-- Operaciones Perdedoras (2 líneas) -->
+                    <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Operaciones</span>
+                                <span>Perdedoras</span>
+                            </div>
+                            <div class="value value-large negative" id="losses-30">0</div>
+                            <div class="result-details negative" id="losses-amount-30">-$0.00</div>
+                    </div>
+        
+                <!-- Saldo Final (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Saldo Final</div>
+                            <div class="value value-large" id="balance-30">$10,000.00</div>
+                </div>
+        
+                <!-- Rentabilidad (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Rentabilidad</div>
+                            <div class="result-details" id="profit-percent-30">0%</div>
+                            <div class="value value-large" id="profit-30">$0.00</div>
+                </div>
+        
+                <!-- Max Drawdown (nuevo formato) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Máx. Drawdown</div>
+                            <div class="result-details negative" id="drawdown-percent-30">0%</div>
+                            <div class="value negative" id="drawdown-amount-30">$0.00</div>
+                </div>
+        
+                <!-- Racha de Pérdidas (nuevo formato) -->
+                <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Racha de</span>
+                                <span>Pérdidas</span>
+                </div>
+                <div class="value" id="streak-30">0</div>
+                </div>
+                </div>
+                    
+                    <button class="toggle-rows-btn" id="toggle-rows-30" aria-expanded="false">
+                       <i class="fas fa-eye"></i> 
+                       <span id="show30-text">Mostrar todas las operaciones</span>
+                    </button>                    
+                    <div class="table-container">
+                        <table id="table-30" aria-describedby="ops30-tab-label">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" id="result-th-30">Resultado</th>
+                                    <th scope="col" id="balance-th-30">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Pestaña 60 Operaciones -->
+
+                   <div class="tab-content" id="60-tab" role="tabpanel">
+                       <div class="chart-container">
+                           <canvas id="chart-60" aria-label="Gráfico de evolución del capital para 60 operaciones"></canvas>
+                   </div>
+    
+                       <div class="results-container">
+                           <!-- Operaciones Ganadoras (2 líneas) -->
+                           <div class="result-card">
+                               <div class="label two-lines">
+                                   <span>Operaciones</span>
+                                   <span>Ganadoras</span>
+                               </div>
+                               <div class="value value-large positive" id="wins-60">0</div>
+                               <div class="result-details positive" id="wins-amount-60">+$0.00</div>
+                           </div>
+        
+                <!-- Operaciones Perdedoras (2 líneas) -->
+                    <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Operaciones</span>
+                                <span>Perdedoras</span>
+                            </div>
+                            <div class="value value-large negative" id="losses-60">0</div>
+                            <div class="result-details negative" id="losses-amount-60">-$0.00</div>
+                    </div>
+        
+                <!-- Saldo Final (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Saldo Final</div>
+                            <div class="value value-large" id="balance-60">$10,000.00</div>
+                </div>
+        
+                <!-- Rentabilidad (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Rentabilidad</div>
+                            <div class="result-details" id="profit-percent-60">0%</div>
+                            <div class="value value-large" id="profit-60">$0.00</div>
+                </div>
+        
+                <!-- Max Drawdown (nuevo formato) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Máx. Drawdown</div>
+                            <div class="result-details negative" id="drawdown-percent-60">0%</div>
+                            <div class="value negative" id="drawdown-amount-60">$0.00</div>
+                </div>
+        
+                <!-- Racha de Pérdidas (nuevo formato) -->
+                <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Racha de</span>
+                                <span>Pérdidas</span>
+                </div>
+                <div class="value" id="streak-60">0</div>
+                </div>
+                </div>
+                    
+                    <button class="toggle-rows-btn" id="toggle-rows-60" aria-expanded="false">
+                       <i class="fas fa-eye"></i> 
+                       <span id="show60-text">Mostrar todas las operaciones</span>
+                    </button>                    
+                    <div class="table-container">
+                        <table id="table-60" aria-describedby="ops60-tab-label">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" id="result-th-60">Resultado</th>
+                                    <th scope="col" id="balance-th-60">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+<!-- Pestaña 200 Operaciones -->
+                   <div class="tab-content" id="200-tab" role="tabpanel">
+                       <div class="chart-container">
+                           <canvas id="chart-200" aria-label="Gráfico de evolución del capital para 200 operaciones"></canvas>
+                   </div>
+    
+                       <div class="results-container">
+                           <!-- Operaciones Ganadoras (2 líneas) -->
+                           <div class="result-card">
+                               <div class="label two-lines">
+                                   <span>Operaciones</span>
+                                   <span>Ganadoras</span>
+                               </div>
+                               <div class="value value-large positive" id="wins-200">0</div>
+                               <div class="result-details positive" id="wins-amount-200">+$0.00</div>
+                           </div>
+        
+                <!-- Operaciones Perdedoras (2 líneas) -->
+                    <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Operaciones</span>
+                                <span>Perdedoras</span>
+                            </div>
+                            <div class="value value-large negative" id="losses-200">0</div>
+                            <div class="result-details negative" id="losses-amount-200">-$0.00</div>
+                    </div>
+        
+                <!-- Saldo Final (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Saldo Final</div>
+                            <div class="value value-large" id="balance-200">$10,000.00</div>
+                </div>
+        
+                <!-- Rentabilidad (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Rentabilidad</div>
+                            <div class="result-details" id="profit-percent-200">0%</div>
+                            <div class="value value-large" id="profit-200">$0.00</div>
+                </div>
+        
+                <!-- Max Drawdown (nuevo formato) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Máx. Drawdown</div>
+                            <div class="result-details negative" id="drawdown-percent-200">0%</div>
+                            <div class="value negative" id="drawdown-amount-200">$0.00</div>
+                </div>
+        
+                <!-- Racha de Pérdidas (nuevo formato) -->
+                <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Racha de</span>
+                                <span>Pérdidas</span>
+                </div>
+                <div class="value" id="streak-200">0</div>
+                </div>
+                </div>
+                    
+                    <button class="toggle-rows-btn" id="toggle-rows-200" aria-expanded="false">
+                       <i class="fas fa-eye"></i> 
+                       <span id="show200-text">Mostrar todas las operaciones</span>
+                    </button>                    
+                    <div class="table-container">
+                        <table id="table-200" aria-describedby="ops600-tab-label">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" id="result-th-200">Resultado</th>
+                                    <th scope="col" id="balance-th-200">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+<!-- Pestaña 600 Operaciones -->
+                   <div class="tab-content" id="600-tab" role="tabpanel">
+                       <div class="chart-container">
+                           <canvas id="chart-600" aria-label="Gráfico de evolución del capital para 600 operaciones"></canvas>
+                   </div>
+    
+                       <div class="results-container">
+                           <!-- Operaciones Ganadoras (2 líneas) -->
+                           <div class="result-card">
+                               <div class="label two-lines">
+                                   <span>Operaciones</span>
+                                   <span>Ganadoras</span>
+                               </div>
+                               <div class="value value-large positive" id="wins-600">0</div>
+                               <div class="result-details positive" id="wins-amount-600">+$0.00</div>
+                           </div>
+        
+                <!-- Operaciones Perdedoras (2 líneas) -->
+                    <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Operaciones</span>
+                                <span>Perdedoras</span>
+                            </div>
+                            <div class="value value-large negative" id="losses-600">0</div>
+                            <div class="result-details negative" id="losses-amount-600">-$0.00</div>
+                    </div>
+        
+                <!-- Saldo Final (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Saldo Final</div>
+                            <div class="value value-large" id="balance-600">$10,000.00</div>
+                </div>
+        
+                <!-- Rentabilidad (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Rentabilidad</div>
+                            <div class="result-details" id="profit-percent-600">0%</div>
+                            <div class="value value-large" id="profit-600">$0.00</div>
+                </div>
+        
+                <!-- Max Drawdown (nuevo formato) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Máx. Drawdown</div>
+                            <div class="result-details negative" id="drawdown-percent-600">0%</div>
+                            <div class="value negative" id="drawdown-amount-600">$0.00</div>
+                </div>
+        
+                <!-- Racha de Pérdidas (nuevo formato) -->
+                <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Racha de</span>
+                                <span>Pérdidas</span>
+                </div>
+                <div class="value" id="streak-600">0</div>
+                </div>
+                </div>
+                    
+                    <button class="toggle-rows-btn" id="toggle-rows-600" aria-expanded="false">
+                       <i class="fas fa-eye"></i> 
+                       <span id="show600-text">Mostrar todas las operaciones</span>
+                    </button>                    
+                    <div class="table-container">
+                        <table id="table-600" aria-describedby="ops600-tab-label">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" id="result-th-600">Resultado</th>
+                                    <th scope="col" id="balance-th-600">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+<!-- Pestaña 1000 Operaciones -->
+                   <div class="tab-content" id="1000-tab" role="tabpanel">
+                       <div class="chart-container">
+                           <canvas id="chart-1000" aria-label="Gráfico de evolución del capital para 1000 operaciones"></canvas>
+                   </div>
+    
+                       <div class="results-container">
+                           <!-- Operaciones Ganadoras (2 líneas) -->
+                           <div class="result-card">
+                               <div class="label two-lines">
+                                   <span>Operaciones</span>
+                                   <span>Ganadoras</span>
+                               </div>
+                               <div class="value value-large positive" id="wins-1000">0</div>
+                               <div class="result-details positive" id="wins-amount-1000">+$0.00</div>
+                           </div>
+        
+                <!-- Operaciones Perdedoras (2 líneas) -->
+                    <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Operaciones</span>
+                                <span>Perdedoras</span>
+                            </div>
+                            <div class="value value-large negative" id="losses-1000">0</div>
+                            <div class="result-details negative" id="losses-amount-1000">-$0.00</div>
+                    </div>
+        
+                <!-- Saldo Final (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Saldo Final</div>
+                            <div class="value value-large" id="balance-1000">$10,000.00</div>
+                </div>
+        
+                <!-- Rentabilidad (con ajuste para números grandes) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Rentabilidad</div>
+                            <div class="result-details" id="profit-percent-1000">0%</div>
+                            <div class="value value-large" id="profit-1000">$0.00</div>
+                </div>
+        
+                <!-- Max Drawdown (nuevo formato) -->
+                <div class="result-card has-large-number">
+                            <div class="label">Máx. Drawdown</div>
+                            <div class="result-details negative" id="drawdown-percent-1000">0%</div>
+                            <div class="value negative" id="drawdown-amount-1000">$0.00</div>
+                </div>
+        
+                <!-- Racha de Pérdidas (nuevo formato) -->
+                <div class="result-card">
+                            <div class="label two-lines">
+                                <span>Racha de</span>
+                                <span>Pérdidas</span>
+                </div>
+                <div class="value" id="streak-1000">0</div>
+                </div>
+                </div>
+                    
+                    <button class="toggle-rows-btn" id="toggle-rows-1000" aria-expanded="false">
+                       <i class="fas fa-eye"></i> 
+                       <span id="show1000-text">Mostrar todas las operaciones</span>
+                    </button>                    
+                    <div class="table-container">
+                        <table id="table-1000" aria-describedby="ops1000-tab-label">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" id="result-th-1000">Resultado</th>
+                                    <th scope="col" id="balance-th-1000">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>                
+            </div>
+        </section>
+    </main>
+
+    <!-- Botón de volver para móviles -->
+    <div class="mobile-back-btn-container">
+        <button class="mobile-back-btn" id="mobileBackBtn">
+            <i class="fas fa-home"></i>
+            <span id="mobile-home-text">Volver a la página principal</span>
+        </button>
+    </div>
+    
+    <div class="footer-container">                
+        <div class="footer-content">
+            <div class="footer-contact">
+                <h3 id="contact-title">Contacto</h3>
+                <p>info@sistemasdetradingeficientes.com</p>
+                <button class="contact-form-btn" id="contactFormBtn">
+                    <i class="fas fa-envelope"></i> <span id="contact-text">Formulario de contacto</span>
+                </button>
+            </div>
+            
+     <p class="risk-disclaimer-link">
+         <a href="javascript:void(0);" onclick="showRiskDisclaimer()" id="riskLinkText">Declaración de riesgo</a>
+     </p>       
+            
+            <div class="footer-info">
+                <p class="footer-address">30 N Gould St, Sheridan, WY 82801, EE.UU.</p>
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 Sistemas de Trading Eficientes LLC.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup de formulario de contacto -->
+    <div id="formPopup">
+    <div class="form-container">
+        <h2 id="formTitle">Contáctenos</h2>
+        <form id="contactForm" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+            <input type="hidden" name="_gotcha">
+            <input type="hidden" name="_honey" value="">
+
+            <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
+            <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
+            <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
+
+            <div style="display: flex; justify-content: center; margin: 15px 0;">
+                <div class="g-recaptcha" data-sitekey="TU_CLAVE_DE_RECAPTCHA"></div>
+            </div>
+            <div class="recaptcha-error" id="recaptchaError"></div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button type="submit" id="submitBtn">Enviar mensaje</button>
+                <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>            
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script>
+    // Variables globales para los datos de las simulaciones
+    let simulationData = {};
+    let charts = {};
+    let currentLanguage = 'es'; // Valor por defecto
+
+    // Cargar preferencias guardadas
+    if (localStorage.getItem('language')) {
+        currentLanguage = localStorage.getItem('language');
+    }
+
+    // Textos para traducción
+    const translations = {
+        'es': {
+            'companyName': 'Sistemas de Trading Eficientes LLC',
+            'tagline': 'Trading Manual y Algorítmico',
+            'main-title': 'SIMULADOR PROBABILÍSTICO DE TRADING',
+            'subtitle': 'Herramienta para proyectar resultados potenciales basados en estadísticas y probabilidades',
+            'params-title': 'Parámetros Probabilísticos',
+            'capital-label': 'Capital Inicial ($)',
+            'risk-label': '% Riesgo por Operación',
+            'winrate-label': '% de Aciertos (0-100)',
+            'rr-label': 'Ratio Beneficio/Riesgo',
+            'simtype-label': 'Tipo de Simulación',
+            'compuesto-option': 'Interés Compuesto',
+            'simulate-text': 'Ejecutar Simulación',
+            'risk-per-op-label': 'Riesgo por Operación',
+            'fail-rate-label': 'Tasa de Fallo',
+            'expected-value-label': 'Esperanza Matemática',
+            'ops30-tab-label': '30 Operaciones',
+            'ops60-tab-label': '60 Operaciones',
+            'ops200-tab-label': '200 Operaciones',
+            'ops600-tab-label': '600 Operaciones',
+            'ops1000-tab-label': '1000 Operaciones',
+            'wins-label-30': 'Operaciones Ganadoras',
+            'wins-label-60': 'Operaciones Ganadoras',
+            'wins-label-200': 'Operaciones Ganadoras',
+            'wins-label-600': 'Operaciones Ganadoras',
+            'wins-label-1000': 'Operaciones Ganadoras',
+            'losses-label-30': 'Operaciones Perdedoras',
+            'losses-label-60': 'Operaciones Perdedoras',
+            'losses-label-200': 'Operaciones Perdedoras',
+            'losses-label-600': 'Operaciones Perdedoras',
+            'losses-label-1000': 'Operaciones Perdedoras',
+            'balance-label-30': 'Saldo Final',
+            'balance-label-60': 'Saldo Final',
+            'balance-label-200': 'Saldo Final',
+            'balance-label-600': 'Saldo Final',
+            'balance-label-1000': 'Saldo Final',
+            'profit-label-30': 'Rentabilidad',
+            'profit-label-60': 'Rentabilidad',
+            'profit-label-200': 'Rentabilidad',
+            'profit-label-600': 'Rentabilidad',
+            'profit-label-1000': 'Rentabilidad',
+            'drawdown-label-30': 'Máx. Drawdown',
+            'drawdown-label-60': 'Máx. Drawdown',
+            'drawdown-label-200': 'Máx. Drawdown',
+            'drawdown-label-600': 'Máx. Drawdown',
+            'drawdown-label-1000': 'Máx. Drawdown',
+            'streak-label-30': 'Racha de Pérdidas',
+            'streak-label-60': 'Racha de Pérdidas',
+            'streak-label-200': 'Racha de Pérdidas',
+            'streak-label-600': 'Racha de Pérdidas',
+            'streak-label-1000': 'Racha de Pérdidas',
+            'result-th-30': 'Resultado',
+            'result-th-60': 'Resultado',
+            'result-th-200': 'Resultado',
+            'result-th-600': 'Resultado',
+            'result-th-1000': 'Resultado',
+            'balance-th-30': 'Saldo',
+            'balance-th-60': 'Saldo',
+            'balance-th-200': 'Saldo',
+            'balance-th-600': 'Saldo',
+            'balance-th-1000': 'Saldo',
+            'show30-text': 'Mostrar todas las operaciones',
+            'show60-text': 'Mostrar todas las operaciones',
+            'show200-text': 'Mostrar todas las operaciones',
+            'show600-text': 'Mostrar todas las operaciones',
+            'show1000-text': 'Mostrar todas las operaciones',
+            'contact-title': 'Contacto',
+            'contact-text': 'Formulario de contacto',
+            'header-home-text': 'Volver a la página principal',
+            'mobile-home-text': 'Volver a la página principal',
+            'top-text': 'Volver Arriba',
+            'chart-x-label': 'Número de Operación',
+            'chart-y-label': 'Capital ($)',
+            'formTitle': 'Contáctenos',
+            'riskLinkText': 'Declaración de riesgo',
+            'riskTitle': 'Declaración de riesgo',
+            'riskWarning': 'ADVERTENCIA SOBRE RIESGOS:',
+            'riskText1': 'El trading de instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Antes de decidir operar en los mercados financieros, debe considerar cuidadosamente sus objetivos de inversión, nivel de experiencia y apetito por el riesgo.',
+            'riskLoseMoney': 'Posibilidad de perder dinero:',
+            'riskText2': 'Existe la posibilidad de que pierda parte o la totalidad de su inversión inicial y, por lo tanto, no debe invertir dinero que no pueda permitirse perder. Debe ser consciente de todos los riesgos asociados con el trading de instrumentos financieros y buscar asesoramiento de un asesor financiero independiente si tiene dudas.',
+            'riskPastResults': 'Rendimientos pasados:',
+            'riskText3': 'Los resultados pasados no son indicativos de resultados futuros. Las declaraciones sobre rendimientos potenciales son ilustrativas y no garantizan resultados actuales. El trading con apalancamiento puede funcionar tanto en su beneficio como en su contra.',
+            'riskNotAdvice': 'No es asesoramiento:',
+            'riskText4': 'La información proporcionada por Sistemas de Trading Eficientes LLC no constituye asesoramiento financiero, de inversión, fiscal o de otro tipo. Todo el material proporcionado tiene únicamente fines educativos e informativos.',
+            'riskResponsibility': 'Responsabilidad:',
+            'riskText5': 'Sistemas de Trading Eficientes LLC no asume responsabilidad alguna por cualquier pérdida o daño como resultado de la confianza en la información contenida en este sitio web, incluidos datos, cotizaciones, gráficos y señales de compra/venta. Por favor, sea plenamente consciente de los riesgos y costes asociados con el trading en los mercados financieros.',
+            'riskLegal': 'Restricciones legales:',
+            'riskText6': 'Los productos y servicios descritos pueden no estar disponibles en todas las jurisdicciones o para todos los clientes. Es responsabilidad del cliente determinar qué transacciones están permitidas según las leyes de su país de residencia.',
+            'formNamePlaceholder': 'Tu nombre',
+            'formEmailPlaceholder': 'Tu email',
+            'formMessagePlaceholder': 'Tu mensaje',
+            'submitBtnText': 'Enviar mensaje',
+            'cancelBtnText': 'Cancelar',
+            'recaptchaErrorText': 'Por favor, completa el reCAPTCHA',
+            'closeBtnText': 'Cerrar',
+            'welcome-title': 'Bienvenido al Simulador de Trading',
+            'welcome-text': 'Este simulador te permite proyectar resultados potenciales basados en estadísticas de trading.',
+            'how-to-title': 'Cómo usar:',
+            'how-to-list': [
+                'Ingresa tu capital inicial',
+                'Define tu % de riesgo por operación',
+                'Establece tu porcentaje de aciertos',
+                'Configura tu ratio beneficio/riesgo',
+                'Haz clic en "Ejecutar Simulación"'
+            ],
+            'understand-text': 'Entendido'
+        },
+        'en': {
+            'companyName': 'Sistemas de Trading Eficientes LLC',
+            'tagline': 'Manual & Algorithmic Trading',
+            'main-title': 'PROBABILISTIC TRADING SIMULATOR',
+            'subtitle': 'Tool to project potential results based on statistics and probabilities',
+            'params-title': 'Probabilistic Parameters',
+            'capital-label': 'Initial Capital ($)',
+            'risk-label': '% Risk per Trade',
+            'winrate-label': 'Win Rate (0-100)',
+            'rr-label': 'Risk/Reward Ratio',
+            'simtype-label': 'Simulation Type',
+            'compuesto-option': 'Compound Interest',
+            'simulate-text': 'Run Simulation',
+            'risk-per-op-label': 'Risk per Trade',
+            'fail-rate-label': 'Fail Rate',
+            'expected-value-label': 'Expected Value',
+            'ops30-tab-label': '30 Trades',
+            'ops60-tab-label': '60 Trades',
+            'ops200-tab-label': '200 Trades',
+            'ops600-tab-label': '600 Trades',
+            'ops1000-tab-label': '1000 Trades',
+            'wins-label-30': 'Winning Trades',
+            'wins-label-60': 'Winning Trades',
+            'wins-label-200': 'Winning Trades',
+            'wins-label-600': 'Winning Trades',
+            'wins-label-1000': 'Winning Trades',
+            'losses-label-30': 'Losing Trades',
+            'losses-label-60': 'Losing Trades',
+            'losses-label-200': 'Losing Trades',
+            'losses-label-600': 'Losing Trades',
+            'losses-label-1000': 'Losing Trades',
+            'balance-label-30': 'Final Balance',
+            'balance-label-60': 'Final Balance',
+            'balance-label-200': 'Final Balance',
+            'balance-label-600': 'Final Balance',
+            'balance-label-1000': 'Final Balance',
+            'profit-label-30': 'Profit',
+            'profit-label-60': 'Profit',
+            'profit-label-200': 'Profit',
+            'profit-label-600': 'Profit',
+            'profit-label-1000': 'Profit',
+            'drawdown-label-30': 'Max Drawdown',
+            'drawdown-label-60': 'Max Drawdown',
+            'drawdown-label-200': 'Max Drawdown',
+            'drawdown-label-600': 'Max Drawdown',
+            'drawdown-label-1000': 'Max Drawdown',
+            'streak-label-30': 'Losing Streak',
+            'streak-label-60': 'Losing Streak',
+            'streak-label-200': 'Losing Streak',
+            'streak-label-600': 'Losing Streak',
+            'streak-label-1000': 'Losing Streak',
+            'result-th-30': 'Result',
+            'result-th-60': 'Result',
+            'result-th-200': 'Result',
+            'result-th-600': 'Result',
+            'result-th-1000': 'Result',
+            'balance-th-30': 'Balance',
+            'balance-th-60': 'Balance',
+            'balance-th-200': 'Balance',
+            'balance-th-600': 'Balance',
+            'balance-th-1000': 'Balance',
+            'show30-text': 'Show all trades',
+            'show60-text': 'Show all trades',
+            'show200-text': 'Show all trades',
+            'show600-text': 'Show all trades',
+            'show1000-text': 'Show all trades',
+            'contact-title': 'Contact',
+            'contact-text': 'Contact Form',
+            'header-home-text': 'Back to Homepage',
+            'mobile-home-text': 'Back to Homepage',
+            'top-text': 'Back to Top',
+            'chart-x-label': 'Trade Number',
+            'chart-y-label': 'Capital ($)',
+            'formTitle': 'Contact Us',
+            'riskLinkText': 'Risk Disclosure',
+            'riskTitle': 'Risk Disclosure',
+            'riskWarning': 'RISK WARNING:',
+            'riskText1': 'Trading financial instruments carries a high level of risk and may not be suitable for all investors. Before deciding to trade in financial markets, you should carefully consider your investment objectives, level of experience, and risk appetite.',
+            'riskLoseMoney': 'Possibility of losing money:',
+            'riskText2': 'There is a possibility that you may lose part or all of your initial investment and therefore you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with trading financial instruments and seek advice from an independent financial advisor if you have any doubts.',
+            'riskPastResults': 'Past performance:',
+            'riskText3': 'Past performance is not indicative of future results. Statements about potential returns are illustrative and do not guarantee current results. Trading with leverage can work both to your advantage and disadvantage.',
+            'riskNotAdvice': 'Not advice:',
+            'riskText4': 'The information provided by Sistemas de Trading Eficientes LLC does not constitute financial, investment, tax or other advice. All material provided is for educational and informational purposes only.',
+            'riskResponsibility': 'Responsibility:',
+            'riskText5': 'Sistemas de Trading Eficientes LLC assumes no responsibility for any loss or damage as a result of reliance on the information contained on this website, including data, quotes, charts and buy/sell signals. Please be fully aware of the risks and costs associated with trading in financial markets.',
+            'riskLegal': 'Legal restrictions:',
+            'riskText6': 'The products and services described may not be available in all jurisdictions or to all clients. It is the client\'s responsibility to determine which transactions are permitted under the laws of their country of residence.',
+            'formNamePlaceholder': 'Your name',
+            'formEmailPlaceholder': 'Your email',
+            'formMessagePlaceholder': 'Your message',
+            'submitBtnText': 'Send message',
+            'cancelBtnText': 'Cancel',
+            'recaptchaErrorText': 'Please complete the reCAPTCHA',
+            'closeBtnText': 'Close',
+            'welcome-title': 'Welcome to the Trading Simulator',
+            'welcome-text': 'This simulator allows you to project potential results based on trading statistics.',
+            'how-to-title': 'How to use:',
+            'how-to-list': [
+                'Enter your initial capital',
+                'Define your % risk per trade',
+                'Set your win rate percentage',
+                'Configure your risk/reward ratio',
+                'Click "Run Simulation"'
+            ],
+            'understand-text': 'Got it'
+        }
+    };
+
+    // Función para formatear números
+    function formatNumber(num) {
+        return num.toLocaleString(currentLanguage, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    // Función para determinar si un número es muy grande y necesita ajuste de tamaño
+    function needsSizeAdjustment(num) {
+        const str = Math.abs(num).toString();
+        return str.length > 8; // Más de 8 dígitos (incluyendo decimales)
+    }
+
+    // Función para actualizar gráfico
+    function updateChart(chartId, balances) {
+        if (!charts[chartId]) return;
+        
+        charts[chartId].data.datasets[0].data = balances;
+        charts[chartId].data.labels = Array.from({length: balances.length}, (_, i) => i.toString());
+        charts[chartId].update();
+    }
+
+    // Configurar botones para mostrar/ocultar filas
+    function setupToggleButtons() {
+        ['30', '60', '200', '600', '1000'].forEach(num => {
+            const button = document.getElementById(`toggle-rows-${num}`);
+            if (button) {
+                button.addEventListener('click', function() {
+                    toggleRows(num);
+                });
+            }
+        });
+    }
+
+    function toggleRows(tableId) {
+        const tableBody = document.querySelector(`#table-${tableId} tbody`);
+        if (!tableBody) return;
+
+        const rows = tableBody.querySelectorAll('tr');
+        const button = document.getElementById(`toggle-rows-${tableId}`);
+        if (!button) return;
+
+        const icon = button.querySelector('i');
+        const textSpan = button.querySelector('span');
+        
+        const isShowingAll = Array.from(rows).every(row => row.style.display !== 'none');
+        
+        if (isShowingAll) {
+            rows.forEach((row, index) => {
+                row.style.display = index < 10 ? '' : 'none';
+            });
+            icon.className = 'fas fa-eye';
+            textSpan.textContent = currentLanguage === 'es' ? 'Mostrar todas las operaciones' : 'Show all trades';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            rows.forEach(row => row.style.display = '');
+            icon.className = 'fas fa-eye-slash';
+            textSpan.textContent = currentLanguage === 'es' ? 'Ocultar operaciones' : 'Hide trades';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    // Función para cambiar el tema
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        updateThemeIcon();
+        
+        // Actualizar todos los gráficos
+        Object.keys(charts).forEach(chartId => {
+            if (charts[chartId]) {
+                charts[chartId].options.scales.x.grid.color = document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                charts[chartId].options.scales.y.grid.color = document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                charts[chartId].options.scales.x.ticks.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d';
+                charts[chartId].options.scales.y.ticks.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d';
+                charts[chartId].options.scales.x.title.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d';
+                charts[chartId].options.scales.y.title.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d';
+                charts[chartId].update();
+            }
+        });
+    }
+
+    // Función para actualizar el icono del tema
+    function updateThemeIcon() {
+        const themeToggle = document.querySelector('.theme-toggle svg');
+        if (!themeToggle) return;
+        
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggle.innerHTML = '<path class="moon" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>';
+        } else {
+            themeToggle.innerHTML = '<path class="sun" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>';
+        }
+    }
+
+    // Función para cambiar el idioma
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        updateLanguage();
+        localStorage.setItem('language', currentLanguage);
+    }
+
+    // Función para actualizar el idioma de la interfaz
+    function updateLanguage() {
+        const langData = translations[currentLanguage];
+        
+        // Actualizar el texto del botón de idioma
+        const langElement = document.getElementById('current-lang');
+        if (langElement) {
+            langElement.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
+        }
+        
+        // Actualizar todos los textos traducibles
+        for (const [key, value] of Object.entries(langData)) {
+            if (key === 'how-to-list') continue; // Manejar esto aparte
+            
+            const elements = document.querySelectorAll(`[id="${key}"]`);
+            elements.forEach(el => {
+                if (el.tagName === 'INPUT') {
+                    el.placeholder = value;
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = value;
+                } else {
+                    el.textContent = value;
+                }
+            });
+        }
+        
+        // Actualizar botones de mostrar/ocultar operaciones
+        ['30', '60', '200', '600', '1000'].forEach(num => {
+            const button = document.getElementById(`toggle-rows-${num}`);
+            if (button) {
+                const textSpan = button.querySelector('span');
+                if (textSpan) {
+                    const isShowingAll = textSpan.textContent.includes('Ocultar') || 
+                                       textSpan.textContent.includes('Hide');
+                    
+                    textSpan.textContent = isShowingAll ? 
+                        (currentLanguage === 'es' ? 'Ocultar operaciones' : 'Hide trades') : 
+                        (currentLanguage === 'es' ? 'Mostrar todas las operaciones' : 'Show all trades');
+                }
+            }
+        });
+        
+        // Actualizar etiquetas de los gráficos
+        updateChartLabels();
+        
+        // Actualizar formulario de contacto
+        updateFormLanguage();
+        
+        // Actualizar declaración de riesgo
+        updateRiskDisclaimer();
+        
+        // Actualizar popup de bienvenida
+        updateWelcomePopup();
+        
+        // Volver a calcular valores iniciales para actualizar formatos
+        calculateInitialValues();
+    }
+
+    function updateChartLabels() {
+        const langData = translations[currentLanguage];
+        Object.keys(charts).forEach(chartId => {
+            if (charts[chartId]) {
+                charts[chartId].options.scales.x.title.text = langData['chart-x-label'];
+                charts[chartId].options.scales.y.title.text = langData['chart-y-label'];
+                charts[chartId].data.datasets[0].label = currentLanguage === 'es' ? 'Evolución del Capital' : 'Capital Evolution';
+                charts[chartId].update();
+            }
+        });
+    }
+
+    function updateFormLanguage() {
+        const langData = translations[currentLanguage];
+        document.getElementById('formTitle').textContent = langData['formTitle'];
+        document.querySelector('input[name="name"]').placeholder = langData['formNamePlaceholder'];
+        document.querySelector('input[name="email"]').placeholder = langData['formEmailPlaceholder'];
+        document.querySelector('textarea[name="message"]').placeholder = langData['formMessagePlaceholder'];
+        document.getElementById('submitBtn').textContent = langData['submitBtnText'];
+        document.getElementById('cancelBtn').textContent = langData['cancelBtnText'];
+        document.getElementById('recaptchaError').textContent = langData['recaptchaErrorText'];
+    }
+
+    function updateRiskDisclaimer() {
+        const langData = translations[currentLanguage];
+        document.getElementById('riskTitle').textContent = langData['riskTitle'];
+        document.getElementById('riskWarning').textContent = langData['riskWarning'];
+        document.getElementById('riskText1').textContent = langData['riskText1'];
+        document.getElementById('riskLoseMoney').textContent = langData['riskLoseMoney'];
+        document.getElementById('riskText2').textContent = langData['riskText2'];
+        document.getElementById('riskPastResults').textContent = langData['riskPastResults'];
+        document.getElementById('riskText3').textContent = langData['riskText3'];
+        document.getElementById('riskNotAdvice').textContent = langData['riskNotAdvice'];
+        document.getElementById('riskText4').textContent = langData['riskText4'];
+        document.getElementById('riskResponsibility').textContent = langData['riskResponsibility'];
+        document.getElementById('riskText5').textContent = langData['riskText5'];
+        document.getElementById('riskLegal').textContent = langData['riskLegal'];
+        document.getElementById('riskText6').textContent = langData['riskText6'];
+        document.getElementById('closeBtnText').textContent = langData['closeBtnText'];
+    }
+
+    function updateWelcomePopup() {
+        const langData = translations[currentLanguage];
+        if (document.getElementById('welcome-title')) {
+            document.getElementById('welcome-title').textContent = langData['welcome-title'];
+            document.getElementById('welcome-text').textContent = langData['welcome-text'];
+            document.getElementById('how-to-title').textContent = langData['how-to-title'];
+            document.getElementById('understand-text').textContent = langData['understand-text'];
+            
+            const listItems = document.querySelectorAll('#how-to-list li');
+            langData['how-to-list'].forEach((item, index) => {
+                if (listItems[index]) listItems[index].textContent = item;
+            });
+        }
+    }
+
+    // Función para hacer scroll al inicio
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Manejar scroll para header y botón "volver arriba"
+    function handleScroll() {
+        const header = document.querySelector('header');
+        const riskLink = document.querySelector('.risk-disclaimer-link');
+        const scrollBtn = document.querySelector('.scroll-top-btn');
+        
+        if (!header) return;
+        
+        const scrollThreshold = 50;
+        
+        // Controlar el header pequeño
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('small-header');
+            document.body.classList.add('small-header-padding');
+        } else {
+            header.classList.remove('small-header');
+            document.body.classList.remove('small-header-padding');
+        }
+        
+        // Controlar visibilidad del botón de riesgo (solo al 99% del scroll)
+        const scrollPercentage = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+        const isNearBottom = scrollPercentage > 99;
+        
+        if (riskLink) {
+            riskLink.classList.toggle('visible', isNearBottom);
+        }
+        
+        // Controlar el botón "Volver arriba" (solo al 99% del scroll)
+        if (scrollBtn) {
+            scrollBtn.classList.toggle('visible', scrollPercentage > 99);
+        }
+    }
+
+    function setupTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                const tabId = this.getAttribute('data-tab');
+                const tabContent = document.getElementById(`${tabId}-tab`);
+                if (tabContent) tabContent.classList.add('active');
+            });
+        });
+    }
+
+    function initializeCharts() {
+        const chartIds = ['30', '60', '200', '600', '1000'];
+        const langData = translations[currentLanguage];
+        
+        chartIds.forEach(id => {
+            const canvas = document.getElementById(`chart-${id}`);
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+            
+            // Destruir gráfico existente si hay uno
+            if (charts[id]) {
+                charts[id].destroy();
+            }
+            
+            charts[id] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['0'],
+                    datasets: [{
+                        label: currentLanguage === 'es' ? 'Evolución del Capital' : 'Capital Evolution',
+                        data: [10000],
+                        borderColor: '#1a56a7',
+                        backgroundColor: 'rgba(26, 86, 167, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.1,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: langData['chart-y-label'],
+                                color: document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d'
+                            },
+                            grid: {
+                                color: document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                color: document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d',
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString(currentLanguage, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                                }
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: langData['chart-x-label'],
+                                color: document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d'
+                            },
+                            grid: {
+                                color: document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                color: document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#6c757d'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return (currentLanguage === 'es' ? 'Capital: $' : 'Balance: $') + 
+                                           context.parsed.y.toLocaleString(currentLanguage, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        });
+    }
+
+    function calculateInitialValues() {
+        const capitalInput = document.getElementById('capital');
+        const riskPercentInput = document.getElementById('risk-percent');
+        const winRateInput = document.getElementById('win-rate');
+        const riskRewardInput = document.getElementById('risk-reward');
+        
+        if (!capitalInput || !riskPercentInput || !winRateInput || !riskRewardInput) return;
+        
+        const capital = parseFloat(capitalInput.value) || 10000;
+        const riskPercent = (parseFloat(riskPercentInput.value) || 1) / 100;
+        const winRate = (parseFloat(winRateInput.value) || 55) / 100;
+        const riskReward = parseFloat(riskRewardInput.value) || 1;
+        
+        const riskPerOp = capital * riskPercent;
+        const failRate = 1 - winRate;
+        const expectedValuePercent = (winRate * riskReward * riskPercent) - (failRate * riskPercent);
+        
+        const riskPerOpElement = document.getElementById('risk-per-op');
+        const failRateElement = document.getElementById('fail-rate');
+        const expectedValueElement = document.getElementById('expected-value');
+        
+        if (riskPerOpElement) riskPerOpElement.textContent = '$' + formatNumber(riskPerOp);
+        if (failRateElement) failRateElement.textContent = (failRate * 100).toFixed(1) + '%';
+        if (expectedValueElement) expectedValueElement.textContent = (expectedValuePercent * 100).toFixed(2) + '%';
+    }
+
+    function runSimulations() {
+        const capital = parseFloat(document.getElementById('capital')?.value) || 0;
+        const riskPercent = (parseFloat(document.getElementById('risk-percent')?.value) || 0) / 100;
+        const winRate = (parseFloat(document.getElementById('win-rate')?.value) || 0) / 100;
+        const riskReward = parseFloat(document.getElementById('risk-reward')?.value) || 0;
+        
+        // Validar que todos los campos tengan valores válidos
+        if (capital <= 0 || riskPercent <= 0 || winRate <= 0 || riskReward <= 0) {
+            alert(currentLanguage === 'es' ? 
+                'Por favor, ingresa valores válidos en todos los campos antes de ejecutar la simulación.' : 
+                'Please enter valid values in all fields before running the simulation.');
+            return;
+        }
+        
+        simulationData = {};
+        
+        [30, 60, 200, 600, 1000].forEach(numOps => {
+            runSingleSimulation(numOps, capital, riskPercent, winRate, riskReward, 'compuesto');
+        });
+    }
+
+    function calculateDrawdown(balances) {
+        if (!balances || balances.length === 0) return { amount: 0, percent: 0 };
+        
+        let peak = balances[0];
+        let maxDrawdown = 0;
+        let maxDrawdownPercent = 0;
+        
+        for (let i = 1; i < balances.length; i++) {
+            if (balances[i] > peak) {
+                peak = balances[i];
+            }
+            
+            const drawdown = peak - balances[i];
+            const drawdownPercent = (drawdown / peak) * 100;
+            
+            if (drawdown > maxDrawdown) {
+                maxDrawdown = drawdown;
+                maxDrawdownPercent = drawdownPercent;
+            }
+        }
+        
+        return {
+            amount: maxDrawdown,
+            percent: maxDrawdownPercent
+        };
+    }
+
+    function runSingleSimulation(numOps, initialCapital, riskPercent, winRate, riskReward, simulationType) {
+        let capital = initialCapital;
+        let balances = [initialCapital];
+        let wins = 0, losses = 0;
+        let totalWinsAmount = 0, totalLossesAmount = 0;
+        let currentLosingStreak = 0, maxLosingStreak = 0;
+        let peakCapital = initialCapital;
+        let maxDrawdown = 0, maxDrawdownPercent = 0;
+
+        const tableBody = document.querySelector(`#table-${numOps} tbody`);
+        if (tableBody) tableBody.innerHTML = '';
+
+        for (let i = 1; i <= numOps; i++) {
+            // Calcular riesgo basado en capital ACTUAL (no el inicial)
+            const currentRisk = capital * riskPercent;
+            const isWin = Math.random() <= winRate;
+            const result = isWin ? (currentRisk * riskReward) : -currentRisk;
+
+            // Actualizar capital
+            capital += result;
+            balances.push(capital);
+
+            // Estadísticas
+            if (isWin) {
+                wins++;
+                totalWinsAmount += result;
+                currentLosingStreak = 0;
+            } else {
+                losses++;
+                totalLossesAmount += Math.abs(result);
+                currentLosingStreak++;
+                maxLosingStreak = Math.max(maxLosingStreak, currentLosingStreak);
+            }
+
+            // Calcular drawdown (pérdida máxima desde el pico)
+            if (capital > peakCapital) {
+                peakCapital = capital;
+            } else {
+                const drawdown = peakCapital - capital;
+                const drawdownPercent = (drawdown / peakCapital) * 100;
+                if (drawdown > maxDrawdown) {
+                    maxDrawdown = drawdown;
+                    maxDrawdownPercent = drawdownPercent;
+                }
+            }
+
+            // Actualizar tabla de operaciones
+            if (tableBody) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${i}</td>
+                    <td class="${result >= 0 ? 'positive' : 'negative'}">
+                        ${result >= 0 ? '+' : '-'}$${formatNumber(Math.abs(result))}
+                    </td>
+                    <td>$${formatNumber(capital)}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+
+        // Calcular resultados finales
+        const profit = capital - initialCapital;
+        const profitPercent = (profit / initialCapital) * 100;
+
+        // Actualizar la interfaz de usuario (UI)
+        document.getElementById(`wins-${numOps}`).textContent = wins;
+        document.getElementById(`wins-amount-${numOps}`).textContent = `+$${formatNumber(totalWinsAmount)}`;
+        document.getElementById(`losses-${numOps}`).textContent = losses;
+        document.getElementById(`losses-amount-${numOps}`).textContent = `-$${formatNumber(totalLossesAmount)}`;
+        document.getElementById(`balance-${numOps}`).textContent = `$${formatNumber(capital)}`;
+        document.getElementById(`profit-${numOps}`).textContent = `${profit >= 0 ? '+' : '-'}$${formatNumber(Math.abs(profit))}`;
+        document.getElementById(`profit-percent-${numOps}`).textContent = `${profit >= 0 ? '+' : ''}${profitPercent.toFixed(2)}%`;
+        document.getElementById(`streak-${numOps}`).textContent = maxLosingStreak;
+        document.getElementById(`drawdown-amount-${numOps}`).textContent = `$${formatNumber(maxDrawdown)}`;
+        document.getElementById(`drawdown-percent-${numOps}`).textContent = `${maxDrawdownPercent.toFixed(2)}%`;
+
+        // Actualizar clases para colores (positivo/negativo)
+        document.getElementById(`profit-${numOps}`).className = profit >= 0 ? 'value value-large positive' : 'value value-large negative';
+        document.getElementById(`profit-percent-${numOps}`).className = profit >= 0 ? 'result-details positive' : 'result-details negative';
+        document.getElementById(`drawdown-amount-${numOps}`).className = maxDrawdown > 0 ? 'value negative' : 'value';
+        document.getElementById(`drawdown-percent-${numOps}`).className = maxDrawdownPercent > 0 ? 'result-details negative' : 'result-details';
+
+        // Ajustar tamaño de fuente para números grandes
+        adjustFontSize(`balance-${numOps}`, capital);
+        adjustFontSize(`profit-${numOps}`, profit);
+        adjustFontSize(`drawdown-amount-${numOps}`, maxDrawdown);
+        adjustFontSize(`wins-amount-${numOps}`, totalWinsAmount);
+        adjustFontSize(`losses-amount-${numOps}`, totalLossesAmount);
+        adjustFontSize(`profit-percent-${numOps}`, profitPercent);
+
+        // Ocultar filas extras en la tabla (mostrar solo las primeras 10)
+        if (tableBody && numOps > 10) {
+            const rows = tableBody.querySelectorAll('tr');
+            for (let i = 10; i < rows.length; i++) {
+                rows[i].style.display = 'none';
+            }
+        }
+
+        // Actualizar gráfico
+        updateChart(numOps.toString(), balances);
+    }
+
+    // Función para ajustar el tamaño de fuente según el valor
+    function adjustFontSize(elementId, value) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        const strValue = Math.abs(value).toString();
+        element.classList.remove('large-number', 'very-large-number');
+        
+        if (strValue.length > 10) {
+            element.classList.add('very-large-number');
+            element.closest('.result-card')?.classList.add('has-large-number');
+        } else if (strValue.length > 8) {
+            element.classList.add('large-number');
+            element.closest('.result-card')?.classList.add('has-large-number');
+        } else {
+            element.closest('.result-card')?.classList.remove('has-large-number');
+        }
+    }
+
+    // Función para mostrar el popup de riesgo
+    function showRiskDisclaimer() {
+        const popup = document.querySelector('.risk-popup');
+        if (popup) {
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Función para cerrar el popup de riesgo
+    function closeRiskDisclaimer() {
+        const popup = document.querySelector('.risk-popup');
+        if (popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Función para mostrar el formulario de contacto
+    function showContactForm() {
+        const formPopup = document.getElementById('formPopup');
+        if (formPopup) {
+            formPopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Función para cerrar el formulario de contacto
+    function closeForm() {
+        const formPopup = document.getElementById('formPopup');
+        if (formPopup) {
+            formPopup.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Inicialización al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configurar eventos
+        document.querySelectorAll('.simulator-input').forEach(input => {
+            input.addEventListener('change', calculateInitialValues);
+        });
+        
+        document.querySelectorAll('#risk-percent, #win-rate, #risk-reward').forEach(input => {
+            input.addEventListener('input', calculateInitialValues);
+        });
+        
+        document.getElementById('risk-percent')?.addEventListener('change', function() {
+            const value = parseFloat(this.value);
+            if (value > 5) {
+                this.value = 5;
+                calculateInitialValues();
+            } else if (value < 0.1) {
+                this.value = 0.1;
+                calculateInitialValues();
+            }
+        });
+        
+        document.getElementById('win-rate')?.addEventListener('change', function() {
+            const value = parseFloat(this.value);
+            if (value > 100) {
+                this.value = 100;
+                calculateInitialValues();
+            } else if (value < 0) {
+                this.value = 0;
+                calculateInitialValues();
+            }
+        });
+
+        document.getElementById('risk-reward')?.addEventListener('change', function() {
+            const value = parseFloat(this.value);
+            if (value > 10) {
+                this.value = 10;
+                calculateInitialValues();
+            } else if (value < 0.5) {
+                this.value = 0.5;
+                calculateInitialValues();
+            }
+        });
+        
+        document.getElementById('simulate-btn')?.addEventListener('click', runSimulations);
+        document.getElementById('scrollTopBtn')?.addEventListener('click', scrollToTop);
+        document.getElementById('contactFormBtn')?.addEventListener('click', showContactForm);
+        document.querySelector('.risk-popup-close')?.addEventListener('click', closeRiskDisclaimer);
+        
+        // Inicializar componentes
+        setupTabs();
+        initializeCharts();
+        setupToggleButtons();
+        calculateInitialValues();
+        
+        window.addEventListener('scroll', handleScroll);
+        setTimeout(handleScroll, 100);
+        
+        // Configurar tema inicial
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+        updateThemeIcon();
+        
+        // Configurar idioma inicial
+        updateLanguage();
+        
+        // Ejecutar primera simulación
+        setTimeout(runSimulations, 500);
+        
+        // Configurar formulario de contacto
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar reCAPTCHA
+                const recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    document.getElementById('recaptchaError').style.display = 'block';
+                    document.getElementById('recaptchaError').textContent = currentLanguage === 'es' ? 
+                        'Por favor, completa el reCAPTCHA' : 'Please complete the reCAPTCHA';
+                    return;
+                }
+                
+                document.getElementById('recaptchaError').style.display = 'none';
+                
+                // Enviar formulario
+                const formData = new FormData(contactForm);
+                
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert(currentLanguage === 'es' ? 
+                            'Mensaje enviado con éxito. Nos pondremos en contacto contigo pronto.' : 
+                            'Message sent successfully. We will contact you soon.');
+                        closeForm();
+                        contactForm.reset();
+                        grecaptcha.reset();
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(error => {
+                    alert(currentLanguage === 'es' ? 
+                        'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.' : 
+                        'There was an error sending your message. Please try again later.');
+                    console.error('Error:', error);
+                });
+            });
+        }
+    });
+    
+    document.getElementById('headerBackBtn')?.addEventListener('click', function() {
+        window.location.href = 'file:///C:/Users/mario/Downloads/WEB/FINAL%20web%20+%20simulador/WEB%20TERMINADA.html';
+    });
+    
+    document.getElementById('mobileBackBtn')?.addEventListener('click', function() {
+        window.location.href = 'file:///C:/Users/mario/Downloads/WEB/FINAL%20web%20+%20simulador/WEB%20TERMINADA.html';
+    });
+    
+    
+    </script>
+    
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Volver arriba">
+       <span id="top-text">Volver Arriba</span>
+    </button>
+
+    <div class="risk-popup" id="riskPopup">
+    <div class="risk-popup-content">
+        <h2 id="riskTitle">Declaración de riesgo</h2>
+            <p><strong id="riskWarning">ADVERTENCIA SOBRE RIESGOS:</strong> <span id="riskText1">El trading de instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Antes de decidir operar en los mercados financieros, debe considerar cuidadosamente sus objetivos de inversión, nivel de experiencia y apetito por el riesgo.</span></p>
+
+            <p><strong id="riskLoseMoney">Posibilidad de perder dinero:</strong> <span id="riskText2">Existe la posibilidad de que pierda parte o la totalidad de su inversión inicial y, por lo tanto, no debe invertir dinero que no pueda permitirse perder. Debe ser consciente de todos los riesgos asociados con el trading de instrumentos financieros y buscar asesoramiento de un asesor financiero independiente si tiene dudas.</span></p>
+
+            <p><strong id="riskPastResults">Rendimientos pasados:</strong> <span id="riskText3">Los resultados pasados no son indicativos de resultados futuros. Las declaraciones sobre rendimientos potenciales son ilustrativas y no garantizan resultados actuales. El trading con apalancamiento puede funcionar tanto en su beneficio como en su contra.</span></p>
+
+            <p><strong id="riskNotAdvice">No es asesoramiento:</strong> <span id="riskText4">La información proporcionada por Sistemas de Trading Eficientes LLC no constituye asesoramiento financiero, de inversión, fiscal o de otro tipo. Todo el material proporcionado tiene únicamente fines educativos e informativos.</span></p>
+
+            <p><strong id="riskResponsibility">Responsabilidad:</strong> <span id="riskText5">Sistemas de Trading Eficientes LLC no asume responsabilidad alguna por cualquier pérdida o daño como resultado de la confianza en la información contenida en este sitio web, incluidos datos, cotizaciones, gráficos y señales de compra/venta. Por favor, sea plenamente consciente de los riesgos y costes asociados con el trading en los mercados financieros.</span></p>
+
+            <p><strong id="riskLegal">Restricciones legales:</strong> <span id="riskText6">Los productos y servicios descritos pueden no estar disponibles en todas las jurisdicciones o para todos los clientes. Es responsabilidad del cliente determinar qué transacciones están permitidas según las leyes de su país de residencia.</span></p>
+
+            <button class="risk-popup-close" id="riskCloseBtn">
+                <span id="closeBtnText">Cerrar</span>
+            </button>
+    </div>
+</div>
+
+<!-- Popup de bienvenida (aparece solo la primera vez) -->
+<div id="initPopup" class="risk-popup" style="display: flex; z-index: 10002;">
+  <div class="risk-popup-content" style="max-width: 600px;">
+    <h2 style="color:var(--accent-color);margin-bottom:20px;text-align:center;" id="welcome-title">Bienvenido al Simulador de Trading</h2>
+    <p style="margin-bottom:15px;color:var(--text-secondary);line-height:1.6;" id="welcome-text">Este simulador te permite proyectar resultados potenciales basados en estadísticas de trading.</p>
+    
+    <div style="margin:20px 0;">
+      <h3 style="color:var(--accent-color);margin-bottom:10px;" id="how-to-title">Cómo usar:</h3>
+      <ol style="padding-left:20px;margin-bottom:20px;" id="how-to-list">
+        <li style="margin-bottom:8px;">Ingresa tu capital inicial</li>
+        <li style="margin-bottom:8px;">Define tu % de riesgo por operación</li>
+        <li style="margin-bottom:8px;">Establece tu porcentaje de aciertos</li>
+        <li style="margin-bottom:8px;">Configura tu ratio beneficio/riesgo</li>
+        <li style="margin-bottom:8px;">Haz clic en "Ejecutar Simulación"</li>
+      </ol>
+    </div>
+    
+    <button class="risk-popup-close" id="closePopupBtn" style="margin-top: 20px;">
+      <span id="understand-text">Entendido</span>
+    </button>
+  </div>
+</div>
+
+<script>
+// Mostrar popup después de cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+  // Cerrar al hacer clic en "Entendido"
+  document.getElementById('closePopupBtn')?.addEventListener('click', function() {
+    const popup = document.getElementById('initPopup');
+    if (popup) {
+      popup.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Bloquear scroll cuando aparece el popup
+  document.body.style.overflow = 'hidden';
+});
+</script>
+</body>
+</html>
