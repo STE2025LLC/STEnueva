@@ -1976,7 +1976,7 @@
          <i class="fas fa-box-open"></i>
          <span id="nav-products-text">Nuestros productos</span>
       </a>
-      <a href="https://github.com/STE2025LLC/STEnueva/blob/main/simulador.html" class="header-nav-btn">
+      <a href="C:\Users\mario\Downloads\WEB\FINAL web + simulador\SIMULADOR TERMINADO.html" class="header-nav-btn">
          <i class="fas fa-calculator"></i>
          <span id="nav-simulator-text">Simulador</span>
       </a>
@@ -2211,7 +2211,7 @@
         <div class="simulator-banner">
           <h3 id="simulatorBannerTitle">¿Quieres probar estos conceptos en acción?</h3>
           <p id="simulatorBannerText">Nuestro simulador de trading te permite experimentar con diferentes porcentajes de acierto y relaciones riesgo/beneficio para ver cómo afectan a tus resultados a largo plazo. Una herramienta esencial para entender la importancia de la gestión de riesgo y la esperanza matemática en el trading.</p>
-          <a href="https://github.com/STE2025LLC/STEnueva/blob/main/simulador.html" class="simulator-btn" id="simulatorBtn">
+          <a href="C:\Users\mario\Downloads\WEB\FINAL web + simulador\SIMULADOR TERMINADO.html" class="simulator-btn" id="simulatorBtn">
             <i class="fas fa-calculator"></i>
             <span>Ir al Simulador</span>
           </a>
@@ -2728,8 +2728,12 @@
       
       // Actualizar el contenido del popup según el idioma actual
       const t = translations[currentLanguage];
-      const riskPopupContent = document.querySelector(".risk-popup-content");
-      riskPopupContent.innerHTML = `
+      document.getElementById("riskTitle").textContent = t.riskTitle;
+      document.getElementById("riskCloseBtn").textContent = t.riskCloseBtn;
+      
+      // Actualizar el contenido de riesgo
+      const riskContent = document.querySelector('.risk-popup-content');
+      riskContent.innerHTML = `
         <h2 id="riskTitle">${t.riskTitle}</h2>
         ${t.riskContent}
         <button class="risk-popup-close" onclick="closeRiskDisclaimer()" id="riskCloseBtn">${t.riskCloseBtn}</button>
@@ -2779,11 +2783,6 @@
       document.getElementById("tagline").innerText = t.tagline;
       document.getElementById("aboutTitle").innerText = t.aboutTitle;
       document.getElementById("aboutText").innerText = t.aboutText;
-
-      // Actualizar botones small header
-      document.getElementById("nav-products-text").textContent = t.navProductsText;
-      document.getElementById("nav-simulator-text").textContent = t.navSimulatorText;
-      document.getElementById("nav-contact-text").textContent = t.navContactText;
 
       // Actualizar Sección "La clave del éxito"
       document.getElementById("keySectionTitle").innerText = t.keySectionTitle;
@@ -2863,12 +2862,13 @@
 
       // Actualizar sección de contacto
       document.getElementById("contactTitle").innerText = t.contactTitle;
-      document.getElementById("contacto-btn").innerHTML = `<i class="fas fa-envelope"></i><span>${t.contactFormBtn}</span>`;
+      document.getElementById("contact-text").innerText = t.contactFormBtn;
+      document.getElementById("riskLinkText").innerText = t.riskLinkText;
 
       // Actualizar formulario
       document.getElementById("formTitle").innerText = t.formTitle;
       document.getElementById("submitBtn").innerText = t.submitBtn;
-      document.querySelector('#formPopup button[type="button"]').innerText = t.cancelBtn;
+      document.getElementById("cancelBtn").innerText = t.cancelBtn;
 
       // Actualizar placeholders del formulario
       document.querySelector('#formPopup input[name="name"]').placeholder = t.placeholderName;
@@ -2885,9 +2885,6 @@
 
       // Actualizar botón scroll top
       document.querySelector('#scrollTopBtn span').textContent = t.scrollTop;
-
-      // Actualizar enlace de riesgo
-      document.getElementById("riskLinkText").innerText = t.riskLinkText;
 
       // Actualizar botones de navegación
       document.getElementById("nav-products-text").textContent = t.navProductsText;
