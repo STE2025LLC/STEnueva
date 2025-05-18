@@ -22,8 +22,11 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
     <style>
-
+    /* ========================
+       VARIABLES Y ESTILOS BASE
+       ======================== */
     :root {
+      /* Colores base claros */
       --bg-primary: #ffffff;
       --bg-secondary: #f8f9fa;
       --bg-tertiary: #e9ecef;
@@ -41,6 +44,8 @@
       --transition-fast: 0.2s ease;
       --transition-medium: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       --transition-slow: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+      /* Específicos para modo oscuro */
       --dark-bg-primary: #121212;
       --dark-bg-secondary: #1e1e1e;
       --dark-bg-tertiary: #252525;
@@ -93,6 +98,7 @@
       --shadow-medium: var(--dark-shadow-medium);
     }
 
+    /* TIPOGRAFÍA */
     h1, h2, h3, h4 {
       font-weight: 600;
       line-height: 1.2;
@@ -134,6 +140,7 @@
       color: var(--accent-hover);
     }
 
+    /* ENCABEZADO */
     header {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
       color: white;
@@ -204,6 +211,7 @@
       transition: all 0.5s ease-in-out;
     }
 
+    /* Header pequeño */
     header.small-header {
       padding: 0 20px;
       height: 80px;
@@ -214,7 +222,7 @@
     }
     
     .header-small-back-btn {
-      display: none; 
+      display: none; /* Ocultar inicialmente */
       background-color: transparent;
       color: white;
       border: 1px solid rgba(255,255,255,0.3);
@@ -238,7 +246,7 @@
     }
 
     header.small-header .header-small-back-btn {
-      display: block;
+      display: block; /* Mostrar solo en encabezado pequeño */
     }   
 
     header.small-header .logo-container {
@@ -355,6 +363,7 @@
       padding-top: 200px;
     }
 
+    /* CONTROLES */
     .header-controls {
       position: fixed;
       top: 20px;
@@ -404,7 +413,8 @@
     .dark-mode .theme-toggle svg {
       color: #333;
     }
-
+    
+    /* BOTÓN VOLVER */
     .back-home-container {
       text-align: center;
       margin: 5px auto;
@@ -437,7 +447,8 @@
       border-color: var(--accent-color);
       transform: translateY(-2px);
     }
-
+        
+    /* SIMULADOR */
     .simulator-section {
       background-color: var(--bg-secondary);
       padding: 40px;
@@ -552,6 +563,7 @@
       transform: translateY(-2px);
     }
 
+    /* RESULTADOS */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -570,7 +582,7 @@
       box-shadow: var(--shadow-medium);
       border: 1px solid var(--border-light);
       text-align: center;
-      overflow: hidden;
+      overflow: hidden; /* Asegura que el contenido no se salga */
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -626,7 +638,8 @@
       font-size: 1.1rem !important;
       margin: 5px 0 !important;
     }
-
+    
+    /* Estilos para números muy grandes */
     .result-card .value.large-number {
       font-size: 0.9rem;
       white-space: normal;
@@ -656,7 +669,7 @@
     }
     
     .result-details {
-      font-size: 0.85rem; 
+      font-size: 0.85rem; /* Tamaño consistente */
       margin: 5px 0;
       color: var(--text-secondary);
       white-space: nowrap;
@@ -677,6 +690,7 @@
       word-break: break-all;
     }
 
+    /* TABS */
     .tabs {
       display: flex;
       border-bottom: 1px solid var(--border-color);
@@ -719,6 +733,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* TABLAS */
     .table-container {
       overflow-x: auto;
       margin-top: 20px;
@@ -754,6 +769,7 @@
       background-color: rgba(26, 86, 167, 0.05);
     }
 
+    /* GRÁFICO */
     .chart-container {
       margin-top: 30px;
       height: 400px;
@@ -775,6 +791,7 @@
       max-height: 100%;
     }
 
+    /* BOTÓN TOGGLE */
     .toggle-rows-btn {
       background-color: var(--accent-color);
       color: white;
@@ -795,6 +812,7 @@
       transform: translateY(-2px);
     }
 
+    /* MODO OSCURO */
     .dark-mode .simulator-input, 
     .dark-mode .simulator-select {
       background-color: var(--dark-bg-tertiary);
@@ -806,6 +824,7 @@
       box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
     }
 
+    /* COLORES */
     .positive {
       color: #28a745;
     }
@@ -928,22 +947,23 @@
       text-decoration: none;
     }
 
-    .risk-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(5px);
-      z-index: 10002;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
-      overflow-y: auto;
-    }
+/* Estilo para el popup de riesgo */
+.risk-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
+  z-index: 10002;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
 
 .risk-popup-content {
   background: var(--bg-primary);
@@ -993,6 +1013,7 @@
   transform: translateY(-2px);
 }
 
+/* Estilos para el popup del formulario */
 #formPopup {
   position: fixed;
   top: 0;
@@ -1104,6 +1125,7 @@
   text-align: center;
 }
 
+    /* SCROLL TOP */
     .scroll-top-btn {
       position: fixed;
       bottom: 20px;
@@ -1145,7 +1167,8 @@
     .scroll-top-btn.visible {
       display: block;
     }
-
+        
+    /* DISPOSITIVOS MÓVILES */
     @media (max-width: 768px) {
       body {
         font-size: 0.9rem;
@@ -1266,7 +1289,7 @@
       }
 
       .simulator-section {
-        padding: 20px;
+        padding: 20px 10px;
       }
       
       .centered-container {
@@ -1310,16 +1333,20 @@
       
       .results-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 15px;
       }  
 
       .chart-container {
         height: 300px;
+        padding: 10px 5px; /* Reducir el padding lateral */
+        margin: 0 -10px; /* Compensar el padding del contenedor padre */
+        width: calc(100% + 20px); /* Extender el ancho */
       }
-
+      
       .result-card {
-        min-height: 110px;
-        padding: 10px;
-      }
+        min-height: 100px;
+        padding: 8px;      }
       
       .result-card .value {
         font-size: 0.9rem;
@@ -1476,6 +1503,10 @@
         font-size: 1rem;
       }
       
+      .simulator-section {
+        padding: 15px 8px;
+      }
+      
       .simulator-input {
         padding: 10px 12px;
       }
@@ -1499,11 +1530,18 @@
 
       .chart-container {
         height: 250px;
+        padding: 8px 2px;
+        margin: 0 -8px;
+        width: calc(100% + 16px);
       }
-
+      
+      .results-container {
+        gap: 6px;
+      }
+    
       .result-card {
-        padding: 10px;
-        min-height: 100px;
+        min-height: 90px;
+        padding: 6px;
       }
       
       .result-card .value {
@@ -1587,12 +1625,14 @@
       }
     }
 
+    /* Nuevo estilo para quitar flecha del select deshabilitado */
     .simulator-select[disabled] {
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
     }
-
+    
+    /* Estilo para Max Drawdown */
     .result-card .value.negative,
     .result-card .value.positive {
       white-space: nowrap;
@@ -1607,6 +1647,7 @@
       margin-top: 0;
     }
 
+    /* Ajuste para números muy grandes */
     .result-card .value.large-number {
       font-size: 0.9rem;
       white-space: normal;
@@ -1722,13 +1763,16 @@
                     <div class="tab" data-tab="1000" role="tab" aria-selected="false"><i class="fas fa-chart-line"></i> <span id="ops1000-tab-label">1000 Operaciones</span></div>
                 </div>
                 
+                <!-- Contenido de las pestañas -->
+                
+                <!-- Pestaña 30 Operaciones -->
                    <div class="tab-content active" id="30-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-30" aria-label="Gráfico de evolución del capital para 30 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-
+                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -1738,6 +1782,7 @@
                                <div class="result-details positive" id="wins-amount-30">+$0.00</div>
                            </div>
         
+                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -1746,24 +1791,28 @@
                             <div class="value value-large negative" id="losses-30">0</div>
                             <div class="result-details negative" id="losses-amount-30">-$0.00</div>
                     </div>
-
+        
+                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-30">$10,000.00</div>
                 </div>
-
+        
+                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-30">0%</div>
                             <div class="value value-large" id="profit-30">$0.00</div>
                 </div>
-
+        
+                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-30">0%</div>
                             <div class="value negative" id="drawdown-amount-30">$0.00</div>
                 </div>
-
+        
+                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -1790,6 +1839,8 @@
                         </table>
                     </div>
                 </div>
+                
+                <!-- Pestaña 60 Operaciones -->
 
                    <div class="tab-content" id="60-tab" role="tabpanel">
                        <div class="chart-container">
@@ -1797,7 +1848,7 @@
                    </div>
     
                        <div class="results-container">
-
+                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -1807,6 +1858,7 @@
                                <div class="result-details positive" id="wins-amount-60">+$0.00</div>
                            </div>
         
+                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -1816,23 +1868,27 @@
                             <div class="result-details negative" id="losses-amount-60">-$0.00</div>
                     </div>
         
+                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-60">$10,000.00</div>
                 </div>
         
+                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-60">0%</div>
                             <div class="value value-large" id="profit-60">$0.00</div>
                 </div>
         
+                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-60">0%</div>
                             <div class="value negative" id="drawdown-amount-60">$0.00</div>
                 </div>
         
+                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -1860,13 +1916,14 @@
                     </div>
                 </div>
 
+<!-- Pestaña 200 Operaciones -->
                    <div class="tab-content" id="200-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-200" aria-label="Gráfico de evolución del capital para 200 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-
+                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -1876,6 +1933,7 @@
                                <div class="result-details positive" id="wins-amount-200">+$0.00</div>
                            </div>
         
+                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -1885,23 +1943,27 @@
                             <div class="result-details negative" id="losses-amount-200">-$0.00</div>
                     </div>
         
+                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-200">$10,000.00</div>
                 </div>
         
+                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-200">0%</div>
                             <div class="value value-large" id="profit-200">$0.00</div>
                 </div>
         
+                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-200">0%</div>
                             <div class="value negative" id="drawdown-amount-200">$0.00</div>
                 </div>
         
+                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -1929,13 +1991,14 @@
                     </div>
                 </div>
 
+<!-- Pestaña 600 Operaciones -->
                    <div class="tab-content" id="600-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-600" aria-label="Gráfico de evolución del capital para 600 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-
+                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -1945,6 +2008,7 @@
                                <div class="result-details positive" id="wins-amount-600">+$0.00</div>
                            </div>
         
+                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -1954,23 +2018,27 @@
                             <div class="result-details negative" id="losses-amount-600">-$0.00</div>
                     </div>
         
+                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-600">$10,000.00</div>
                 </div>
         
+                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-600">0%</div>
                             <div class="value value-large" id="profit-600">$0.00</div>
                 </div>
         
+                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-600">0%</div>
                             <div class="value negative" id="drawdown-amount-600">$0.00</div>
                 </div>
         
+                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -1998,13 +2066,14 @@
                     </div>
                 </div>
 
+<!-- Pestaña 1000 Operaciones -->
                    <div class="tab-content" id="1000-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-1000" aria-label="Gráfico de evolución del capital para 1000 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-
+                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -2014,6 +2083,7 @@
                                <div class="result-details positive" id="wins-amount-1000">+$0.00</div>
                            </div>
         
+                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -2023,23 +2093,27 @@
                             <div class="result-details negative" id="losses-amount-1000">-$0.00</div>
                     </div>
         
+                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-1000">$10,000.00</div>
                 </div>
         
+                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-1000">0%</div>
                             <div class="value value-large" id="profit-1000">$0.00</div>
                 </div>
         
+                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-1000">0%</div>
                             <div class="value negative" id="drawdown-amount-1000">$0.00</div>
                 </div>
         
+                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -2070,6 +2144,7 @@
         </section>
     </main>
 
+    <!-- Botón de volver para móviles -->
     <div class="mobile-back-btn-container">
         <button class="mobile-back-btn" id="mobileBackBtn">
             <i class="fas fa-home"></i>
@@ -2100,6 +2175,7 @@
         </div>
     </div>
 
+    <!-- Popup de formulario de contacto -->
     <div id="formPopup">
     <div class="form-container">
         <h2 id="formTitle">Contáctenos</h2>
@@ -2136,6 +2212,7 @@
         currentLanguage = localStorage.getItem('language');
     }
 
+    // Textos para traducción
     const translations = {
         'es': {
             'companyName': 'Sistemas de Trading Eficientes LLC',
@@ -2361,7 +2438,7 @@
     // Función para determinar si un número es muy grande y necesita ajuste de tamaño
     function needsSizeAdjustment(num) {
         const str = Math.abs(num).toString();
-        return str.length > 8;
+        return str.length > 8; // Más de 8 dígitos (incluyendo decimales)
     }
 
     // Función para actualizar gráfico
@@ -3104,6 +3181,7 @@
     </div>
 </div>
 
+<!-- Popup de bienvenida (aparece solo la primera vez) -->
 <div id="initPopup" class="risk-popup" style="display: flex; z-index: 10002;">
   <div class="risk-popup-content" style="max-width: 600px;">
     <h2 style="color:var(--accent-color);margin-bottom:20px;text-align:center;" id="welcome-title">Bienvenido al Simulador de Trading</h2>
