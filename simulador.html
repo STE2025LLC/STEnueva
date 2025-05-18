@@ -28,15 +28,7 @@
   <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/ImagenPortada.webp" as="image">
 
   <style>
-   
-    /* ========================
-       VARIABLES Y ESTILOS BASE
-       ======================== */
-    
-    :root {
-      
-      /* Colores base claros */
-      
+   :root {
       --bg-primary: #ffffff;
       --bg-secondary: #f8f9fa;
       --bg-tertiary: #e9ecef;
@@ -54,8 +46,6 @@
       --transition-fast: 0.2s ease;
       --transition-medium: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       --transition-slow: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-
-      /* Específicos para modo oscuro */
       
       --dark-bg-primary: #121212;
       --dark-bg-secondary: #1e1e1e;
@@ -91,7 +81,6 @@
       text-justify: inter-word !important;
     }
 
-    /* Excepciones (no justificar títulos, botones, tablas) */
     h1, h2, h3, h4, h5, h6,
     button, input, textarea, select,
     .service-header, 
@@ -140,9 +129,6 @@
       color: var(--text-primary);
     }
 
-    /* ========================
-       TIPOGRAFÍA MEJORADA
-       ======================== */
     h1, h2, h3, h4 {
       font-weight: 600;
       line-height: 1.2;
@@ -209,9 +195,6 @@
       color: var(--accent-hover);
     }
 
-    /* ========================
-       ENCABEZADO CON TRANSICIÓN SUAVE
-       ======================== */
     header {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
       color: white;
@@ -306,7 +289,7 @@
       flex-direction: column;
       justify-content: center;
       text-align: left !important;
-      margin-left: -15px; /* Aumentado de -15px a -25px para mover más a la izquierda */
+      margin-left: -15px;
       padding-top: 0;
       transform: none;
       margin-top: -8px;
@@ -333,10 +316,6 @@
     body.small-header-padding {
       padding-top: 200px;
     }
-
-    /* ========================
-       BOTÓN DE IDIOMA Y TEMA
-       ======================== */
    
     .header-controls {
       position: fixed;
@@ -402,12 +381,6 @@
       color: #333;
     }
         
-    
-    /* ========================
-       BOTONES DEL ENCABEZADO PEQUEÑO (SOLO PC)
-       ======================== */
-   
-    /* Contenedor de botones */
     .header-nav-buttons {
       display: none;
       position: absolute;
@@ -418,7 +391,6 @@
       z-index: 2;
     }
 
-    /* Botones individuales */
     .header-nav-btn {
       background-color: transparent;
       color: white;
@@ -446,7 +418,6 @@
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     }
     
-    /* Iconos dentro de los botones */
 .header-nav-btn i {
     font-size: 0.9rem;
     transition: all var(--transition-medium);
@@ -456,16 +427,11 @@
     color: white !important;
 }
 
-    /* Mostrar botones solo en encabezado pequeño y pantallas grandes */
     @media (min-width: 1350px) {
       header.small-header .header-nav-buttons {
         display: flex;
       }
     }
-
-    /* ========================
-       SECCIONES Y CONTENIDO
-       ======================== */
    
     section {
       max-width: 900px;
@@ -491,10 +457,6 @@
     .hero-image:hover {
       transform: translateY(-3px);
     }
-
-    /* ========================
-       SECCIÓN "LA CLAVE DEL ÉXITO"
-       ======================== */
    
     .key-section {
       background-color: var(--bg-secondary);
@@ -625,7 +587,6 @@
       color: var(--text-primary);
     }
 
-    /* Nuevo estilo para el banner del simulador */
     .simulator-banner {
       background: linear-gradient(135deg, var(--accent-color) 0%, #2a3a6a 100%);
       color: white;
@@ -686,10 +647,6 @@
     .dark-mode .simulator-btn {
       color: var(--dark-accent-color);
     }
-
-    /* ========================
-       ACORDEONES PREMIUM
-       ======================== */
    
     .services-container {
       margin-top: 30px;
@@ -930,10 +887,6 @@
     .service-item.active .service-toggle svg {
       stroke: white;
     }
-
-    /* ========================
-       FOOTER PREMIUM (SIEMPRE OSCURO)
-       ======================== */
    
     .footer-container {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
@@ -965,27 +918,29 @@
 
     .contact-form-btn {
       background-color: transparent;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 8px 20px;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  font-size: 0.95rem;
-  margin-top: 15px;
-  transition: all var(--transition-medium), transform 0.3s ease;
-  font-weight: 500;
-  min-height: 40px;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;    }
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 15px;
+      transition: all var(--transition-medium), transform 0.3s ease;
+      font-weight: 500;
+      min-height: 40px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
     .contact-form-btn:hover {
       background-color: var(--accent-color);
-  border-color: var(--accent-color);
-  transform: translateX(5px) translateY(-2px); /* Combina el movimiento horizontal con el vertical existente */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);    }
+      border-color: var(--accent-color);
+      transform: translateX(5px) translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
 
     .footer-address {
       color: #bbb;
@@ -1009,10 +964,6 @@
       font-size: 0.85rem;
       color: #bbb;
     }
-
-    /* ========================
-       DECLARACIÓN DE RIESGO FIJA (TEXTO SIMPLE)
-       ======================== */
     
     .risk-disclaimer-link {
       position: fixed;
@@ -1044,8 +995,6 @@
       text-decoration: none;
     }
     
-    /* MODO OSCURO DISCLAIMER */
-    
     .dark-mode .risk-disclaimer-link a {
       color: #5c5a52;
     }
@@ -1053,10 +1002,6 @@
     .dark-mode .risk-disclaimer-link a:hover {
       color: var(--dark-accent-hover);
     }
-
-    /* ========================
-       BOTÓN SCROLL TOP (ESTILO MÁS SUTIL)
-       ======================== */
   
     .scroll-top-btn {
       position: fixed;
@@ -1099,10 +1044,6 @@
     .scroll-top-btn.visible {
       display: block;
     }
-        
-    /* ========================
-       POPUPS DE FORMULARIO
-       ======================== */
    
     #formPopup {
       position: fixed;
@@ -1283,10 +1224,6 @@
       text-align: center;
       display: none;
     }
-
-    /* ========================
-       POPUP DE CONFIRMACIÓN
-       ======================== */
    
     .confirmation-popup {
       position: fixed;
@@ -1348,7 +1285,6 @@
       transform: translateY(-2px);
     }
 
-    /* Popup de riesgo */
     .risk-popup {
       position: fixed;
       top: 0;
@@ -1413,10 +1349,6 @@
       background: var(--accent-hover);
       transform: translateY(-2px);
     }
-
-    /* ========================
-       MEDIA QUERIES PARA MÓVIL
-       ======================== */
    
     @media (max-width: 768px) {
       body {
@@ -1835,7 +1767,6 @@
         padding: 5px 6px;
       }
 
-      /* Estilos para móviles pequeños del banner del simulador */
       .simulator-banner {
         padding: 15px;
       }
@@ -2207,7 +2138,6 @@
           <p id="keyPoint5Highlight">En resumen, un sistema de trading rentable se apoya en la lógica matemática, una ejecución disciplinada y un control emocional férreo. Solo así es posible aspirar a resultados consistentes en el tiempo.</p>
         </div>
         
-        <!-- Nuevo banner para el simulador -->
         <div class="simulator-banner">
           <h3 id="simulatorBannerTitle">¿Quieres probar estos conceptos en acción?</h3>
           <p id="simulatorBannerText">Nuestro simulador de trading te permite experimentar con diferentes porcentajes de acierto y relaciones riesgo/beneficio para ver cómo afectan a tus resultados a largo plazo. Una herramienta esencial para entender la importancia de la gestión de riesgo y la esperanza matemática en el trading.</p>
@@ -2454,11 +2384,10 @@
             top: targetScroll,
             behavior: 'smooth'
           });
-        }, 300); // Esperar 300ms que es la duración de la animación de apertura
+        }, 300);
       }
     }
     
-    // Objeto de traducciones optimizado
     
     const translations = {
       en: {
