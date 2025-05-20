@@ -230,7 +230,7 @@
       justify-content: center;
       height: 300px;
     }
-
+    
     .logo {
       height: 100px;
       width: 100px;
@@ -238,8 +238,8 @@
       filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
       margin: 0 auto;
       display: block;
-      margin-top: 15px;
-      transform: translateY(-6px) !important;
+      margin-top: 10px;
+      transform: translateY(-15px) !important;
       transition: all 0.5s ease-in-out;
     }
 
@@ -256,14 +256,14 @@
       font-size: 1.8rem;
       margin: 10px 0 0;
       color: white !important;
-      transform: translateY(-6px) !important;
+      transform: translateY(8px) !important;
       transition: all 0.5s ease-in-out;
     }
 
     header p#tagline {
       font-size: 1rem;
       text-align: center !important;
-      transform: translateY(1px) !important;
+      transform: translateY(14px) !important;
       color: #bbb !important;
       transition: all 0.5s ease-in-out;
     }
@@ -319,6 +319,7 @@
       line-height: 1.2;
       transform: translateY(-1px) !important;
       white-space: nowrap;
+      margin-left: 15px; /* Esta es la línea nueva que añadimos */
     }
 
     header.small-header p#tagline {
@@ -328,8 +329,9 @@
       text-align: left !important;
       line-height: 1.2;
       transform: translateY(0) !important;
+      margin-left: 15px; /* Esta es la línea nueva que añadimos */
     }
-
+    
     body.small-header-padding {
       padding-top: 200px;
     }
@@ -1436,7 +1438,7 @@
     .logo {
       height: 70px;
       width: 70px;
-      transform: translateY(-9px) !important;
+      transform: translateY(-17px) !important;
     }
       
     .logo-container {
@@ -1448,7 +1450,7 @@
       font-size: 1.4rem;
       margin-bottom: 0;
       line-height: 1.2;
-      transform: translateY(-22px) !important;
+      transform: translateY(-15px) !important;
       margin-top: 0;
     }
       
@@ -1456,7 +1458,7 @@
       font-size: 1rem;
       margin-bottom: 2px;
       line-height: 1.2;
-      transform: translateY(-16px) !important;
+      transform: translateY(-10px) !important;
       margin-top: 0;
     }
       
@@ -1529,18 +1531,25 @@
         transform: none;
         margin-top: -4px;
       }
+      
+      header.small-header .logo {
+        height: 55px;  
+        width: 55px;
+        transform: translateY(0) !important;
+      }
 
       header.small-header h1 {
-        transform: none; 
+        transform: translateY(0) !important;
         margin-bottom: 2px; 
+        margin-left: 20px; /* Añade esta línea */
       }
 
       header.small-header p#tagline {
-        transform: none; 
         margin-top: 0;
-        transform: translateY(-2px); 
+        transform: translateY(-2px) !important; 
+        margin-left: 20px; /* Añade esta línea */
       }
-
+      
       .key-section {
         padding: 20px;
         margin-top: 15px;
@@ -1748,9 +1757,20 @@
         font-size: 0.7rem;
       }
       
+      .logo {
+        height: 60px;
+        width: 60px;
+        transform: translateY(-17px) !important;
+      }
+
       header h1 {
         font-size: 1.2rem;
-        transform: translateY(-23px) !important;
+        transform: translateY(-15px) !important;
+      }
+      
+      header p#tagline {
+        font-size: 0.9rem;
+        transform: translateY(-11px) !important;
       }
       
       header.small-header h1 {
@@ -1759,12 +1779,12 @@
       }
       
       header.small-header p#tagline {
-        transform: translateY(-4px) !important;
+        transform: translateY(-2px) !important;
       }
       
       header.small-header .logo-container {
         transform: translateY(1px); 
-        margin-bottom: 5px; 
+        margin-bottom: 13px; 
       }
       
       header.small-header .logo {
@@ -1785,12 +1805,6 @@
 
       header p {
         font-size: 0.9rem;
-      }
-
-      .logo {
-        height: 60px;
-        width: 60px;
-        transform: translateY(-9px) !important;
       }
 
       .hero-image {
