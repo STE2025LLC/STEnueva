@@ -447,6 +447,51 @@
       border-color: var(--accent-color);
       transform: translateY(-2px);
     }
+    
+    /* Botón de volver arriba para móviles */
+    
+    .mobile-scroll-top-btn {
+      display: block;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 8px 10px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin: 10px auto;
+      transition: all var(--transition-medium);
+      font-weight: 500;
+      min-height: 20px;
+      width: calc(100% - 40px);
+      max-width: 130px;
+      text-align: center;
+    }
+
+    .mobile-scroll-top-btn:hover {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    .dark-mode .mobile-scroll-top-btn {
+      background-color: var(--dark-bg-secondary);
+      color: var(--dark-text-primary);
+      border-color: var(--dark-border-color);
+    }  
+
+    .dark-mode .mobile-scroll-top-btn:hover {
+      background-color: var(--dark-accent-color);
+      color: white;
+      border-color: var(--dark-accent-color);
+    }
+
+@media (min-width: 769px) {
+    /* Ocultar botón de volver arriba en móviles cuando no es móvil */
+    .mobile-scroll-top-btn {
+        display: none !important;
+    }
+}
         
     /* SIMULADOR */
     .simulator-section {
@@ -948,183 +993,183 @@
       text-decoration: none;
     }
 
-/* Estilo para el popup de riesgo */
-.risk-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(5px);
-  z-index: 10002;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
+    /* Estilo para el popup de riesgo */
+    .risk-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 10002;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
 
-.risk-popup-content {
-  background: var(--bg-primary);
-  padding: 30px;
-  border-radius: var(--radius-medium);
-  max-width: 700px;
-  width: 100%;
-  margin: auto;
-  box-shadow: var(--shadow-medium);
-  border: 1px solid var(--border-color);
-  animation: fadeInUp 0.4s ease;
-  max-height: 80vh;
-  overflow-y: auto;
-}
+    .risk-popup-content {
+      background: var(--bg-primary);
+      padding: 30px;
+      border-radius: var(--radius-medium);
+      max-width: 700px;
+      width: 100%;
+      margin: auto;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      animation: fadeInUp 0.4s ease;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
 
-.risk-popup h2 {
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  text-align: center;
-}
+    .risk-popup h2 {
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-.risk-popup p {
-  margin-bottom: 15px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
+    .risk-popup p {
+      margin-bottom: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
 
-.risk-popup strong {
-  color: var(--text-primary);
-}
+    .risk-popup strong {
+      color: var(--text-primary);
+    }
 
-.risk-popup-close {
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  font-weight: 500;
-  display: block;
-  margin: 25px auto 0;
-  transition: all var(--transition-medium);
-}
+    .risk-popup-close {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-weight: 500;
+      display: block;
+      margin: 25px auto 0;
+      transition: all var(--transition-medium);
+    }
 
-.risk-popup-close:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
+    .risk-popup-close:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
 
-/* Estilos para el popup del formulario */
-#formPopup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(5px);
-  z-index: 10002;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
+    /* Estilos para el popup del formulario */
+    #formPopup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 10002;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
 
-.form-container {
-  background: var(--bg-primary);
-  padding: 30px;
-  border-radius: var(--radius-medium);
-  max-width: 600px;
-  width: 100%;
-  margin: auto;
-  box-shadow: var(--shadow-medium);
-  border: 1px solid var(--border-color);
-  animation: fadeInUp 0.4s ease;
-  max-height: 80vh;
-  overflow-y: auto;
-}
+    .form-container {
+      background: var(--bg-primary);
+      padding: 30px;
+      border-radius: var(--radius-medium);
+      max-width: 600px;
+      width: 100%;
+      margin: auto;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      animation: fadeInUp 0.4s ease;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
 
-.form-container h2 {
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  text-align: center;
-}
+    .form-container h2 {
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-.form-container input,
-.form-container textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-small);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  transition: all var(--transition-medium);
-}
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-small);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      transition: all var(--transition-medium);
+    }
 
-.form-container input[type="email"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
+    .form-container input[type="email"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
 
-.form-container input:focus,
-.form-container textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px rgba(26, 86, 167, 0.2);
-}
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(26, 86, 167, 0.2);
+    }
 
-.form-container textarea {
-  min-height: 120px;
-  resize: vertical;
-}
+    .form-container textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
 
-.form-container .form-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
+    .form-container .form-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
 
-.form-container button {
-  padding: 12px 20px;
-  border-radius: var(--radius-small);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-medium);
-  border: none;
-  flex: 1;
-}
+    .form-container button {
+      padding: 12px 20px;
+      border-radius: var(--radius-small);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-medium);
+      border: none;
+      flex: 1;
+    }
 
-.form-container button[type="submit"] {
-  background-color: var(--accent-color);
-  color: white;
-}
+    .form-container button[type="submit"] {
+      background-color: var(--accent-color);
+      color: white;
+    }
 
-.form-container button[type="submit"]:hover {
-  background-color: var(--accent-hover);
-}
+    .form-container button[type="submit"]:hover {
+      background-color: var(--accent-hover);
+    }
 
-.form-container button[type="button"] {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-}
+    .form-container button[type="button"] {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
 
-.form-container button[type="button"]:hover {
-  background-color: var(--bg-tertiary);
-}
+    .form-container button[type="button"]:hover {
+      background-color: var(--bg-tertiary);
+    }
 
-.recaptcha-error {
-  color: #dc3545;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-  display: none;
-  text-align: center;
-}
+    .recaptcha-error {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: none;
+      text-align: center;
+    }
 
     /* SCROLL TOP */
     .scroll-top-btn {
@@ -2164,11 +2209,15 @@
 
     <!-- Botón de volver para móviles -->
     <div class="mobile-back-btn-container">
+        <button class="mobile-scroll-top-btn" id="mobileScrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+            <span id="mobile-top-text">Volver arriba</span>
+        </button>
+       
         <button class="mobile-back-btn" id="mobileBackBtn">
-            <i class="fas fa-home"></i>
             <span id="mobile-home-text">Volver a la página principal</span>
         </button>
-    </div>
+            </div>
     
     <div class="footer-container">                
         <div class="footer-content">
@@ -3223,6 +3272,7 @@
 </div>
 
 <script>
+
 // Mostrar popup después de cargar la página
 document.addEventListener('DOMContentLoaded', function() {
   // Cerrar al hacer clic en "Entendido"
@@ -3236,7 +3286,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Bloquear scroll cuando aparece el popup
   document.body.style.overflow = 'hidden';
+  
+  // Inicializar el botón de volver arriba en móviles
+  document.getElementById('mobileScrollTopBtn')?.addEventListener('click', scrollToTop);
+    
 });
+
 </script>
 </body>
 </html>
