@@ -992,8 +992,13 @@
       color: var(--accent-color);
       text-decoration: none;
     }
+    
+    .risk-popup-content p {
+        text-align: justify;
+        text-justify: inter-word;
+        margin-bottom: 15px;
+    }
 
-    /* Estilo para el popup de riesgo */
     .risk-popup {
       position: fixed;
       top: 0;
@@ -1028,7 +1033,7 @@
     .risk-popup h2 {
       color: var(--text-primary);
       margin-bottom: 20px;
-      text-align: center;
+      text-align: left;
     }
 
     .risk-popup p {
@@ -1059,7 +1064,6 @@
       transform: translateY(-2px);
     }
 
-    /* Estilos para el popup del formulario */
     #formPopup {
       position: fixed;
       top: 0;
@@ -1094,7 +1098,7 @@
     .form-container h2 {
       color: var(--text-primary);
       margin-bottom: 20px;
-      text-align: center;
+      text-align: left;
     }
 
     .form-container input,
@@ -1171,7 +1175,6 @@
       text-align: center;
     }
 
-    /* SCROLL TOP */
     .scroll-top-btn {
       position: fixed;
       bottom: 20px;
@@ -1214,7 +1217,6 @@
       display: block;
     }
         
-    /* DISPOSITIVOS MÓVILES */
     @media (max-width: 768px) {
       body {
         font-size: 0.9rem;
@@ -1490,7 +1492,12 @@
         transition: all var(--transition-medium);
         font-weight: 500;
         min-height: 40px;
-    }
+      }
+      
+      .footer-container {
+        padding: 50px 0 20px;
+      }
+
 
     }
 
@@ -1535,6 +1542,10 @@
         white-space: nowrap;
       }
       
+      header.small-header .logo {
+        transform: translateY(100px) !important;
+      }
+
       h2 {
         font-size: 1.2rem;
       }
@@ -2210,7 +2221,8 @@
     <!-- Botón de volver para móviles -->
     <div class="mobile-back-btn-container">
         <button class="mobile-scroll-top-btn" id="mobileScrollTopBtn">
-            <span id="mobile-top-text">Volver arriba</span>
+            <i class="fas fa-arrow-up"></i>
+            <span id="mobile-top-text">Ir arriba</span>
         </button>
        
         <button class="mobile-back-btn" id="mobileBackBtn">
@@ -2350,7 +2362,7 @@
             'contact-text': 'Formulario de contacto',
             'header-home-text': 'Volver a la página principal',
             'mobile-home-text': 'Volver a la página principal',
-            'top-text': 'Volver Arriba',
+            'top-text': 'Ir Arriba',
             'chart-x-label': 'Número de Operación',
             'chart-y-label': 'Capital ($)',
             'formTitle': 'Contáctenos',
@@ -2457,24 +2469,24 @@
             'contact-text': 'Contact Form',
             'header-home-text': 'Back to Homepage',
             'mobile-home-text': 'Back to Homepage',
-            'top-text': 'Back to Top',
+            'top-text': 'Scroll to top',
             'chart-x-label': 'Trade Number',
             'chart-y-label': 'Capital ($)',
             'formTitle': 'Contact Us',
             'riskLinkText': 'Risk Disclosure',
-            'riskTitle': 'Risk Disclosure',
+            'riskTitle': 'Risk Disclosure Statement',
             'riskWarning': 'RISK WARNING:',
-            'riskText1': 'Trading financial instruments carries a high level of risk and may not be suitable for all investors. Before deciding to trade in financial markets, you should carefully consider your investment objectives, level of experience, and risk appetite.',
+            'riskText1': 'Trading in financial instruments carries a high level of risk and may not be suitable for all investors. Before deciding to trade in the financial markets, you should carefully consider your investment objectives, level of experience and risk tolerance.',
             'riskLoseMoney': 'Possibility of losing money:',
-            'riskText2': 'There is a possibility that you may lose part or all of your initial investment and therefore you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with trading financial instruments and seek advice from an independent financial advisor if you have any doubts.',
+            'riskText2': 'There is a possibility that you could lose some or all of your initial investment, so you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with trading financial instruments and seek advice from an independent financial advisor if you have any doubts.',
             'riskPastResults': 'Past performance:',
-            'riskText3': 'Past performance is not indicative of future results. Statements about potential returns are illustrative and do not guarantee current results. Trading with leverage can work both to your advantage and disadvantage.',
+            'riskText3': 'Past performance is not indicative of future results. Statements about potential returns are illustrative and do not guarantee actual results. Trading with leverage can amplify both profits and losses.',
             'riskNotAdvice': 'Not advice:',
-            'riskText4': 'The information provided by Sistemas de Trading Eficientes LLC does not constitute financial, investment, tax or other advice. All material provided is for educational and informational purposes only.',
-            'riskResponsibility': 'Responsibility:',
-            'riskText5': 'Sistemas de Trading Eficientes LLC assumes no responsibility for any loss or damage as a result of reliance on the information contained on this website, including data, quotes, charts and buy/sell signals. Please be fully aware of the risks and costs associated with trading in financial markets.',
+            'riskText4': 'The information provided by Sistemas de Trading Eficientes LLC does not constitute financial, investment, tax or any other type of advice. All material provided is for educational and informational purposes only.',
+            'riskResponsibility': 'Liability :',
+            'riskText5': 'Sistemas de Trading Eficientes LLC assumes no liability for any loss or damage as a result of the use of the information contained in this website, including data, quotes, charts and buy/sell signals. Please be fully aware of the risks and costs associated with trading in the financial markets.',
             'riskLegal': 'Legal restrictions:',
-            'riskText6': 'The products and services described may not be available in all jurisdictions or to all clients. It is the client\'s responsibility to determine which transactions are permitted under the laws of their country of residence.',
+            'riskText6': 'The products and services described may not be available in all jurisdictions or to all customers. It is the customer\'s responsibility to determine which transactions are permitted under the laws of their country of residence.',
             'formNamePlaceholder': 'Your name',
             'formEmailPlaceholder': 'Your email',
             'formMessagePlaceholder': 'Your message',
@@ -3222,8 +3234,8 @@
     
     </script>
     
-    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Volver arriba">
-       <span id="top-text">Volver Arriba</span>
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Ir arriba">
+       <span id="top-text">Ir Arriba</span>
     </button>
 
     <div class="risk-popup" id="riskPopup">
