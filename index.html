@@ -344,10 +344,15 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      z-index: 1100;
+      z-index: 11003;
       display: flex;
       gap: 10px;
       transition: all 0.3s ease;
+    }
+
+    /* Añadido para asegurar que los controles estén siempre visibles */
+    #formPopup, #confirmationPopup, #riskPopup {
+      z-index: 10000; /* Menor que el z-index de header-controls */
     }
 
     .lang-switch {
@@ -967,29 +972,27 @@
 
     .contact-form-btn {
       background-color: transparent;
-      color: white;
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 8px 20px;
-      border-radius: var(--radius-small);
-      cursor: pointer;
-      font-size: 0.95rem;
-      margin-top: 15px;
-      transition: all var(--transition-medium), transform 0.3s ease;
-      font-weight: 500;
-      min-height: 40px;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-top: 15px;
+  transition: all var(--transition-medium), transform 0.3s ease;
+  font-weight: 500;
+  min-height: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;    }
 
     .contact-form-btn:hover {
       background-color: var(--accent-color);
-      border-color: var(--accent-color);
-      transform: translateX(5px) translateY(-2px); /* Combina el movimiento horizontal con el vertical existente */
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
+  border-color: var(--accent-color);
+  transform: translateX(5px) translateY(-2px); /* Combina el movimiento horizontal con el vertical existente */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);    }
 
     .footer-address {
       color: #bbb;
@@ -1352,7 +1355,6 @@
       transform: translateY(-2px);
     }
 
-    /* Popup de riesgo */
     .risk-popup {
       position: fixed;
       top: 0;
@@ -1385,11 +1387,11 @@
     }
 
     .risk-popup h2 {
-      color: var(--text-primary);
-      margin-bottom: 20px;
-      text-align: center;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        text-align: left;
     }
-
+    
     .risk-popup p {
       margin-bottom: 15px;
       color: var(--text-secondary);
@@ -1537,9 +1539,11 @@
       header.small-header .logo {
         height: 55px;  
         width: 55px;
-        transform: translateY(0) !important;
-      }
-
+        margin-left: 1px;  
+        margin-top: 8px;
+        transform: translateY(-4px) !important;
+      }      
+      
       header.small-header h1 {
         transform: translateY(0) !important;
         margin-bottom: 2px; 
@@ -1547,7 +1551,6 @@
       }
 
       header.small-header p#tagline {
-        margin-top: 0;
         transform: translateY(-2px) !important; 
         margin-left: 20px; /* Añade esta línea */
       }
@@ -1626,8 +1629,8 @@
       }
 
       .service-header {
+        font-size: 1rem !important;
         padding: 16px 20px;
-        font-size: 1rem;
         min-height: auto;
         text-align: left !important;
         justify-content: flex-start !important;
@@ -1785,7 +1788,6 @@
       }
       
       header.small-header .logo-container {
-        transform: translateY(1px); 
         margin-bottom: 13px; 
       }
       
@@ -1794,7 +1796,7 @@
         width: 55px;
         margin-left: 1px;  
         margin-top: 8px;
-        transform: translateY(0);
+        transform: translateY(0) !important;        
       }      
       
       h2 {
@@ -2383,7 +2385,7 @@
   </p>
   
   <button class="scroll-top-btn" onclick="scrollToTop()" id="scrollTopBtn">
-  <span>Volver Arriba</span>
+  <span>Ir Arriba</span>
   </button>  
   
   <div id="formPopup">
@@ -2438,7 +2440,6 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   
   <script>
-    
     // Función para los acordeones de servicios - VERSIÓN CORREGIDA
     function toggleService(header) {
       const item = header.parentElement;
@@ -2475,7 +2476,6 @@
     }
     
     // Objeto de traducciones optimizado
-    
     const translations = {
       en: {
         tagline: "Manual & Algorithmic Trading",
@@ -2576,17 +2576,17 @@
         riskTitle: "Risk Disclosure Statement",
         riskCloseBtn: "Close",
         riskContent: `
-          <p><strong>RISK WARNING:</strong> Trading financial instruments carries a high level of risk and may not be suitable for all investors. Before deciding to trade in financial markets, you should carefully consider your investment objectives, level of experience, and risk appetite.</p>
+          <p><strong>RISK WARNING:</strong> Trading in financial instruments carries a high level of risk and may not be suitable for all investors. Before deciding to trade in the financial markets, you should carefully consider your investment objectives, level of experience and risk tolerance.</p>
 
-          <p><strong>Possibility of losing money:</strong> There is a possibility that you may lose part or all of your initial investment and therefore you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with trading financial instruments and seek advice from an independent financial advisor if you have any doubts.</p>
+          <p><strong>Possibility of losing money:</strong> There is a possibility that you could lose some or all of your initial investment, so you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with trading financial instruments and seek advice from an independent financial advisor if you have any doubts.</p>
 
-          <p><strong>Past performance:</strong> Past performance is not indicative of future results. Statements about potential returns are illustrative and do not guarantee actual results. Trading with leverage can work both to your advantage and disadvantage.</p>
+          <p><strong>Past performance:</strong> Past performance is not indicative of future results. Statements about potential returns are illustrative and do not guarantee actual results. Trading with leverage can amplify both profits and losses.</p>
 
-          <p><strong>Not advice:</strong> The information provided by Efficient Trading Systems LLC does not constitute financial, investment, tax, or other advice. All material provided is for educational and informational purposes only.</p>
+          <p><strong>Not advice:</strong> The information provided by Sistemas de Trading Eficientes LLC does not constitute financial, investment, tax or any other type of advice. All material provided is for educational and informational purposes only.</p>
 
-          <p><strong>Liability:</strong> Efficient Trading Systems LLC assumes no responsibility for any loss or damage as a result of reliance on the information contained within this website, including data, quotes, charts, and buy/sell signals. Please be fully aware of the risks and costs associated with trading in financial markets.</p>
+          <p><strong>Liability:</strong> Sistemas de Trading Eficientes LLC assumes no liability for any loss or damage as a result of the use of the information contained in this website, including data, quotes, charts and buy/sell signals. Please be fully aware of the risks and costs associated with trading in the financial markets.</p>
 
-          <p><strong>Legal restrictions:</strong> The products and services described may not be available in all jurisdictions or to all customers. It is the client's responsibility to determine which transactions are permitted under the laws of their country of residence.</p>
+          <p><strong>Legal restrictions:</strong> The products and services described may not be available in all jurisdictions or to all customers. It is the customer's responsibility to determine which transactions are permitted under the laws of their country of residence.</p>
         `,
         navProductsText: "Our products",
         navSimulatorText: "Simulator",
@@ -2685,25 +2685,24 @@
         confirmTitle: "¡Gracias!",
         confirmMessage: "Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo lo antes posible.",
         copyright: "© 2025 Sistemas de Trading Eficientes LLC.",
-        scrollTop: "Volver Arriba",
+        scrollTop: "Ir Arriba",
         errorMessage: "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
         recaptchaError: "Por favor, verifica que no eres un robot",
         riskLinkText: "Declaración de riesgo",
         riskTitle: "Declaración de riesgo",
         riskCloseBtn: "Cerrar",
         riskContent: `
-          <p><strong>ADVERTENCIA SOBRE RIESGOS:</strong> El trading de instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Antes de decidir operar en los mercados financieros, debe considerar cuidadosamente sus objetivos de inversión, nivel de experiencia y apetito por el riesgo.</p>
+          <p><strong>ADVERTENCIA SOBRE RIESGOS:</strong> El trading de instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Antes de decidir operar en los mercados financieros, debe considerar cuidadosamente sus objetivos de inversión, nivel de experiencia y tolerancia al riesgo.</p>
 
-          <p><strong>Posibilidad de perder dinero:</strong> Existe la posibilidad de que pierda parte o la totalidad de su inversión inicial y, por lo tanto, no debe invertir dinero que no pueda permitirse perder. Debe ser consciente de todos los riesgos asociados con el trading de instrumentos financieros y buscar asesoramiento de un asesor financiero independiente si tiene dudas.</p>
+          <p><strong>Posibilidad de perder dinero:</strong> Existe la posibilidad de que pierda parte o la totalidad de su inversión inicial, por lo que no debe invertir dinero que no pueda permitirse perder. Debe ser consciente de todos los riesgos asociados con el trading de instrumentos financieros y buscar asesoramiento de un asesor financiero independiente si tiene dudas.</p>
 
-          <p><strong>Rendimientos pasados:</strong> Los resultados pasados no son indicativos de resultados futuros. Las declaraciones sobre rendimientos potenciales son ilustrativas y no garantizan resultados reales. El trading con apalancamiento puede funcionar tanto en su beneficio como en su contra.</p>
+          <p><strong>Rendimientos pasados:</strong> Los resultados pasados no son indicativos de resultados futuros. Las declaraciones sobre rendimientos potenciales son ilustrativas y no garantizan resultados actuales. El trading con apalancamiento puede amplificar tanto ganancias como pérdidas.</p>
 
-          <p><strong>No es asesoramiento:</strong> La información proporcionada por Sistemas de Trading Eficientes LLC no constituye asesoramiento financiero, de inversión, fiscal o de otro tipo. Todo el material proporcionado tiene únicamente fines educativos e informativos.</p>
+          <p><strong>No constituye asesoramiento:</strong> La información proporcionada por Sistemas de Trading Eficientes LLC no constituye asesoramiento financiero, de inversión, fiscal o de ningún otro tipo. Todo el material proporcionado tiene únicamente fines educativos e informativos.</p>
 
-          <p><strong>Responsabilidad:</strong> Sistemas de Trading Eficientes LLC no asume responsabilidad alguna por cualquier pérdida o daño como resultado de la confianza en la información contenida en este sitio web, incluidos datos, cotizaciones, gráficos y señales de compra/venta. Por favor, sea plenamente consciente de los riesgos y costes asociados con el trading en los mercados financieros.</p>
+          <p><strong>Responsabilidad:</strong> Sistemas de Trading Eficientes LLC no asume responsabilidad alguna por pérdidas o daños como resultado del uso de la información contenida en este sitio web, incluidos datos, cotizaciones, gráficos y señales de compra/venta. Por favor, sea plenamente consciente de los riesgos y costes asociados con el trading en los mercados financieros.</p>
 
-          <p><strong>Restricciones legales:</strong> Los productos y servicios descritos pueden no estar disponibles en todas las jurisdicciones o para todos los clientes. Es responsabilidad del cliente determinar qué transacciones están permitidas según las leyes de su país de residencia.</p>
-        `,
+          <p><strong>Restricciones legales:</strong> Los productos y servicios descritos pueden no estar disponibles en todas las jurisdicciones o para todos los clientes. Es responsabilidad del cliente determinar qué transacciones están permitidas según las leyes de su país de residencia.</p>`,
         navProductsText: "Nuestros productos",
         navSimulatorText: "Simulador",
         navContactText: "Contacto",
@@ -2770,20 +2769,38 @@
       updateContent();
     }
 
-    function closeForm() {
-      document.getElementById("formPopup").style.display = "none";
-      document.body.style.overflow = "auto";
-    }
+    // Funciones para cerrar los popups - solo con botones
+function closeForm() {
+  document.getElementById("formPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+  // Resetear el formulario al cerrar
+  document.getElementById("contactForm").reset();
+  grecaptcha.reset();
+}
 
-    function showConfirmation() {
-      document.getElementById("confirmationPopup").style.display = "flex";
-      document.body.style.overflow = "hidden";
-    }
+function closeConfirmation() {
+  document.getElementById("confirmationPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+}
 
-    function closeConfirmation() {
-      document.getElementById("confirmationPopup").style.display = "none";
-      document.body.style.overflow = "auto";
-    }
+function closeRiskDisclaimer() {
+  document.getElementById("riskPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+// Prevenir cierre al hacer clic fuera
+document.addEventListener('click', function(e) {
+  // Si el clic fue en el fondo oscuro pero NO en el contenido del popup
+  if (e.target.classList.contains('confirmation-popup')) {
+    e.stopPropagation();
+  }
+  if (e.target.classList.contains('risk-popup')) {
+    e.stopPropagation();
+  }
+  if (e.target.id === 'formPopup') {
+    e.stopPropagation();
+  }
+});
 
     function scrollToTop() {
       window.scrollTo({
@@ -2912,19 +2929,31 @@
       currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
       document.documentElement.lang = currentLanguage;
       document.querySelector('.lang-switch span').innerText = (currentLanguage === 'es') ? 'EN' : 'ES';
+  
+      // Actualizar todo el contenido
       updateContent();
+  
+      // Si el popup de riesgo está abierto, actualizarlo específicamente
+      if (document.getElementById("riskPopup").style.display === "flex") {
+        const t = translations[currentLanguage];
+        const riskContent = document.querySelector('.risk-popup-content');
+        riskContent.innerHTML = `
+          <h2 id="riskTitle" style="text-align: left;">${t.riskTitle}</h2>
+          ${t.riskContent}
+          <button class="risk-popup-close" onclick="closeRiskDisclaimer()" id="riskCloseBtn">${t.riskCloseBtn}</button>
+        `;
+      }
 
-      // Animación suave al cambiar idioma
-      document.documentElement.style.transition = 'opacity 0.2s ease-in-out';
-      document.documentElement.style.opacity = 0.8;
-      setTimeout(() => {
-        document.documentElement.style.opacity = 1;
-      }, 50);
-      setTimeout(() => {
-        document.documentElement.style.transition = '';
-      }, 250);
-    }
-
+  // Animación suave al cambiar idioma
+  document.documentElement.style.transition = 'opacity 0.2s ease-in-out';
+  document.documentElement.style.opacity = 0.8;
+  setTimeout(() => {
+    document.documentElement.style.opacity = 1;
+  }, 50);
+  setTimeout(() => {
+    document.documentElement.style.transition = '';
+  }, 250);
+}
     // =================================
     // EFECTO DE SCROLL PARA EL ENCABEZADO
     // =================================
@@ -2994,25 +3023,6 @@
         if(e.target.value) {
           document.getElementById("contactForm").removeAttribute('action');
           console.warn("Posible bot detectado (campo honey llenado).");
-        }
-      });
-
-      // Event listeners para cerrar popups al hacer clic fuera
-      document.getElementById("formPopup").addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeForm();
-        }
-      });
-
-      document.getElementById("confirmationPopup").addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeConfirmation();
-        }
-      });
-
-      document.getElementById("riskPopup").addEventListener('click', function(e) {
-        if (e.target === this) {
-          closeRiskDisclaimer();
         }
       });
 
