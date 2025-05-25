@@ -10,13 +10,22 @@
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/chart.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
-    <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
+    <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
+    <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+    
+    /* Fijar tema oscuro/light sin parpadeo */
+        :root {
+            color-scheme: light dark;
+        }
+    </style>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -414,7 +423,6 @@
       color: #333;
     }
     
-    /* BOTÓN VOLVER */
     .back-home-container {
       text-align: center;
       margin: 5px auto;
@@ -447,8 +455,6 @@
       border-color: var(--accent-color);
       transform: translateY(-2px);
     }
-    
-    /* Botón de volver arriba para móviles */
     
     .mobile-scroll-top-btn {
       display: block;
@@ -487,13 +493,12 @@
     }
 
 @media (min-width: 769px) {
-    /* Ocultar botón de volver arriba en móviles cuando no es móvil */
+
     .mobile-scroll-top-btn {
         display: none !important;
     }
 }
-        
-    /* SIMULADOR */
+
     .simulator-section {
       background-color: var(--bg-secondary);
       padding: 40px;
@@ -608,7 +613,6 @@
       transform: translateY(-2px);
     }
 
-    /* RESULTADOS */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -735,7 +739,6 @@
       word-break: break-all;
     }
 
-    /* TABS */
     .tabs {
       display: flex;
       border-bottom: 1px solid var(--border-color);
@@ -778,7 +781,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* TABLAS */
     .table-container {
       overflow-x: auto;
       margin-top: 20px;
@@ -814,7 +816,6 @@
       background-color: rgba(26, 86, 167, 0.05);
     }
 
-    /* GRÁFICO */
     .chart-container {
       margin-top: 30px;
       height: 400px;
@@ -869,7 +870,6 @@
       box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
     }
 
-    /* COLORES */
     .positive {
       color: #28a745;
     }
@@ -1072,7 +1072,7 @@
       height: 100%;
       background: rgba(0,0,0,0.85);
       backdrop-filter: blur(5px);
-      z-index: 10002;
+      z-index: 10000;
       display: none;
       justify-content: center;
       align-items: center;
@@ -1081,90 +1081,159 @@
       overflow-y: auto;
     }
 
-    .form-container {
+    #formPopup .form-container {
       background: var(--bg-primary);
       padding: 30px;
       border-radius: var(--radius-medium);
-      max-width: 600px;
+      max-width: 500px;
       width: 100%;
       margin: auto;
       box-shadow: var(--shadow-medium);
       border: 1px solid var(--border-color);
       animation: fadeInUp 0.4s ease;
-      max-height: 80vh;
-      overflow-y: auto;
     }
 
-    .form-container h2 {
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #formPopup h2 {
       color: var(--text-primary);
-      margin-bottom: 20px;
-      text-align: left;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+      width: 100%;
+      display: inline-block;
     }
 
-    .form-container input,
-    .form-container textarea {
+    #formPopup h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
       width: 100%;
-      padding: 12px 15px;
-      margin-bottom: 15px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      border-radius: 3px;
+    }
+
+    #formPopup input,
+    #formPopup textarea,
+    #formPopup select {
+      padding: 14px;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-small);
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
+      width: 100%;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      font-size: 1rem;
       font-family: 'Inter', sans-serif;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
       transition: all var(--transition-medium);
     }
 
-    .form-container input[type="email"] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
-
-    .form-container input:focus,
-    .form-container textarea:focus {
+    #formPopup input:focus,
+    #formPopup textarea:focus,
+    #formPopup select:focus {
       outline: none;
       border-color: var(--accent-color);
       box-shadow: 0 0 0 2px rgba(26, 86, 167, 0.2);
     }
 
-    .form-container textarea {
-      min-height: 120px;
+    .dark-mode #formPopup input:focus,
+    .dark-mode #formPopup textarea:focus,
+    .dark-mode #formPopup select:focus {
+      box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+    }
+
+    #formPopup textarea {
+      font-family: 'Inter', sans-serif;
       resize: vertical;
+      min-height: 140px;
     }
 
-    .form-container .form-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
+    #formPopup select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555555' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 12px;
     }
 
-    .form-container button {
-      padding: 12px 20px;
+    .dark-mode #formPopup select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23a0a0a0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    }
+
+    input[name="_gotcha"],
+    input[name="_honey"] {
+      display: none !important;
+    }
+
+    #formPopup button {
+      padding: 14px;
       border-radius: var(--radius-small);
-      font-weight: 500;
       cursor: pointer;
-      transition: all var(--transition-medium);
+      width: 100%;
       border: none;
-      flex: 1;
+      font-weight: 600;
+      margin-top: 10px;
+      font-size: 1rem;
+      transition: all var(--transition-medium);
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    .form-container button[type="submit"] {
-      background-color: var(--accent-color);
+    
+    #formPopup button[type="submit"] {
+      background: var(--accent-color);
       color: white;
     }
-
-    .form-container button[type="submit"]:hover {
-      background-color: var(--accent-hover);
+        
+    #formPopup button[type="submit"]:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
     }
-
-    .form-container button[type="button"] {
-      background-color: var(--bg-secondary);
+    
+    #formPopup button[type="button"] {
+      background: var(--bg-tertiary);
       color: var(--text-primary);
       border: 1px solid var(--border-color);
+      margin-top: 15px;
+      font-weight: 600;
+      transition: all var(--transition-medium);
     }
 
-    .form-container button[type="button"]:hover {
-      background-color: var(--bg-tertiary);
+    .dark-mode #formPopup button[type="button"] {
+      background: var(--dark-bg-tertiary);
+      color: var(--dark-text-primary);
+      border-color: var(--dark-border-color);
+    }
+
+    #formPopup button[type="button"]:hover {
+      background: rgba(0,0,0,0.05);
+      transform: translateY(-2px);
+    }
+
+    .dark-mode #formPopup button[type="button"]:hover {
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+    }    
+    
+    .g-recaptcha {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
     }
 
     .recaptcha-error {
@@ -1467,7 +1536,6 @@
         display: inline-block;
       }
       
-
       .form-container {
         padding: 20px;
       }
@@ -1591,6 +1659,20 @@
       
       .scroll-top-btn {
         display: none;
+      }
+      
+      #formPopup .form-container {
+        padding: 15px;
+      }
+
+      #formPopup h2 {
+        font-size: 1.2rem;
+      }
+
+      #formPopup input,
+      #formPopup textarea {
+        padding: 10px;
+        font-size: 0.9rem;
       }
       
       .tab {
@@ -1754,7 +1836,7 @@
     <header>
       <div class="logo-container">
     <a href="https://ste2025llc.github.io/STEnueva/simulador.html" class="logo-link">
-        <img src="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" alt="Logo Sistemas de Trading Eficientes LLC" class="logo" width="70" height="70" loading="lazy">
+        <img src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" alt="Logo Sistemas de Trading Eficientes LLC" class="logo" width="70" height="70" loading="lazy">
         </a>
       </div>
       
@@ -1809,7 +1891,7 @@
                         </div>
                         
                         <div class="simulator-row-item simulation-button-container">
-                            <button id="simulate-btn" class="simulator-button simulator-button-large"><i class="fas fa-play"></i> <span id="simulate-text">Ejecutar Simulación</span></button>
+                            <button id="simulate-btn" class="simulator-button simulator-button-large" aria-label="Ejecutar simulación" aria-live="polite"><i class="fas fa-play"></i> <span id="simulate-text">Ejecutar Simulación</span></button>
                         </div>
                     </div>
                 </div>
@@ -2256,28 +2338,24 @@
     <!-- Popup de formulario de contacto -->
     <div id="formPopup">
     <div class="form-container">
-        <h2 id="formTitle">Contáctenos</h2>
-        <form id="contactForm" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
-            <input type="hidden" name="_gotcha">
-            <input type="hidden" name="_honey" value="">
+      <h2 id="formTitle">Contáctenos</h2>
+      <form id="contactForm" action="https://formspree.io/f/xkgjlqnr" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+        <input type="hidden" name="_gotcha">
+        <input type="hidden" name="_honey" value="">
 
-            <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
-            <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
-            <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
+        <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
+        <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
+        <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
 
-            <div style="display: flex; justify-content: center; margin: 15px 0;">
-                <div class="g-recaptcha" data-sitekey="TU_CLAVE_DE_RECAPTCHA"></div>
-            </div>
-            <div class="recaptcha-error" id="recaptchaError"></div>
+        <div class="g-recaptcha" data-sitekey="6LcpgBwrAAAAAJGX3hxe5bIW_S0jOtH37RyYKhNG"></div>
+        <div class="recaptcha-error" id="recaptchaError"></div>
 
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <button type="submit" id="submitBtn">Enviar mensaje</button>
-                <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>            
-            </div>
-        </form>
+        <button type="submit" id="submitBtn">Enviar mensaje</button>
+        <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
+      </form>
     </div>
-</div>
+  </div>
 
     <script>
     // Variables globales para los datos de las simulaciones
@@ -3109,12 +3187,26 @@
         // Configurar eventos
         document.querySelectorAll('.simulator-input').forEach(input => {
             input.addEventListener('change', calculateInitialValues);
-        });
-        
+            input.addEventListener('keypress', function(e) {
+                if (isNaN(parseInt(e.key)) && e.key !== '.' && e.key !== 'Backspace' && e.key !== 'Tab') {
+                    e.preventDefault();
+                }
+            });
+        });        
+        const debounce = (func, delay) => {
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), delay);
+            };
+        };
+
         document.querySelectorAll('#risk-percent, #win-rate, #risk-reward').forEach(input => {
-            input.addEventListener('input', calculateInitialValues);
-        });
-        
+            input.addEventListener('input', debounce(calculateInitialValues, 300));
+        });        
+       
         document.getElementById('risk-percent')?.addEventListener('change', function() {
             const value = parseFloat(this.value);
             if (value > 5) {
