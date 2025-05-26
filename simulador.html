@@ -2347,7 +2347,6 @@
         <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
         <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
         <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
-
         <div class="g-recaptcha" data-sitekey="6LcpgBwrAAAAAJGX3hxe5bIW_S0jOtH37RyYKhNG"></div>
         <div class="recaptcha-error" id="recaptchaError"></div>
 
@@ -2461,6 +2460,9 @@
             'formNamePlaceholder': 'Tu nombre',
             'formEmailPlaceholder': 'Tu email',
             'formMessagePlaceholder': 'Tu mensaje',
+            'validation-name': 'Por favor, ingresa tu nombre',
+            'validation-email': 'Por favor, ingresa un email válido',
+            'validation-message': 'Por favor, escribe tu mensaje',
             'submitBtnText': 'Enviar mensaje',
             'cancelBtnText': 'Cancelar',
             'recaptchaErrorText': 'Por favor, completa el reCAPTCHA',
@@ -2568,6 +2570,9 @@
             'formNamePlaceholder': 'Your name',
             'formEmailPlaceholder': 'Your email',
             'formMessagePlaceholder': 'Your message',
+            'validation-name': 'Please enter your name',
+            'validation-email': 'Please enter a valid email',
+            'validation-message': 'Please write your message',
             'submitBtnText': 'Send message',
             'cancelBtnText': 'Cancel',
             'recaptchaErrorText': 'Please complete the reCAPTCHA',
@@ -2756,16 +2761,21 @@
     }
 
     function updateFormLanguage() {
-        const langData = translations[currentLanguage];
-        document.getElementById('formTitle').textContent = langData['formTitle'];
-        document.querySelector('input[name="name"]').placeholder = langData['formNamePlaceholder'];
-        document.querySelector('input[name="email"]').placeholder = langData['formEmailPlaceholder'];
-        document.querySelector('textarea[name="message"]').placeholder = langData['formMessagePlaceholder'];
-        document.getElementById('submitBtn').textContent = langData['submitBtnText'];
-        document.getElementById('cancelBtn').textContent = langData['cancelBtnText'];
-        document.getElementById('recaptchaError').textContent = langData['recaptchaErrorText'];
+    const langData = translations[currentLanguage];
+    document.getElementById('formTitle').textContent = langData['formTitle'];
+    document.querySelector('input[name="name"]').placeholder = langData['formNamePlaceholder'];
+    document.querySelector('input[name="email"]').placeholder = langData['formEmailPlaceholder'];
+    document.querySelector('textarea[name="message"]').placeholder = langData['formMessagePlaceholder'];
+    document.getElementById('submitBtn').textContent = langData['submitBtnText'];
+    document.getElementById('cancelBtn').textContent = langData['cancelBtnText'];
+    document.getElementById('recaptchaError').textContent = langData['recaptchaErrorText'];
+    
+    // Actualizar los atributos title para validación
+    document.querySelector('input[name="name"]').title = langData['validation-name'];
+    document.querySelector('input[name="email"]').title = langData['validation-email'];
+    document.querySelector('textarea[name="message"]').title = langData['validation-message'];
     }
-
+    
     function updateRiskDisclaimer() {
         const langData = translations[currentLanguage];
         document.getElementById('riskTitle').textContent = langData['riskTitle'];
