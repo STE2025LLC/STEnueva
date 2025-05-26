@@ -10,8 +10,8 @@
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/chart.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
-    <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
+    <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
+    <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,7 +20,6 @@
     
     <style>
     
-    /* Fijar tema oscuro/light sin parpadeo */
         :root {
             color-scheme: light dark;
         }
@@ -31,11 +30,8 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
     <style>
-    /* ========================
-       VARIABLES Y ESTILOS BASE
-       ======================== */
+
     :root {
-      /* Colores base claros */
       --bg-primary: #ffffff;
       --bg-secondary: #f8f9fa;
       --bg-tertiary: #e9ecef;
@@ -53,8 +49,6 @@
       --transition-fast: 0.2s ease;
       --transition-medium: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       --transition-slow: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-
-      /* Específicos para modo oscuro */
       --dark-bg-primary: #121212;
       --dark-bg-secondary: #1e1e1e;
       --dark-bg-tertiary: #252525;
@@ -107,7 +101,6 @@
       --shadow-medium: var(--dark-shadow-medium);
     }
 
-    /* TIPOGRAFÍA */
     h1, h2, h3, h4 {
       font-weight: 600;
       line-height: 1.2;
@@ -149,7 +142,6 @@
       color: var(--accent-hover);
     }
 
-    /* ENCABEZADO */
     header {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
       color: white;
@@ -220,7 +212,6 @@
       transition: all 0.1s ease-in-out;
     }
 
-    /* Header pequeño */
     header.small-header {
       padding: 0 20px;
       height: 80px;
@@ -231,7 +222,7 @@
     }
     
     .header-small-back-btn {
-      display: none; /* Ocultar inicialmente */
+      display: none;
       background-color: transparent;
       color: white;
       border: 1px solid rgba(255,255,255,0.3);
@@ -255,7 +246,7 @@
     }
 
     header.small-header .header-small-back-btn {
-      display: block; /* Mostrar solo en encabezado pequeño */
+      display: block;
     }   
 
     header.small-header .logo-container {
@@ -372,7 +363,6 @@
       padding-top: 200px;
     }
 
-    /* CONTROLES */
     .header-controls {
       position: fixed;
       top: 20px;
@@ -631,7 +621,7 @@
       box-shadow: var(--shadow-medium);
       border: 1px solid var(--border-light);
       text-align: center;
-      overflow: hidden; /* Asegura que el contenido no se salga */
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -688,7 +678,6 @@
       margin: 5px 0 !important;
     }
     
-    /* Estilos para números muy grandes */
     .result-card .value.large-number {
       font-size: 0.9rem;
       white-space: normal;
@@ -718,7 +707,7 @@
     }
     
     .result-details {
-      font-size: 0.85rem; /* Tamaño consistente */
+      font-size: 0.85rem;
       margin: 5px 0;
       color: var(--text-secondary);
       white-space: nowrap;
@@ -837,7 +826,6 @@
       max-height: 100%;
     }
 
-    /* BOTÓN TOGGLE */
     .toggle-rows-btn {
       background-color: var(--accent-color);
       color: white;
@@ -858,7 +846,6 @@
       transform: translateY(-2px);
     }
 
-    /* MODO OSCURO */
     .dark-mode .simulator-input, 
     .dark-mode .simulator-select {
       background-color: var(--dark-bg-tertiary);
@@ -1354,14 +1341,14 @@
       header.small-header h1 {
         transform: translateY(1px) !important;
         margin-bottom: 2px; 
-        margin-left: 7px; /* Añade esta línea */
+        margin-left: 7px;
         letter-spacing: -0.09px;
       }
 
       header.small-header p#tagline {
         margin-top: 0;
         transform: translateY(-1px) !important; 
-        margin-left: 7px; /* Añade esta línea */
+        margin-left: 7px;
         letter-spacing: -0.09px;
       }
       
@@ -1467,9 +1454,9 @@
 
       .chart-container {
         height: 300px;
-        padding: 10px 5px; /* Reducir el padding lateral */
-        margin: 0 -10px; /* Compensar el padding del contenedor padre */
-        width: calc(100% + 20px); /* Extender el ancho */
+        padding: 10px 5px;
+        margin: 0 -10px;
+        width: calc(100% + 20px);
       }
       
       .result-card {
@@ -1781,14 +1768,12 @@
       }
     }
 
-    /* Nuevo estilo para quitar flecha del select deshabilitado */
     .simulator-select[disabled] {
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
     }
     
-    /* Estilo para Max Drawdown */
     .result-card .value.negative,
     .result-card .value.positive {
       white-space: nowrap;
@@ -1803,7 +1788,6 @@
       margin-top: 0;
     }
 
-    /* Ajuste para números muy grandes */
     .result-card .value.large-number {
       font-size: 0.9rem;
       white-space: normal;
@@ -1836,7 +1820,7 @@
     <header>
       <div class="logo-container">
     <a href="https://ste2025llc.github.io/STEnueva/simulador.html" class="logo-link">
-        <img src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" alt="Logo Sistemas de Trading Eficientes LLC" class="logo" width="70" height="70" loading="lazy">
+        <img src="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" alt="Logo Sistemas de Trading Eficientes LLC" class="logo" width="70" height="70" loading="lazy">
         </a>
       </div>
       
@@ -1919,16 +1903,12 @@
                     <div class="tab" data-tab="1000" role="tab" aria-selected="false"><i class="fas fa-chart-line"></i> <span id="ops1000-tab-label">1000 Operaciones</span></div>
                 </div>
                 
-                <!-- Contenido de las pestañas -->
-                
-                <!-- Pestaña 30 Operaciones -->
                    <div class="tab-content active" id="30-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-30" aria-label="Gráfico de evolución del capital para 30 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -1938,7 +1918,6 @@
                                <div class="result-details positive" id="wins-amount-30">+$0.00</div>
                            </div>
         
-                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -1948,27 +1927,23 @@
                             <div class="result-details negative" id="losses-amount-30">-$0.00</div>
                     </div>
         
-                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-30">$10,000.00</div>
                 </div>
         
-                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-30">0%</div>
                             <div class="value value-large" id="profit-30">$0.00</div>
                 </div>
         
-                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-30">0%</div>
                             <div class="value negative" id="drawdown-amount-30">$0.00</div>
                 </div>
         
-                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -1995,8 +1970,6 @@
                         </table>
                     </div>
                 </div>
-                
-                <!-- Pestaña 60 Operaciones -->
 
                    <div class="tab-content" id="60-tab" role="tabpanel">
                        <div class="chart-container">
@@ -2004,7 +1977,6 @@
                    </div>
     
                        <div class="results-container">
-                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -2014,7 +1986,6 @@
                                <div class="result-details positive" id="wins-amount-60">+$0.00</div>
                            </div>
         
-                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -2024,27 +1995,23 @@
                             <div class="result-details negative" id="losses-amount-60">-$0.00</div>
                     </div>
         
-                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-60">$10,000.00</div>
                 </div>
         
-                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-60">0%</div>
                             <div class="value value-large" id="profit-60">$0.00</div>
                 </div>
         
-                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-60">0%</div>
                             <div class="value negative" id="drawdown-amount-60">$0.00</div>
                 </div>
         
-                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -2072,14 +2039,12 @@
                     </div>
                 </div>
 
-<!-- Pestaña 200 Operaciones -->
                    <div class="tab-content" id="200-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-200" aria-label="Gráfico de evolución del capital para 200 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -2089,7 +2054,6 @@
                                <div class="result-details positive" id="wins-amount-200">+$0.00</div>
                            </div>
         
-                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -2099,27 +2063,23 @@
                             <div class="result-details negative" id="losses-amount-200">-$0.00</div>
                     </div>
         
-                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-200">$10,000.00</div>
                 </div>
         
-                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-200">0%</div>
                             <div class="value value-large" id="profit-200">$0.00</div>
                 </div>
         
-                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-200">0%</div>
                             <div class="value negative" id="drawdown-amount-200">$0.00</div>
                 </div>
         
-                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -2147,14 +2107,12 @@
                     </div>
                 </div>
 
-<!-- Pestaña 600 Operaciones -->
                    <div class="tab-content" id="600-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-600" aria-label="Gráfico de evolución del capital para 600 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -2164,7 +2122,6 @@
                                <div class="result-details positive" id="wins-amount-600">+$0.00</div>
                            </div>
         
-                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -2174,27 +2131,23 @@
                             <div class="result-details negative" id="losses-amount-600">-$0.00</div>
                     </div>
         
-                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-600">$10,000.00</div>
                 </div>
         
-                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-600">0%</div>
                             <div class="value value-large" id="profit-600">$0.00</div>
                 </div>
         
-                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-600">0%</div>
                             <div class="value negative" id="drawdown-amount-600">$0.00</div>
                 </div>
         
-                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -2222,14 +2175,12 @@
                     </div>
                 </div>
 
-<!-- Pestaña 1000 Operaciones -->
                    <div class="tab-content" id="1000-tab" role="tabpanel">
                        <div class="chart-container">
                            <canvas id="chart-1000" aria-label="Gráfico de evolución del capital para 1000 operaciones"></canvas>
                    </div>
     
                        <div class="results-container">
-                           <!-- Operaciones Ganadoras (2 líneas) -->
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span>Operaciones</span>
@@ -2239,7 +2190,6 @@
                                <div class="result-details positive" id="wins-amount-1000">+$0.00</div>
                            </div>
         
-                <!-- Operaciones Perdedoras (2 líneas) -->
                     <div class="result-card">
                             <div class="label two-lines">
                                 <span>Operaciones</span>
@@ -2249,27 +2199,23 @@
                             <div class="result-details negative" id="losses-amount-1000">-$0.00</div>
                     </div>
         
-                <!-- Saldo Final (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Saldo Final</div>
                             <div class="value value-large" id="balance-1000">$10,000.00</div>
                 </div>
         
-                <!-- Rentabilidad (con ajuste para números grandes) -->
                 <div class="result-card has-large-number">
                             <div class="label">Rentabilidad</div>
                             <div class="result-details" id="profit-percent-1000">0%</div>
                             <div class="value value-large" id="profit-1000">$0.00</div>
                 </div>
         
-                <!-- Max Drawdown (nuevo formato) -->
                 <div class="result-card has-large-number">
                             <div class="label">Máx. Drawdown</div>
                             <div class="result-details negative" id="drawdown-percent-1000">0%</div>
                             <div class="value negative" id="drawdown-amount-1000">$0.00</div>
                 </div>
         
-                <!-- Racha de Pérdidas (nuevo formato) -->
                 <div class="result-card">
                             <div class="label two-lines">
                                 <span>Racha de</span>
@@ -2300,7 +2246,6 @@
         </section>
     </main>
 
-    <!-- Botón de volver para móviles -->
     <div class="mobile-back-btn-container">
         <button class="mobile-scroll-top-btn" id="mobileScrollTopBtn">
             <i class="fas fa-arrow-up"></i>
@@ -2335,7 +2280,6 @@
         </div>
     </div>
 
-    <!-- Popup de formulario de contacto -->
     <div id="formPopup">
     <div class="form-container">
       <h2 id="formTitle">Contáctenos</h2>
@@ -2357,17 +2301,15 @@
   </div>
 
     <script>
-    // Variables globales para los datos de las simulaciones
+
     let simulationData = {};
     let charts = {};
-    let currentLanguage = 'es'; // Valor por defecto
+    let currentLanguage = 'es';
 
-    // Cargar preferencias guardadas
     if (localStorage.getItem('language')) {
         currentLanguage = localStorage.getItem('language');
     }
 
-    // Textos para traducción
     const translations = {
         'es': {
             'companyName': 'Sistemas de Trading Eficientes LLC',
@@ -2591,18 +2533,15 @@
         }
     };
 
-    // Función para formatear números
     function formatNumber(num) {
         return num.toLocaleString(currentLanguage, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
-    // Función para determinar si un número es muy grande y necesita ajuste de tamaño
     function needsSizeAdjustment(num) {
         const str = Math.abs(num).toString();
-        return str.length > 8; // Más de 8 dígitos (incluyendo decimales)
+        return str.length > 8; 
     }
 
-    // Función para actualizar gráfico
     function updateChart(chartId, balances) {
         if (!charts[chartId]) return;
         
@@ -2611,7 +2550,6 @@
         charts[chartId].update();
     }
 
-    // Configurar botones para mostrar/ocultar filas
     function setupToggleButtons() {
         ['30', '60', '200', '600', '1000'].forEach(num => {
             const button = document.getElementById(`toggle-rows-${num}`);
@@ -2651,13 +2589,11 @@
         }
     }
 
-    // Función para cambiar el tema
     function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         updateThemeIcon();
         
-        // Actualizar todos los gráficos
         Object.keys(charts).forEach(chartId => {
             if (charts[chartId]) {
                 charts[chartId].options.scales.x.grid.color = document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
@@ -2671,7 +2607,6 @@
         });
     }
 
-    // Función para actualizar el icono del tema
     function updateThemeIcon() {
         const themeToggle = document.querySelector('.theme-toggle svg');
         if (!themeToggle) return;
@@ -2683,26 +2618,21 @@
         }
     }
 
-    // Función para cambiar el idioma
     function toggleLanguage() {
         currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
         updateLanguage();
         localStorage.setItem('language', currentLanguage);
     }
 
-    // Función para actualizar el idioma de la interfaz
     function updateLanguage() {
         const langData = translations[currentLanguage];
-        
-        // Actualizar el texto del botón de idioma
         const langElement = document.getElementById('current-lang');
         if (langElement) {
             langElement.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
         }
         
-        // Actualizar todos los textos traducibles
         for (const [key, value] of Object.entries(langData)) {
-            if (key === 'how-to-list') continue; // Manejar esto aparte
+            if (key === 'how-to-list') continue;
             
             const elements = document.querySelectorAll(`[id="${key}"]`);
             elements.forEach(el => {
@@ -2716,7 +2646,6 @@
             });
         }
         
-        // Actualizar botones de mostrar/ocultar operaciones
         ['30', '60', '200', '600', '1000'].forEach(num => {
             const button = document.getElementById(`toggle-rows-${num}`);
             if (button) {
@@ -2732,19 +2661,10 @@
             }
         });
         
-        // Actualizar etiquetas de los gráficos
         updateChartLabels();
-        
-        // Actualizar formulario de contacto
         updateFormLanguage();
-        
-        // Actualizar declaración de riesgo
         updateRiskDisclaimer();
-        
-        // Actualizar popup de bienvenida
         updateWelcomePopup();
-        
-        // Volver a calcular valores iniciales para actualizar formatos
         calculateInitialValues();
     }
 
@@ -2769,8 +2689,6 @@
     document.getElementById('submitBtn').textContent = langData['submitBtnText'];
     document.getElementById('cancelBtn').textContent = langData['cancelBtnText'];
     document.getElementById('recaptchaError').textContent = langData['recaptchaErrorText'];
-    
-    // Actualizar los atributos title para validación
     document.querySelector('input[name="name"]').title = langData['validation-name'];
     document.querySelector('input[name="email"]').title = langData['validation-email'];
     document.querySelector('textarea[name="message"]').title = langData['validation-message'];
@@ -2809,7 +2727,6 @@
         }
     }
 
-    // Función para hacer scroll al inicio
     function scrollToTop() {
         window.scrollTo({
             top: 0,
@@ -2817,7 +2734,6 @@
         });
     }
 
-    // Manejar scroll para header y botón "volver arriba"
     function handleScroll() {
         const header = document.querySelector('header');
         const riskLink = document.querySelector('.risk-disclaimer-link');
@@ -2826,8 +2742,7 @@
         if (!header) return;
         
         const scrollThreshold = 50;
-        
-        // Controlar el header pequeño
+
         if (window.scrollY > scrollThreshold) {
             header.classList.add('small-header');
             document.body.classList.add('small-header-padding');
@@ -2835,16 +2750,14 @@
             header.classList.remove('small-header');
             document.body.classList.remove('small-header-padding');
         }
-        
-        // Controlar visibilidad del botón de riesgo (solo al 99% del scroll)
+
         const scrollPercentage = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
         const isNearBottom = scrollPercentage > 99;
         
         if (riskLink) {
             riskLink.classList.toggle('visible', isNearBottom);
         }
-        
-        // Controlar el botón "Volver arriba" (solo al 99% del scroll)
+
         if (scrollBtn) {
             scrollBtn.classList.toggle('visible', scrollPercentage > 99);
         }
@@ -2879,8 +2792,7 @@
             
             const ctx = canvas.getContext('2d');
             if (!ctx) return;
-            
-            // Destruir gráfico existente si hay uno
+
             if (charts[id]) {
                 charts[id].destroy();
             }
@@ -2992,8 +2904,7 @@
         const riskPercent = (parseFloat(document.getElementById('risk-percent')?.value) || 0) / 100;
         const winRate = (parseFloat(document.getElementById('win-rate')?.value) || 0) / 100;
         const riskReward = parseFloat(document.getElementById('risk-reward')?.value) || 0;
-        
-        // Validar que todos los campos tengan valores válidos
+
         if (capital <= 0 || riskPercent <= 0 || winRate <= 0 || riskReward <= 0) {
             alert(currentLanguage === 'es' ? 
                 'Por favor, ingresa valores válidos en todos los campos antes de ejecutar la simulación.' : 
@@ -3048,12 +2959,10 @@
         if (tableBody) tableBody.innerHTML = '';
 
         for (let i = 1; i <= numOps; i++) {
-            // Calcular riesgo basado en capital ACTUAL (no el inicial)
+
             const currentRisk = capital * riskPercent;
             const isWin = Math.random() <= winRate;
             const result = isWin ? (currentRisk * riskReward) : -currentRisk;
-
-            // Actualizar capital
             capital += result;
             balances.push(capital);
 
@@ -3069,7 +2978,6 @@
                 maxLosingStreak = Math.max(maxLosingStreak, currentLosingStreak);
             }
 
-            // Calcular drawdown (pérdida máxima desde el pico)
             if (capital > peakCapital) {
                 peakCapital = capital;
             } else {
@@ -3081,7 +2989,6 @@
                 }
             }
 
-            // Actualizar tabla de operaciones
             if (tableBody) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -3095,11 +3002,9 @@
             }
         }
 
-        // Calcular resultados finales
         const profit = capital - initialCapital;
         const profitPercent = (profit / initialCapital) * 100;
 
-        // Actualizar la interfaz de usuario (UI)
         document.getElementById(`wins-${numOps}`).textContent = wins;
         document.getElementById(`wins-amount-${numOps}`).textContent = `+$${formatNumber(totalWinsAmount)}`;
         document.getElementById(`losses-${numOps}`).textContent = losses;
@@ -3110,14 +3015,11 @@
         document.getElementById(`streak-${numOps}`).textContent = maxLosingStreak;
         document.getElementById(`drawdown-amount-${numOps}`).textContent = `$${formatNumber(maxDrawdown)}`;
         document.getElementById(`drawdown-percent-${numOps}`).textContent = `${maxDrawdownPercent.toFixed(2)}%`;
-
-        // Actualizar clases para colores (positivo/negativo)
         document.getElementById(`profit-${numOps}`).className = profit >= 0 ? 'value value-large positive' : 'value value-large negative';
         document.getElementById(`profit-percent-${numOps}`).className = profit >= 0 ? 'result-details positive' : 'result-details negative';
         document.getElementById(`drawdown-amount-${numOps}`).className = maxDrawdown > 0 ? 'value negative' : 'value';
         document.getElementById(`drawdown-percent-${numOps}`).className = maxDrawdownPercent > 0 ? 'result-details negative' : 'result-details';
 
-        // Ajustar tamaño de fuente para números grandes
         adjustFontSize(`balance-${numOps}`, capital);
         adjustFontSize(`profit-${numOps}`, profit);
         adjustFontSize(`drawdown-amount-${numOps}`, maxDrawdown);
@@ -3125,7 +3027,6 @@
         adjustFontSize(`losses-amount-${numOps}`, totalLossesAmount);
         adjustFontSize(`profit-percent-${numOps}`, profitPercent);
 
-        // Ocultar filas extras en la tabla (mostrar solo las primeras 10)
         if (tableBody && numOps > 10) {
             const rows = tableBody.querySelectorAll('tr');
             for (let i = 10; i < rows.length; i++) {
@@ -3133,11 +3034,9 @@
             }
         }
 
-        // Actualizar gráfico
         updateChart(numOps.toString(), balances);
     }
 
-    // Función para ajustar el tamaño de fuente según el valor
     function adjustFontSize(elementId, value) {
         const element = document.getElementById(elementId);
         if (!element) return;
@@ -3156,7 +3055,6 @@
         }
     }
 
-    // Función para mostrar el popup de riesgo
     function showRiskDisclaimer() {
         const popup = document.querySelector('.risk-popup');
         if (popup) {
@@ -3165,7 +3063,6 @@
         }
     }
 
-    // Función para cerrar el popup de riesgo
     function closeRiskDisclaimer() {
         const popup = document.querySelector('.risk-popup');
         if (popup) {
@@ -3174,7 +3071,6 @@
         }
     }
 
-    // Función para mostrar el formulario de contacto
     function showContactForm() {
         const formPopup = document.getElementById('formPopup');
         if (formPopup) {
@@ -3183,7 +3079,6 @@
         }
     }
 
-    // Función para cerrar el formulario de contacto
     function closeForm() {
         const formPopup = document.getElementById('formPopup');
         if (formPopup) {
@@ -3192,9 +3087,7 @@
         }
     }
 
-    // Inicialización al cargar la página
     document.addEventListener('DOMContentLoaded', function() {
-        // Configurar eventos
         document.querySelectorAll('.simulator-input').forEach(input => {
             input.addEventListener('change', calculateInitialValues);
             input.addEventListener('keypress', function(e) {
@@ -3254,8 +3147,7 @@
         document.getElementById('scrollTopBtn')?.addEventListener('click', scrollToTop);
         document.getElementById('contactFormBtn')?.addEventListener('click', showContactForm);
         document.querySelector('.risk-popup-close')?.addEventListener('click', closeRiskDisclaimer);
-        
-        // Inicializar componentes
+
         setupTabs();
         initializeCharts();
         setupToggleButtons();
@@ -3263,26 +3155,19 @@
         
         window.addEventListener('scroll', handleScroll);
         setTimeout(handleScroll, 100);
-        
-        // Configurar tema inicial
+
         if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
         }
         updateThemeIcon();
-        
-        // Configurar idioma inicial
         updateLanguage();
-        
-        // Ejecutar primera simulación
         setTimeout(runSimulations, 500);
-        
-        // Configurar formulario de contacto
+
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // Validar reCAPTCHA
+
                 const recaptchaResponse = grecaptcha.getResponse();
                 if (!recaptchaResponse) {
                     document.getElementById('recaptchaError').style.display = 'block';
@@ -3292,8 +3177,7 @@
                 }
                 
                 document.getElementById('recaptchaError').style.display = 'none';
-                
-                // Enviar formulario
+
                 const formData = new FormData(contactForm);
                 
                 fetch(contactForm.action, {
@@ -3362,7 +3246,6 @@
     </div>
 </div>
 
-<!-- Popup de bienvenida (aparece solo la primera vez) -->
 <div id="initPopup" class="risk-popup" style="display: flex; z-index: 10002;">
   <div class="risk-popup-content" style="max-width: 600px;">
     <h2 style="color:var(--accent-color);margin-bottom:20px;text-align:center;" id="welcome-title">Bienvenido al Simulador de Trading</h2>
@@ -3387,9 +3270,7 @@
 
 <script>
 
-// Mostrar popup después de cargar la página
 document.addEventListener('DOMContentLoaded', function() {
-  // Cerrar al hacer clic en "Entendido"
   document.getElementById('closePopupBtn')?.addEventListener('click', function() {
     const popup = document.getElementById('initPopup');
     if (popup) {
@@ -3397,11 +3278,9 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = '';
     }
   });
-  
-  // Bloquear scroll cuando aparece el popup
+
   document.body.style.overflow = 'hidden';
-  
-  // Inicializar el botón de volver arriba en móviles
+
   document.getElementById('mobileScrollTopBtn')?.addEventListener('click', scrollToTop);
     
 });
