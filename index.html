@@ -2364,9 +2364,9 @@
         <input type="hidden" name="_gotcha">
         <input type="hidden" name="_honey" value="">
 
-        <input type="text" name="name" placeholder="Tu nombre" required title="">
-        <input type="email" name="email" placeholder="Tu email" required title="">
-        <textarea name="message" placeholder="Tu mensaje" required title=""></textarea>
+        <input type="text" name="name" placeholder="Tu nombre" required title="" data-validation="validationName">
+        <input type="email" name="email" placeholder="Tu email" required title="" data-validation="validationEmail">
+        <textarea name="message" placeholder="Tu mensaje" required title="" data-validation="validationMessage"></textarea>
         <div class="g-recaptcha" data-sitekey="6LcpgBwrAAAAAJGX3hxe5bIW_S0jOtH37RyYKhNG"></div>
         <div class="recaptcha-error" id="recaptchaError"></div>
 
@@ -2529,6 +2529,9 @@
         placeholderEmail: "Your Email",
         placeholderMessage: "Your Message",
         requiredField: "Please fill out this field",
+        validationName: "Please enter your name",
+        validationEmail: "Please enter a valid email",
+        validationMessage: "Please write your message",
         submitBtn: "Send Message",
         cancelBtn: "Cancel",
         sendingMessage: "Sending...",
@@ -2645,6 +2648,9 @@
         placeholderEmail: "Tu email",
         placeholderMessage: "Tu mensaje",
         requiredField: "Por favor, completa este campo",
+        validationName: "Por favor, ingresa tu nombre",
+        validationEmail: "Por favor, ingresa un email válido",
+        validationMessage: "Por favor, escribe tu mensaje",
         submitBtn: "Enviar mensaje",
         cancelBtn: "Cancelar",
         sendingMessage: "Enviando...",
@@ -2861,9 +2867,9 @@ document.addEventListener('click', function(e) {
       }
       
       // Actualizar mensajes de validación
-      document.querySelector('input[name="name"]').title = t.requiredField;
-      document.querySelector('input[name="email"]').title = t.requiredField;
-      document.querySelector('textarea[name="message"]').title = t.requiredField;
+      document.querySelector('input[name="name"]').title = t.validationName;
+      document.querySelector('input[name="email"]').title = t.validationEmail;
+      document.querySelector('textarea[name="message"]').title = t.validationMessage;
       });
       
       };
