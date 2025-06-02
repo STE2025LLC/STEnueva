@@ -2382,22 +2382,24 @@ body.dark-mode::before {
   <span>Ir Arriba</span>
   </button>  
   
+  <!-- POPUP DEL FORMULARIO DE CONTACTO OPTIMIZADO -->
   <div id="formPopup">
     <div class="form-container">
       <h2 id="formTitle">Contáctenos</h2>
       <form id="contactForm" action="https://formspree.io/f/xkgjlqnr" method="POST">
-        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+
         <input type="hidden" name="_gotcha">
         <input type="hidden" name="_honey" value="">
-
-        <input type="text" name="name" placeholder="Tu nombre" required title="" data-validation="validationName">
-        <input type="email" name="email" placeholder="Tu email" required title="" data-validation="validationEmail">
-        <textarea name="message" placeholder="Tu mensaje" required title="" data-validation="validationMessage"></textarea>
+        
+        <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
+        <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
+        <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
+        
+        <!-- reCAPTCHA v2 -->
         <div class="g-recaptcha" data-sitekey="6LcpgBwrAAAAAJGX3hxe5bIW_S0jOtH37RyYKhNG"></div>
-        <div class="recaptcha-error" id="recaptchaError"></div>
-
+        
         <button type="submit" id="submitBtn">Enviar mensaje</button>
-        <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
+        <button type="button" onclick="closeForm()">Cancelar</button>
       </form>
     </div>
   </div>
