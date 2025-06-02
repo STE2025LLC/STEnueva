@@ -1816,7 +1816,7 @@
       word-break: break-all;
     }
     
-        /* IMAGEN DE FONDO 100% FUNCIONAL */
+    /* IMAGEN DE FONDO */
     body::before {
       content: "";
       position: fixed;
@@ -1824,14 +1824,21 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://imagehttps://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
-      background-size: 100%;
+      background-image: url('https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.1;
+      background-attachment: fixed;
+      opacity: 0.15; /* Opacidad para modo claro (más visible) */
       z-index: -9999;
       pointer-events: none;
+      transition: opacity 0.3s ease; /* Transición suave al cambiar modo */
     }
+
+    /* Cuando esté en modo oscuro, reducir opacidad */
+    body.dark-mode::before {
+      opacity: 0.07; /* Opacidad para modo oscuro (más discreta) */
+    } 
 
 
   </style>
