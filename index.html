@@ -2961,41 +2961,24 @@ document.addEventListener('click', function(e) {
       }
 
       function switchLang() {
-      currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
-      document.documentElement.lang = currentLanguage;
-      document.querySelector('.lang-switch span').innerText = (currentLanguage === 'es') ? 'EN' : 'ES';
+  currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
+  document.documentElement.lang = currentLanguage;
+  document.querySelector('.lang-switch span').innerText = (currentLanguage === 'es') ? 'EN' : 'ES';
   
-      // Actualizar todo el contenido
-      updateContent();
-      
-      // Si el popup de riesgo está abierto, actualizarlo específicamente
-      if (document.getElementById("riskPopup").style.display === "flex") {
-        const t = translations[currentLanguage];
-        const riskContent = document.querySelector('.risk-popup-content');
-        riskContent.innerHTML = `
-          <h2 id="riskTitle" style="text-align: left;">${t.riskTitle}</h2>
-          ${t.riskContent}
-          <button class="risk-popup-close" onclick="closeRiskDisclaimer()" id="riskCloseBtn">${t.riskCloseBtn}</button>
-        `;
-      }
-
-      // Animación suave al cambiar idioma
-      document.documentElement.style.transition = 'opacity 0.2s ease-in-out';
-      document.documentElement.style.opacity = 0.8;
-      setTimeout(() => {
-        document.documentElement.style.opacity = 1;
-      }, 50);
-      setTimeout(() => {
-        document.documentElement.style.transition = '';
-      }, 250);
-
-      // Actualizar mensaje de error reCAPTCHA si está visible
-        const recaptchaError = document.getElementById("recaptchaError");
-        if (recaptchaError.style.display !== "none") {
-          recaptchaError.textContent = t.recaptchaError;
-        }
-    }
-    
+  // Actualizar todo el contenido
+  updateContent();
+  
+  // Forzar la actualización del mensaje de reCAPTCHA si está visible
+  const recaptchaError = document.getElementById("recaptchaError");
+  if (recaptchaError.style.display === "block") {
+    const t = translations[currentLanguage];
+    recaptchaError.textContent = t.recaptchaError;
+    recaptchaError.style.display = "none"; // Resetear visualmente
+    setTimeout(() => {
+      recaptchaError.style.display = "block";
+    }, 50);
+  }
+}    
     // =================================
     // EFECTO DE SCROLL PARA EL ENCABEZADO
     // =================================
@@ -3151,4 +3134,3 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   </script>
 </body>
 </html>
-
