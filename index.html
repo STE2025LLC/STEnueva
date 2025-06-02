@@ -1283,8 +1283,7 @@
       margin: 20px 0;
       display: flex;
       justify-content: center;
-    }
-      
+    }  
     
     /* ========================
        POPUP DE CONFIRMACIÓN
@@ -2566,6 +2565,7 @@
         validationName: "Please enter your name",
         validationEmail: "Please enter a valid email",
         validationMessage: "Please write your message",
+        recaptchaError: "Please verify the reCAPTCHA",
         submitBtn: "Send Message",
         cancelBtn: "Cancel",
         sendingMessage: "Sending...",
@@ -2689,6 +2689,7 @@
         validationName: "Por favor, ingresa tu nombre",
         validationEmail: "Por favor, ingresa un email válido",
         validationMessage: "Por favor, escribe tu mensaje",
+        recaptchaError: "Por favor, verifica el reCAPTCHA",
         submitBtn: "Enviar mensaje",
         cancelBtn: "Cancelar",
         sendingMessage: "Enviando...",
@@ -3075,7 +3076,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
   // Validar reCAPTCHA
   if (!recaptchaResponse) {
-    alert("Por favor completa la verificación reCAPTCHA");
+    alert(t.recaptchaError);
     return false;
   }
 
