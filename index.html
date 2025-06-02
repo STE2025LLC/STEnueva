@@ -3087,7 +3087,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
   // Validar reCAPTCHA
   if (!recaptchaResponse) {
-    alert(translations[currentLanguage].recaptchaError);
+    alert(t.recaptchaError);
     return false;
   } else {
     document.getElementById("recaptchaError").style.display = "none";
