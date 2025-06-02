@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="Sistemas de Trading Eficientes LLC - Expertos en trading manual y algorítmico. Estrategias personalizadas, gestión de riesgo y formación psicológica para traders. Oficinas en Sheridan, WY, EE.UU.">
   <meta name="keywords" content="trading algorítmico, sistemas de trading, gestión de riesgo, psicología del trader, estrategias trading, backtesting, análisis de mercados">
   <meta name="author" content="Sistemas de Trading Eficientes LLC">
@@ -10,225 +10,1115 @@
   <meta property="og:description" content="Expertos en desarrollo de estrategias de trading personalizadas con sede en EE.UU.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sistemasdetradingeficientes.com">
-  <meta property="og:image" content="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp">
+  <meta property="og:image" content="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Logo%20Blanco%20512x512.webp">
   <meta property="og:site_name" content="Sistemas de Trading Eficientes LLC">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sistemas de Trading Eficientes LLC">
   <meta name="twitter:description" content="Expertos en trading manual y algorítmico con sede en EE.UU.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Logo%20Blanco%20512x512.webp">
   <title>Sistemas de Trading Eficientes LLC - Trading Manual y Algorítmico</title>
-  <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
+  <link rel="icon" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Logo%20Blanco%20512x512.webp" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="canonical" href="https://sistemasdetradingeficientes.com">
   <link rel="preconnect" href="https://raw.githubusercontent.com">
-  <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
-  <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/ImagenPortada.webp" as="image">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" as="image">
+  <link rel="preload" href="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/ImagenPortada.webp" as="image">
+
   <style>
+   
     /* ========================
-       ESTILOS GENERALES OPTIMIZADOS
+       VARIABLES Y ESTILOS BASE
        ======================== */
-    body {
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      background-color: #f0f2f5;
+    
+    :root {
+      
+      /* Colores base claros */
+      
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-tertiary: #e9ecef;
+      --text-primary: #333333;
+      --text-secondary: #555555;
+      --accent-color: #1a56a7;
+      --accent-hover: #0d47a1;
+      --border-color: #dee2e6;
+      --border-light: rgba(0,0,0,0.1);
+      --shadow-dark: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-medium: 0 8px 25px rgba(0,0,0,0.08);
+      --radius-small: 6px;
+      --radius-medium: 12px;
+      --radius-large: 16px;
+      --transition-fast: 0.2s ease;
+      --transition-medium: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition-slow: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+      /* Específicos para modo oscuro */
+      
+      --dark-bg-primary: #121212;
+      --dark-bg-secondary: #1e1e1e;
+      --dark-bg-tertiary: #252525;
+      --dark-text-primary: #e0e0e0;
+      --dark-text-secondary: #a0a0a0;
+      --dark-accent-color: #4a89dc;
+      --dark-accent-hover: #5d9cec;
+      --dark-border-color: #333333;
+      --dark-border-light: rgba(255,255,255,0.1);
+      --dark-shadow-dark: 0 4px 12px rgba(0,0,0,0.3);
+      --dark-shadow-medium: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body, 
+    section, 
+    p, 
+    .text-justify,
+    .key-point p, 
+    .service-content-inner p, 
+    .highlight-box p {
+      text-align: justify !important;
+      text-justify: inter-word !important;
+    }
+
+    /* Excepciones (no justificar títulos, botones, tablas) */
+    h1, h2, h3, h4, h5, h6,
+    button, input, textarea, select,
+    .service-header, 
+    .math-expectation-table,
+    .service-content li {
+      text-align: inherit !important;
+    }
+
+    .footer-contact p,
+    .footer-address {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 100%;
+      max-width: none !important;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 0;
+      padding-top: 320px;
       line-height: 1.6;
       position: relative;
-      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: padding-top 0.5s ease-in-out;
     }
-    header {
-      background-color: #1a1a2e;
-      color: white;
-      text-align: center;
-      padding: 50px 20px 30px;
+    
+    body.dark-mode {
+      --bg-primary: var(--dark-bg-primary);
+      --bg-secondary: var(--dark-bg-secondary);
+      --bg-tertiary: var(--dark-bg-tertiary);
+      --text-primary: var(--dark-text-primary);
+      --text-secondary: var(--dark-text-secondary);
+      --accent-color: var(--dark-accent-color);
+      --accent-hover: var(--dark-accent-hover);
+      --border-color: var(--dark-border-color);
+      --border-light: var(--dark-border-light);
+      --shadow-dark: var(--dark-shadow-dark);
+      --shadow-medium: var(--dark-shadow-medium);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    /* ========================
+       TIPOGRAFÍA MEJORADA
+       ======================== */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.8em;
+      color: var(--text-primary) !important;
+    }
+
+    h2 {
+      font-size: 1.8rem;
       position: relative;
-    }
-    .logo-container {
+      padding-bottom: 10px;
       margin-bottom: 20px;
     }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      border-radius: 3px;
+    }
+
+    .key-section-title {
+      font-size: 1.65rem;
+      text-align: left;
+      margin: 0 0 20px;
+      position: relative;
+      color: var(--accent-color) !important;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .key-section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      border-radius: 3px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2em;
+      line-height: 1.7;
+    }
+
+    section > p:first-of-type {
+      margin-bottom: 1.5em;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* ========================
+       ENCABEZADO CON TRANSICIÓN SUAVE
+       ======================== */
+    header {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      color: white;
+      padding: 40px 15px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-dark);
+      text-align: center;
+      transition: all 0.1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+    }
+    
     .logo {
       height: 100px;
       width: 100px;
       object-fit: contain;
-      display: block;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
       margin: 0 auto;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 10px 0 0;
-      line-height: 1.2;
-    }
-    .company-name-line {
-      display: inline;
-    }
-    header p {
-      font-size: 1.2rem;
+      display: block;
       margin-top: 10px;
-      color: #bbb;
+      transform: translateY(-15px) !important;
+      transition: all 0.1s ease-in-out;
     }
-    .lang-switch {
-      position: absolute;
+
+    .header-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transition: all 0.1s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin: 10px 0 0;
+      color: white !important;
+      transform: translateY(8px) !important;
+      transition: all 0.1s ease-in-out;
+    }
+
+    header p#tagline {
+      font-size: 1rem;
+      text-align: center !important;
+      transform: translateY(14px) !important;
+      color: #bbb !important;
+      transition: all 0.1s ease-in-out;
+    }
+
+    header.small-header {
+      padding: 0 20px;
+      height: 80px;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    header.small-header .header-content-wrapper {
+      flex-direction: row;
+      align-items: center;
+      width: auto;
+    }
+
+    header.small-header .logo-container {
+      margin-right: 15px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      padding-top: 0;
+      transform: translateY(-4px);
+      align-self: center;
+      z-index: 1;
+    }
+
+    header.small-header .logo {
+      height: 55px;
+      width: 55px;
+      margin: 0;
+      transform: translateY(-5px) !important;
+    }
+
+    header.small-header .header-title-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left !important;
+      margin-left: -15px; /* Aumentado de -15px a -25px para mover más a la izquierda */
+      padding-top: 0;
+      transform: none;
+      margin-top: -8px;
+    }
+
+    header.small-header h1 {
+      font-size: 1.1rem;
+      margin: 0;
+      margin-bottom: 0;
+      line-height: 1.2;
+      transform: translateY(-1px) !important;
+      white-space: nowrap;
+      margin-left: 15px; /* Esta es la línea nueva que añadimos */
+    }
+
+    header.small-header p#tagline {
+      font-size: 0.8rem;
+      margin-top: 0;
+      margin: 0;
+      text-align: left !important;
+      line-height: 1.2;
+      transform: translateY(0) !important;
+      margin-left: 15px; /* Esta es la línea nueva que añadimos */
+    }
+    
+    body.small-header-padding {
+      padding-top: 200px;
+    }
+
+    /* ========================
+       BOTÓN DE IDIOMA Y TEMA
+       ======================== */
+   
+    .header-controls {
+      position: fixed;
       top: 20px;
       right: 20px;
-      background-color: #fff;
-      border: 1px solid #1a1a2e;
+      z-index: 11003;
+      display: flex;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    /* Añadido para asegurar que los controles estén siempre visibles */
+    #formPopup, #confirmationPopup, #riskPopup {
+      z-index: 10000; /* Menor que el z-index de header-controls */
+    }
+
+    .lang-switch {
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(26, 26, 46, 0.2);
       color: #1a1a2e;
       padding: 8px 15px;
       cursor: pointer;
       font-size: 1rem;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      z-index: 100;
+      border-radius: var(--radius-small);
+      font-weight: 500;
+      transition: all var(--transition-medium);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+
     .lang-switch:hover {
-      background-color: #1a1a2e;
+      background-color: var(--accent-color);
       color: white;
-      border-color: white;
+      border-color: var(--accent-color);
     }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h2 {
+
+    .theme-toggle {
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(26, 26, 46, 0.2);
       color: #1a1a2e;
-      margin-bottom: 10px;
-      font-size: 1.8rem;
-      border-bottom: 2px solid #1a1a2e;
-      padding-bottom: 10px;
+      padding: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: var(--radius-small);
+      font-weight: 500;
+      transition: all var(--transition-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
     }
-    p, li {
-      color: #333;
+
+    .theme-toggle:hover {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      margin-bottom: 10px;
-      padding-left: 32px;
-      position: relative;
-      min-height: 24px;
-    }
-    li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 2px;
+
+    .theme-toggle svg {
       width: 20px;
       height: 20px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231a1a2e' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .theme-toggle svg {
+      color: #333;
+    }
+        
+    
+    /* ========================
+       BOTONES DEL ENCABEZADO PEQUEÑO (SOLO PC)
+       ======================== */
+   
+    /* Contenedor de botones */
+    .header-nav-buttons {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      gap: 10px;
+      z-index: 2;
+    }
+
+    /* Botones individuales */
+    .header-nav-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 16px;
+      border-radius: var(--radius-small);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition-medium);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 500;
+      min-height: 40px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .header-nav-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Iconos dentro de los botones */
+.header-nav-btn i {
+    font-size: 0.9rem;
+    transition: all var(--transition-medium);
+}
+
+.header-nav-btn:hover i {
+    color: white !important;
+}
+
+    /* Mostrar botones solo en encabezado pequeño y pantallas grandes */
+    @media (min-width: 1350px) {
+      header.small-header .header-nav-buttons {
+        display: flex;
+      }
+    }
+
+    /* ========================
+       SECCIONES Y CONTENIDO
+       ======================== */
+   
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 25px;
+      width: 100%;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      max-height: 450px;
+      object-fit: cover;
+      margin: 0 auto 40px;
+      display: block;
+      border-radius: var(--radius-medium);
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      transition: transform var(--transition-medium);
+    }
+
+    .hero-image:hover {
+      transform: translateY(-3px);
+    }
+
+    /* ========================
+       SECCIÓN "LA CLAVE DEL ÉXITO"
+       ======================== */
+   
+    .key-section {
+      background-color: var(--bg-secondary);
+      padding: 40px;
+      border-radius: var(--radius-large);
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .key-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-color), #3a4a8a);
+    }
+
+    .key-point {
+      margin-bottom: 30px;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .key-point:last-child {
+      margin-bottom: 0;
+    }
+
+    .key-point:last-child .highlight-box {
+      margin-bottom: 0;
+    }
+
+    .key-point-icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .key-point h3 {
+      font-size: 1.4rem;
+      color: var(--accent-color) !important;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .math-expectation-table {
+      width: 100%;
+      max-width: 100%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      box-shadow: var(--shadow-medium);
+      border-radius: var(--radius-medium);
+      overflow: hidden;
+      font-size: 0.8rem;
+      display: table;
+    }
+
+    .math-expectation-table th,
+    .math-expectation-table td {
+      padding: 6px 8px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+
+    .math-expectation-table th,
+    .math-expectation-table td:first-child,
+    .math-expectation-table td:nth-child(2) {
+      background-color: var(--accent-color);
+      color: white;
+      font-weight: 600;
+    }
+
+    .math-expectation-table tr:nth-child(even) {
+      background-color: rgba(26, 86, 167, 0.05);
+    }
+
+    .math-expectation-table tr:hover {
+      background-color: rgba(26, 86, 167, 0.1);
+    }
+
+    .positive-value {
+      color: #28a745;
+      font-weight: 600;
+    }
+
+    .negative-value {
+      color: #dc3545;
+    }
+
+    .zero-value {
+      font-weight: 600;
+    }
+
+    .table-caption {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-align: center !important;
+      width: 100%;
+      display: block;
+    }
+
+    .highlight-box {
+      background-color: rgba(26, 86, 167, 0.1);
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--text-primary);
+    }
+
+    /* Nuevo estilo para el banner del simulador */
+    .simulator-banner {
+      background: linear-gradient(135deg, var(--accent-color) 0%, #2a3a6a 100%);
+      color: white;
+      padding: 25px;
+      border-radius: var(--radius-medium);
+      margin: 30px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+    }
+
+    .simulator-banner h3 {
+      color: white !important;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .simulator-banner p {
+      color: rgba(255, 255, 255, 0.9) !important;
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+
+    .simulator-btn {
+      background-color: white;
+      color: var(--accent-color);
+      border: none;
+      padding: 12px 25px;
+      border-radius: var(--radius-small);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-medium);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .simulator-btn:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .simulator-btn i {
+      font-size: 1rem;
+    }
+
+    .dark-mode .simulator-banner {
+      background: linear-gradient(135deg, var(--dark-accent-color) 0%, #3a4a8a 100%);
+      border-color: var(--dark-border-color);
+    }
+
+    .dark-mode .simulator-btn {
+      color: var(--dark-accent-color);
+    }
+
+    /* ========================
+       ACORDEONES PREMIUM
+       ======================== */
+   
+    .services-container {
+      margin-top: 30px;
+    }
+
+    .service-item {
+      margin-bottom: 20px;
+      border-radius: var(--radius-large);
+      overflow: hidden;
+      transition: all var(--transition-slow);
+      box-shadow: var(--shadow-dark);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--radius-large);
+      border: 2px solid transparent;
+      transition: all var(--transition-medium);
+      pointer-events: none;
+    }
+
+    .service-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .service-item:hover::before {
+      border-color: var(--accent-color);
+    }
+
+    .service-item.active {
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .service-header {
+      padding: 24px 30px;
+      background: var(--bg-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: flex-start !important; 
+      align-items: center;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: all var(--transition-medium);
+      position: relative;
+      z-index: 2;
+      font-size: 1.1rem;
+      min-height: 80px;
+      text-align: left !important;
+      gap: 15px;
+    }
+    
+    .service-header > span:first-child {
+      flex-grow: 1;
+      text-align: left !important;
+    }
+    
+    .service-item.active .service-header {
+      background: linear-gradient(135deg, var(--accent-color) 0%, #2a3a6a 100%);
+      color: white;
+    }
+
+    .service-header::before {
+      content: attr(data-number);
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      font-weight: 700;
+      color: var(--accent-color);
+      transition: all var(--transition-medium);
+      flex-shrink: 0;
+    }
+
+    .dark-mode .service-header::before {
+      background: white;
+      color: var(--accent-color);
+    }
+
+    .service-item.active .service-header::before {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .service-content {
+      padding: 0 30px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow);
+      background: var(--bg-primary);
+      position: relative;
+    }
+
+    .service-item.active .service-content {
+      max-height: 1500px;
+    }
+
+    .service-content-inner {
+      padding: 0 0 30px 0;
+    }
+
+    .service-content p:first-child {
+      text-align: justify !important;
+      text-justify: inter-word !important;
+    }
+    
+    .service-content p:not(:first-child),
+    .service-content ul {
+      text-align: left !important;
+    }
+
+    .service-content p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .service-content p:first-child::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent-color), #3a4a8a);
+      border-radius: 3px;
+    }
+
+    .service-content ul {
+      margin-top: 20px;
+      gap: 15px;
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-content li {
+      margin-bottom: 0;
+      padding: 15px 15px 15px 50px;
+      position: relative;
+      color: var(--text-primary);
+      background: rgba(26, 86, 167, 0.05);
+      border-radius: var(--radius-small);
+      transition: all var(--transition-medium);
+      border-left: 3px solid transparent;
+    }
+
+    .dark-mode .service-content li {
+      background: rgba(74, 111, 165, 0.05);
+    }
+
+    .service-content li:hover {
+      background: rgba(26, 86, 167, 0.1);
+      border-left-color: var(--accent-color);
+      transform: translateX(5px);
+    }
+
+    .dark-mode .service-content li:hover {
+      background: rgba(74, 111, 165, 0.1);
+    }
+
+    .service-content li::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a56a7'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      opacity: 0.8;
+      transition: all var(--transition-medium);
     }
-    .hero-image {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      max-height: 400px;
-      object-fit: cover;
-      margin: 0 auto 20px;
-      display: block;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      will-change: transform;
+
+    .dark-mode .service-content li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234a6fa5'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
     }
+
+    .service-content li:hover::before {
+      transform: translateY(-50%) scale(1.1);
+      opacity: 1;
+    }
+
+    .service-toggle {
+      transition: all var(--transition-slow);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26, 86, 167, 0.1);
+      border-radius: 50%;
+      margin-left: 15px;
+      flex-shrink: 0;
+    }
+
+    .dark-mode .service-toggle {
+      background: rgba(74, 111, 165, 0.1);
+    }
+
+    .service-item.active .service-toggle {
+      transform: rotate(180deg);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .service-toggle svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent-color);
+      stroke-width: 3px;
+      transition: all var(--transition-medium);
+    }
+
+    .dark-mode .service-toggle svg {
+      stroke: var(--dark-accent-color);
+    }
+
+    .service-item.active .service-toggle svg {
+      stroke: white;
+    }
+
     /* ========================
-       FOOTER & CONTACTO
+       FOOTER PREMIUM (SIEMPRE OSCURO)
        ======================== */
+   
     .footer-container {
-      background-color: #1a1a2e;
-      padding: 30px 0 20px;
-      margin-top: 80px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      padding: 40px 0 20px;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
+
     .footer-content {
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 25px;
       color: white;
       text-align: center;
     }
+
     .footer-contact h3 {
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       font-size: 1.4rem;
+      color: white !important;
     }
+
     .footer-contact p {
       margin: 8px 0;
-      color: #ddd;
+      color: #bbb;
       text-align: center;
+      font-size: 0.9rem;
     }
+
     .contact-form-btn {
+      background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-top: 15px;
+  transition: all var(--transition-medium), transform 0.3s ease;
+  font-weight: 500;
+  min-height: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;    }
+
+    .contact-form-btn:hover {
+      background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateX(5px) translateY(-2px); /* Combina el movimiento horizontal con el vertical existente */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);    }
+
+    .footer-address {
+      color: #bbb;
+      font-size: 0.75rem;
+      margin: 15px 0;
+      transform: translateY(10px);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .copyright {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+
+    /* ========================
+       DECLARACIÓN DE RIESGO FIJA (TEXTO SIMPLE)
+       ======================== */
+    
+    .risk-disclaimer-link {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 900;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+        
+    .risk-disclaimer-link.visible {
+      opacity: 1;
+    }
+
+    .risk-disclaimer-link a {
+      color: #5c5a52;
+      text-decoration: underline;
+      font-size: 0.75rem;
+      transition: color 0.3s ease;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    .risk-disclaimer-link a:hover {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    
+    /* MODO OSCURO DISCLAIMER */
+    
+    .dark-mode .risk-disclaimer-link a {
+      color: #5c5a52;
+    }
+
+    .dark-mode .risk-disclaimer-link a:hover {
+      color: var(--dark-accent-hover);
+    }
+
+    /* ========================
+       BOTÓN SCROLL TOP (ESTILO MÁS SUTIL)
+       ======================== */
+  
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 1000;
+      display: none;
       background-color: transparent;
       color: white;
       border: 1px solid rgba(255,255,255,0.3);
       padding: 8px 20px;
-      border-radius: 4px;
-      cursor: pointer;
+      border-radius: var(--radius-small);
       font-size: 0.95rem;
-      margin-top: 10px;
-      transition: all 0.3s;
-    }
-    .contact-form-btn:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
-    .footer-address {
-      color: #bbb;
-      font-size: 0.8rem;
-      margin-bottom: 10px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .copyright {
-      color: #999;
-      font-size: 0.8rem;
-    }
-    .copyright .mobile-line {
-      display: none;
-    }
-    /* -------------------------
-       BOTÓN VOLVER ARRIBA
-       ------------------------- */
-    .scroll-top-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #1a1a2e;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      font-size: 1rem;
+      font-weight: 500;
+      min-height: 40px;
+      transition: all var(--transition-medium);
+      box-shadow: var(--shadow-medium);
       cursor: pointer;
-      display: none;
-      transition: all 0.3s ease;
-      z-index: 1000;
-      border-radius: 25px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      opacity: 0.9;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
     }
+
+    .dark-mode .scroll-top-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
     .scroll-top-btn:hover {
-      opacity: 1;
-      transform: translateY(-5px);
-      background-color: #16213e;
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+      cursor: pointer;
     }
+
+    .dark-mode .scroll-top-btn:hover {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      cursor: pointer;
+    }
+
     .scroll-top-btn.visible {
-      display: flex;
+      display: block;
     }
-    /* ------------------------
-       POPUP DEL FORMULARIO OPTIMIZADO
-       ------------------------ */
+        
+    /* ========================
+       POPUPS DE FORMULARIO
+       ======================== */
+   
     #formPopup {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
       z-index: 10000;
       display: none;
       justify-content: center;
@@ -237,79 +1127,182 @@
       box-sizing: border-box;
       overflow-y: auto;
     }
+
     #formPopup .form-container {
-      background: white;
-      padding: 25px;
-      border-radius: 8px;
+      background: var(--bg-primary);
+      padding: 30px;
+      border-radius: var(--radius-medium);
       max-width: 500px;
       width: 100%;
       margin: auto;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      animation: fadeInUp 0.4s ease;
     }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     #formPopup h2 {
-      color: #1a1a2e;
+      color: var(--text-primary);
       margin-top: 0;
+      margin-bottom: 25px;
       font-size: 1.5rem;
-      border-bottom: none;
-      padding-bottom: 0;
+      position: relative;
+      padding-bottom: 10px;
+      width: 100%;
+      display: inline-block;
     }
+
+    #formPopup h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      border-radius: 3px;
+    }
+
     #formPopup input,
     #formPopup textarea,
     #formPopup select {
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-small);
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       box-sizing: border-box;
       font-size: 1rem;
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: all var(--transition-medium);
     }
+
+    #formPopup input:focus,
+    #formPopup textarea:focus,
+    #formPopup select:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(26, 86, 167, 0.2);
+    }
+
+    .dark-mode #formPopup input:focus,
+    .dark-mode #formPopup textarea:focus,
+    .dark-mode #formPopup select:focus {
+      box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+    }
+
     #formPopup textarea {
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Inter', sans-serif;
       resize: vertical;
-      min-height: 120px;
+      min-height: 140px;
     }
+
+    #formPopup select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555555' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 12px;
+    }
+
+    .dark-mode #formPopup select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23a0a0a0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    }
+
     input[name="_gotcha"],
     input[name="_honey"] {
       display: none !important;
     }
+
     #formPopup button {
-      padding: 12px;
-      border-radius: 4px;
+      padding: 14px;
+      border-radius: var(--radius-small);
       cursor: pointer;
       width: 100%;
       border: none;
-      font-weight: bold;
+      font-weight: 600;
       margin-top: 10px;
       font-size: 1rem;
-      transition: all 0.3s;
+      transition: all var(--transition-medium);
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    
     #formPopup button[type="submit"] {
-      background: #1a1a2e;
+      background: var(--accent-color);
       color: white;
     }
-    #formPopup button[type="button"] {
-      background: #f0f2f5;
-      color: #1a1a2e;
-      border: 1px solid #ddd;
-      margin-top: 5px;
+        
+    #formPopup button[type="submit"]:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
     }
+    
+    #formPopup button[type="button"] {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      margin-top: 15px;
+      font-weight: 600;
+      transition: all var(--transition-medium);
+    }
+
+    .dark-mode #formPopup button[type="button"] {
+      background: var(--dark-bg-tertiary);
+      color: var(--dark-text-primary);
+      border-color: var(--dark-border-color);
+    }
+
+    #formPopup button[type="button"]:hover {
+      background: rgba(0,0,0,0.05);
+      transform: translateY(-2px);
+    }
+
+    .dark-mode #formPopup button[type="button"]:hover {
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+    }    
+    
     .g-recaptcha {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       display: flex;
       justify-content: center;
     }
-    /* -------------------------
+
+    .recaptcha-error {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: none;
+      text-align: center;
+    }
+
+    /* ========================
        POPUP DE CONFIRMACIÓN
-       ------------------------- */
+       ======================== */
+   
     .confirmation-popup {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
       z-index: 10001;
       display: none;
       justify-content: center;
@@ -317,179 +1310,630 @@
       padding: 20px;
       box-sizing: border-box;
     }
+
     .confirmation-content {
-      background: white;
-      padding: 25px;
-      border-radius: 8px;
+      background: var(--bg-primary);
+      padding: 30px;
+      border-radius: var(--radius-medium);
       max-width: 500px;
       width: 100%;
       text-align: center;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-medium);
+      animation: fadeInUp 0.4s ease;
     }
+
+    .confirmation-content h2 {
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
     .confirmation-content p {
       margin: 20px 0;
       font-size: 1.1rem;
       line-height: 1.6;
+      color: var(--text-secondary);
     }
+
     .confirmation-btn {
-      background: #1a1a2e;
+      background: var(--accent-color);
       color: white;
-      padding: 12px 20px;
+      padding: 14px 25px;
       border: none;
-      border-radius: 4px;
+      border-radius: var(--radius-small);
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 500;
       font-size: 1rem;
       width: 100%;
       max-width: 200px;
-      margin: 0 auto;
+      margin: 20px auto 0;
+      transition: all var(--transition-medium);
     }
+
+    .confirmation-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .risk-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 10002;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .risk-popup-content {
+      background: var(--bg-primary);
+      padding: 30px;
+      border-radius: var(--radius-medium);
+      max-width: 700px;
+      width: 100%;
+      margin: auto;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+      animation: fadeInUp 0.4s ease;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .risk-popup h2 {
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    
+    .risk-popup p {
+      margin-bottom: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .risk-popup strong {
+      color: var(--text-primary);
+    }
+
+    .risk-popup-close {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-weight: 500;
+      display: block;
+      margin: 25px auto 0;
+      transition: all var(--transition-medium);
+    }
+
+    .risk-popup-close:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
     /* ========================
-       MEDIA QUERIES PARA MÓVIL OPTIMIZADAS
+       MEDIA QUERIES PARA MÓVIL
        ======================== */
-    @media (max-width: 600px) {
-      header {
-        padding: 30px 15px 20px;
-      }
-      header h1 {
-        font-size: 1.8rem;
-        margin: 5px 0 0;
-        display: block;
-      }
-      .company-name-line {
-        display: block;
-        line-height: 1.2;
-      }
+   
+    @media (max-width: 768px) {
+      body {
+      font-size: 0.95rem;
+      padding-top: 195px;
+    }
+      
+    body.small-header-padding {
+      padding-top: 190px;
+    }
+  
+    header {
+      padding: 20px 15px 15px !important;
+      height: 180px;
+    }
+
+    .logo {
+      height: 70px;
+      width: 70px;
+      transform: translateY(-17px) !important;
+    }
+      
+    .logo-container {
+      margin-top: 5px;
+      transform: translateY(0) !important;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      margin-bottom: 0;
+      line-height: 1.2;
+      transform: translateY(-15px) !important;
+      margin-top: 0;
+    }
+      
+    header p#tagline {
+      font-size: 1rem;
+      margin-bottom: 2px;
+      line-height: 1.2;
+      transform: translateY(-10px) !important;
+      margin-top: 0;
+    }
+      
+    .header-title-container {
+      margin-top: 12px;
+      transform: translateY(0);        
+    }
+
+    .header-controls {
+      top: 30px;
+      right: 10px;
+      gap: 0;
+      padding: 0;
+    }
+      
+    .theme-toggle, .lang-switch {
+      transform: scale(0.70);
+      transform-origin: top right;
+      margin: 0 -2px;
+      z-index: 10003 !important;
+      position: relative;
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 32px;
+      padding: 6px;
+    }
+
+    .lang-switch {
+      padding: 5px 10px;
+      font-size: 0.8rem;  
+    } 
+                  
+    .company-name-line {
+      display: block;
+      line-height: 1.2;
+    }
+
       header p {
         font-size: 1rem;
-        margin-top: 5px;
+        margin-top: 10px;
+        color: #bbb !important;
       }
-      .logo {
-        height: 55px;
-        width: 55px;
+      
+      section {
+        margin: 20px auto;
+        padding: 0 15px;
       }
-      .lang-switch {
-        top: 10px;
-        right: 10px;
-        padding: 6px 12px;
-        font-size: 0.9rem;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
       }
+
       .hero-image {
         max-height: 250px;
+        border-radius: var(--radius-small);
+        margin-bottom: 30px;
       }
-      .scroll-top-btn {
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 15px;
+
+      header.small-header .logo-container {
+        transform: translateY(5px); 
+        margin-bottom: 5px; 
+      }
+      
+      header.small-header .header-title-container {
+        margin-left: -23px;
+        padding-top: -5px;
+        transform: none;
+        margin-top: -4px;
+      }
+      
+      header.small-header .logo {
+        height: 55px;  
+        width: 55px;
+        margin-left: 1px;  
+        margin-top: 8px;
+        transform: translateY(-4px) !important;
+      }      
+      
+      header.small-header h1 {
+        transform: translateY(0) !important;
+        margin-bottom: 2px; 
+        margin-left: 20px; /* Añade esta línea */
+      }
+
+      header.small-header p#tagline {
+        transform: translateY(-2px) !important; 
+        margin-left: 20px; /* Añade esta línea */
+      }
+      
+      .key-section {
+        padding: 20px;
+        margin-top: 15px;
+      }
+
+      .key-point {
+        padding-left: 30px;
+        margin-bottom: 20px;
+      }
+
+      .key-point h3 {
+        text-align: left !important;
+      }
+
+      .key-point-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .key-point h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .math-expectation-table {
+       font-size: 0.7rem;
+       display: block;
+       white-space: nowrap;
+       overflow-x: auto;
+       margin: 30px auto;
+      }
+      
+      .math-expectation-table th,
+      .math-expectation-table td {
+       padding: 4px 8px;
+       min-width: 15px;
+      }
+      
+      .math-expectation-table th,
+      .math-expectation-table td:first-child,
+      .math-expectation-table td:nth-child(2) {
+        background-color: var(--accent-color);
+        color: white;
+        font-weight: 600;
+      }
+      
+      .highlight-box {
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .simulator-banner {
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .simulator-banner h3 {
+        font-size: 1.1rem;
+      }
+
+      .simulator-banner p {
         font-size: 0.9rem;
       }
-      #formPopup {
-        padding: 10px;
+
+      .simulator-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
       }
-      #formPopup .form-container {
+      
+      .services-container {
+        margin-bottom: -50px; 
+      }
+
+      .service-header {
+        font-size: 1rem !important;
+        padding: 16px 20px;
+        min-height: auto;
+        text-align: left !important;
+        justify-content: flex-start !important;
+      }
+      
+      .service-header > span:first-child {
+        text-align: left !important;
+      }
+
+      .service-content {
+        padding: 0 15px;
+      }
+
+      .service-content-inner {
+        padding-bottom: 20px;
+      }
+
+      .service-content p {
+        padding-left: 15px;
+        margin-bottom: 15px;
+      }
+
+      .service-content p:first-child::before {
+        width: 2px;
+      }
+
+      .service-content ul {
+        margin-top: 15px;
+      }
+
+      .service-content li {
+        padding: 12px 12px 12px 40px;
+      }
+
+      .service-content li::before {
+        left: 12px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .service-toggle {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .scroll-top-btn {
+        display: none !important;
+      }
+
+      .table-caption {
+        font-size: 0.8rem;
+      }
+      
+
+      .footer-container {
+        padding: 50px 0 20px;
+      }
+
+      .risk-popup-content {
         padding: 20px;
+        max-height: 85vh;
       }
-      #formPopup input,
-      #formPopup textarea,
-      #formPopup button {
-        padding: 10px;
-        font-size: 0.95rem;
+
+      .risk-disclaimer-link {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 42px;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center !important;
+        padding: 8px 0;
+        z-index: 900;
       }
-      #formPopup h2 {
-        font-size: 1.3rem;
+  
+      .risk-disclaimer-link a {
+        color: #5c5a52;
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: inline-block;
+      }        
+      
+      body, p {
+        hyphens: auto;
+        word-spacing: -0.05em;
       }
-      .confirmation-content {
-        padding: 20px;
+  
+      .math-expectation-table th,
+      .math-expectation-table td {
+       text-align: center !important;
       }
-      .confirmation-content p {
-        font-size: 1rem;
-      }
-      .confirmation-btn {
-        padding: 10px 15px;
-        font-size: 0.95rem;
-      }
-      li {
-        padding-left: 28px;
-        min-height: 20px;
-      }
-      li::before {
-        width: 18px;
-        height: 18px;
-        top: 1px;
-      }
-      .copyright {
-        display: flex;
-        flex-direction: column;
-      }
-      .copyright .desktop-line {
-        display: none;
-      }
-      .copyright .mobile-line {
-        display: block;
-      }
-      .footer-address,
-      .copyright {
+   }
+
+    @media (max-width: 480px) {
+     
+      body {
         font-size: 0.7rem;
-        white-space: normal;
-        text-overflow: clip;
-        overflow: visible;
       }
-      .footer-info {
-        padding: 0 10px;
+      
+      .logo {
+        height: 60px;
+        width: 60px;
+        transform: translateY(-17px) !important;
       }
-    }
-    @media (max-width: 375px) {
+
       header h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        transform: translateY(-15px) !important;
       }
+      
+      header p#tagline {
+        font-size: 0.9rem;
+        transform: translateY(-11px) !important;
+      }
+      
+      header.small-header h1 {
+        font-size: 0.9rem !important;
+        white-space: nowrap;
+      }
+      
+      header.small-header p#tagline {
+        transform: translateY(-2px) !important;
+      }
+      
+      header.small-header .logo-container {
+        margin-bottom: 13px; 
+      }
+      
+      header.small-header .logo {
+        height: 55px;  
+        width: 55px;
+        margin-left: 1px;  
+        margin-top: 8px;
+        transform: translateY(0) !important;        
+      }      
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      
       .company-name-line {
         font-size: inherit;
       }
+
       header p {
         font-size: 0.9rem;
       }
-      .logo {
-        height: 35px;
-        width: 35px;
-      }
+
       .hero-image {
-        max-height: 200px;
+        max-height: 180px;
       }
+      
+      .key-point {
+        padding-left: 25px;
+      }
+      
+      .key-section-title {
+        font-size: 0.9rem;
+      }
+      
+      .key-point h3 {
+        text-align: left !important;
+      }
+
+      .key-point-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      .key-point h3 {
+        font-size: 0.9rem;   
+      }
+           
+      .service-header {
+        font-size: 0.9rem !important;
+      }
+      
+      .scroll-top-btn {
+        display: none !important;
+      }
+        
+      .math-expectation-table {
+        font-size: 0.7rem;
+      }
+
+      .math-expectation-table th,
+      .math-expectation-table td {
+        padding: 5px 6px;
+      }
+
+      .simulator-banner {
+        padding: 15px;
+      }
+
+      .simulator-banner h3 {
+        font-size: 0.85rem;
+      }
+
+      .simulator-banner p {
+        font-size: 0.7rem;
+      }
+
+      .simulator-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+      }
+
       #formPopup .form-container {
         padding: 15px;
       }
+
       #formPopup h2 {
         font-size: 1.2rem;
       }
+
       #formPopup input,
       #formPopup textarea {
-        padding: 8px;
+        padding: 10px;
         font-size: 0.9rem;
       }
-      li {
-        padding-left: 24px;
-        min-height: 18px;
+
+      .service-header {
+        padding: 14px 16px;
+        text-align: left !important;
+        justify-content: flex-start !important;
       }
-      li::before {
-        width: 16px;
-        height: 16px;
+
+      .service-content li {
+        padding: 10px 10px 10px 35px;
+        font-size: 0.8rem;
       }
-      .footer-address,
-      .copyright {
-        font-size: 0.65rem;
+      
+      .service-content p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .services-container {
+        margin-bottom: -50px;
+      }
+      
+      .service-content li::before {
+        left: 10px;
+        width: 18px;
+        height: 18px;
+      }
+                 
+      .risk-popup-content {
+        padding: 15px;
+      }
+      
+      body, p {
+       hyphens: auto;
+       word-spacing: -0.05em;
+      }
+  
+      .math-expectation-table th,
+      .math-expectation-table td {
+      text-align: center !important;
       }
     }
+    
+    /* IMAGEN DE FONDO */
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.15; /* Opacidad para modo claro (más visible) */
+  z-index: -9999;
+  pointer-events: none;
+  transition: opacity 0.3s ease; /* Transición suave al cambiar modo */
+}
+
+/* Cuando esté en modo oscuro, reducir opacidad */
+body.dark-mode::before {
+  opacity: 0.07; /* Opacidad para modo oscuro (más discreta) */
+}    
+
   </style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
 </head>
+
 <body>
-  <!-- Schema Markup para SEO -->
+ 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Sistemas de Trading Eficientes LLC",
     "url": "https://sistemasdetradingeficientes.com",
-    "logo": "https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/Logo%20Blanco%20512x512.webp",
-    "description": "Especialistas en sistemas de  y algorítmico con sede en EE.UU.",
+    "logo": "https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Logo%20Blanco%20512x512.webp",
+    "description": "Especialistas en sistemas de trading manual y algorítmico con sede en EE.UU.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "30 N Gould St",
@@ -506,97 +1950,458 @@
   }
   </script>
 
-  <!-- BOTÓN PARA CAMBIAR IDIOMA -->
-  <button class="lang-switch" onclick="switchLang()">EN</button>
-
-  <!-- HEADER CON LOGO OPTIMIZADO -->
+  <div class="header-controls">
+   
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path class="sun" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>
+      </svg>
+    </button>
+    <button class="lang-switch" onclick="switchLang()">
+      <span>EN</span>
+    </button>
+  
+  </div>
+  
   <header>
-    <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp" 
-           alt="Logo Sistemas de Trading Eficientes LLC" 
-           class="logo"
-           width="100"
-           height="100"
-           loading="lazy">
-    </div>
-    <h1 id="companyName">
-      <span class="company-name-line">Sistemas de</span>
-      <span class="company-name-line">Trading Eficientes LLC</span>
-    </h1>
-    <p id="tagline"> y Algorítmico</p>
+    
+        <div class="logo-container">
+          <a href=".">
+            <img src="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/logo%20blanco%2C%20sin%20fondo.webp"
+                 alt="Logo Sistemas de Trading Eficientes LLC"
+                 class="logo"
+                 width="70"
+                 height="70"
+                 loading="lazy">
+          </a>
+        </div>    
+      
+      <div class="header-title-container">
+        <h1 id="companyName">Sistemas de Trading Eficientes LLC</h1>
+        <p id="tagline">Trading Manual y Algorítmico</p>
+      </div>    
+    
+    <div class="header-nav-buttons" id="headerNavButtons">
+      <a href="#productos-section" class="header-nav-btn">
+         <i class="fas fa-box-open"></i>
+         <span id="nav-products-text">Nuestros Servicios</span>
+      </a>
+      <a href="https://ste2025llc.github.io/STEnueva/simulador.html" class="header-nav-btn">
+         <i class="fas fa-calculator"></i>
+         <span id="nav-simulator-text">Simulador</span>
+      </a>
+      <a href="#contacto-btn" class="header-nav-btn">
+         <i class="fas fa-envelope"></i>
+         <span id="nav-contact-text">Contacto</span>
+      </a>
+    </div>     
   </header>
 
-  <!-- SECCIÓN HERO Y SOBRE NOSOTROS CON IMAGEN OPTIMIZADA -->
   <section>
-    <img class="hero-image" 
-         src="https://raw.githubusercontent.com/STE2025LLC/STE_LLC_WEB/refs/heads/main/ImagenPortada.webp" 
-         alt="Imagen Portada - Sistemas de Trading Eficientes LLC"
+    <img class="hero-image"
+         src="https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/ImagenPortada.webp"
+         alt="Análisis de mercados y trading profesional - Sistemas de Trading Eficientes LLC"
          width="800"
          height="400"
          loading="lazy">
     <h2 id="aboutTitle">Sobre Nosotros</h2>
     <p id="aboutText">
-      Sistemas de Trading Eficientes LLC es una empresa con sede en EE. UU. especializada en el desarrollo de estrategias de trading tanto manuales como algorítmicas, análisis de mercados, gestión de riesgo y psicología del trader, fundamentales para desarrollar una operativa rentable y consistente.
+      Sistemas de Trading Eficientes LLC es una empresa con sede en Estados Unidos especializada en el desarrollo de estrategias de trading tanto manuales como automatizadas, análisis de mercados, gestión de riesgo y psicología del trader, fundamentales para desarrollar una operativa rentable y consistente.
+      En nuestra empresa, no creemos en soluciones genéricas.
+      Acompañamos de forma continua a cada uno de nuestros clientes, observando cómo operan y analizando sus resultados con detalle. Este seguimiento personalizado nos permite ofrecer un asesoramiento real, adaptado a su forma de operar y a su perfil psicológico como trader.
+      Nuestro objetivo no es imponer un sistema de trabajo, sino ayudarte a encontrar tu propio sistema ganador: aquel que encaje con tu manera de pensar, tu tolerancia al riesgo y tu estilo de vida, porque entendemos que el verdadero crecimiento en los mercados financieros comienza cuando trabajas con un enfoque que se alinea contigo.
     </p>
   </section>
 
-  <!-- SECCIÓN DE SERVICIOS -->
   <section>
-    <h2 id="servicesTitle">Nuestros Servicios</h2>
-    <ul>
-      <li id="service1">Sistemas de  y algorítmico personalizados.</li>
-      <li id="service2">Gestión de riesgos y análisis de rendimiento.</li>
-      <li id="service3">Investigación de mercados y consultoría.</li>
-      <li id="service4">Soluciones de asignación estratégica y backtesting.</li>
-      <li id="service5">Fortalecimiento psicológico adaptado al trading para lograr un alto rendimiento y resiliencia en entornos adversos.</li>
-    </ul>
+    <div class="key-section">
+      <h2 class="key-section-title" id="keySectionTitle">Sistemas de Trading Eficientes: la clave del éxito</h2>
+
+      <div class="key-point">
+        <div class="key-point-icon">1</div>
+        <h3 id="keyPoint1Title">¿Qué es un Sistema de Trading?</h3>
+        <p id="keyPoint1Text">Un sistema de trading es mucho más que una simple serie de operaciones. Se trata de un conjunto estructurado de reglas diseñado para ejecutarse con disciplina y enfocado en generar beneficios sostenibles en el tiempo. La base de un sistema eficaz es contar con una esperanza matemática positiva, es decir, que en promedio, las operaciones generen ganancias a largo plazo.</p>
+      </div>
+
+      <div class="key-point">
+        <div class="key-point-icon">2</div>
+        <h3 id="keyPoint2Title">Componentes de un Sistema de Trading</h3>
+        <p id="keyPoint2TextA"><strong>A) Plan de trading:</strong> Define el "qué" se va a hacer, incluyendo activos, horarios y condiciones del mercado.</p>
+        <p id="keyPoint2TextB"><strong>B) Estrategia de trading:</strong> Establece el "cómo" se va a ejecutar el plan, detallando reglas de entrada, salida y gestión del riesgo.</p>
+
+        <div class="highlight-box">
+          <p id="keyPoint2Highlight">Ambos elementos descansan sobre tres pilares fundamentales: Análisis técnico, Gestión monetaria y Psicotrading.</p>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <div class="key-point-icon">3</div>
+        <h3 id="keyPoint3Title">Esperanza Matemática</h3>
+        <p id="keyPoint3Text1">La esperanza matemática mide el resultado promedio esperado por operación, combinando el porcentaje de aciertos con la relación riesgo/beneficio. Este concepto es crucial para evaluar si una estrategia es rentable.</p>
+
+        <table class="math-expectation-table">
+          <thead>
+            <tr>
+              <th>%A</th>
+              <th>%F</th>
+              <th>0.25</th>
+              <th>0.5</th>
+              <th>0.75</th>
+              <th>1</th>
+              <th>1.5</th>
+              <th>2</th>
+              <th>2.5</th>
+              <th>3</th>
+              <th>3.5</th>
+              <th>4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10%</td>
+              <td>90%</td>
+              <td class="negative-value">-0.88</td>
+              <td class="negative-value">-0.85</td>
+              <td class="negative-value">-0.83</td>
+              <td class="negative-value">-0.80</td>
+              <td class="negative-value">-0.75</td>
+              <td class="negative-value">-0.70</td>
+              <td class="negative-value">-0.65</td>
+              <td class="negative-value">-0.60</td>
+              <td class="negative-value">-0.55</td>
+              <td class="negative-value">-0.50</td>
+            </tr>
+            <tr>
+              <td>20%</td>
+              <td>80%</td>
+              <td class="negative-value">-0.75</td>
+              <td class="negative-value">-0.70</td>
+              <td class="negative-value">-0.65</td>
+              <td class="negative-value">-0.60</td>
+              <td class="negative-value">-0.50</td>
+              <td class="negative-value">-0.40</td>
+              <td class="negative-value">-0.30</td>
+              <td class="negative-value">-0.20</td>
+              <td class="negative-value">-0.10</td>
+              <td class="zero-value">0.00</td>
+            </tr>
+            <tr>
+              <td>30%</td>
+              <td>70%</td>
+              <td class="negative-value">-0.63</td>
+              <td class="negative-value">-0.55</td>
+              <td class="negative-value">-0.48</td>
+              <td class="negative-value">-0.40</td>
+              <td class="negative-value">-0.25</td>
+              <td class="negative-value">-0.10</td>
+              <td class="positive-value">0.05</td>
+              <td class="positive-value">0.20</td>
+              <td class="positive-value">0.35</td>
+              <td class="positive-value">0.50</td>
+            </tr>
+            <tr>
+              <td>40%</td>
+              <td>60%</td>
+              <td class="negative-value">-0.50</td>
+              <td class="negative-value">-0.40</td>
+              <td class="negative-value">-0.30</td>
+              <td class="negative-value">-0.20</td>
+              <td class="zero-value">0.00</td>
+              <td class="positive-value">0.20</td>
+              <td class="positive-value">0.40</td>
+              <td class="positive-value">0.60</td>
+              <td class="positive-value">0.80</td>
+              <td class="positive-value">1.00</td>
+            </tr>
+            <tr>
+              <td>50%</td>
+              <td>50%</td>
+              <td class="negative-value">-0.38</td>
+              <td class="negative-value">-0.25</td>
+              <td class="negative-value">-0.13</td>
+              <td class="zero-value">0.00</td>
+              <td class="positive-value">0.25</td>
+              <td class="positive-value">0.50</td>
+              <td class="positive-value">0.75</td>
+              <td class="positive-value">1.00</td>
+              <td class="positive-value">1.25</td>
+              <td class="positive-value">1.50</td>
+            </tr>
+            <tr>
+              <td>60%</td>
+              <td>40%</td>
+              <td class="negative-value">-0.25</td>
+              <td class="negative-value">-0.10</td>
+              <td class="positive-value">0.05</td>
+              <td class="positive-value">0.20</td>
+              <td class="positive-value">0.50</td>
+              <td class="positive-value">0.80</td>
+              <td class="positive-value">1.10</td>
+              <td class="positive-value">1.40</td>
+              <td class="positive-value">1.70</td>
+              <td class="positive-value">2.00</td>
+            </tr>
+            <tr>
+              <td>70%</td>
+              <td>30%</td>
+              <td class="negative-value">-0.13</td>
+              <td class="positive-value">0.05</td>
+              <td class="positive-value">0.23</td>
+              <td class="positive-value">0.40</td>
+              <td class="positive-value">0.75</td>
+              <td class="positive-value">1.10</td>
+              <td class="positive-value">1.45</td>
+              <td class="positive-value">1.80</td>
+              <td class="positive-value">2.15</td>
+              <td class="positive-value">2.50</td>
+            </tr>
+            <tr>
+              <td>80%</td>
+              <td>20%</td>
+              <td class="zero-value">0.00</td>
+              <td class="positive-value">0.20</td>
+              <td class="positive-value">0.40</td>
+              <td class="positive-value">0.60</td>
+              <td class="positive-value">1.00</td>
+              <td class="positive-value">1.40</td>
+              <td class="positive-value">1.80</td>
+              <td class="positive-value">2.20</td>
+              <td class="positive-value">2.60</td>
+              <td class="positive-value">3.00</td>
+            </tr>
+            <tr>
+              <td>90%</td>
+              <td>10%</td>
+              <td class="positive-value">0.13</td>
+              <td class="positive-value">0.35</td>
+              <td class="positive-value">0.58</td>
+              <td class="positive-value">0.80</td>
+              <td class="positive-value">1.25</td>
+              <td class="positive-value">1.70</td>
+              <td class="positive-value">2.15</td>
+              <td class="positive-value">2.60</td>
+              <td class="positive-value">3.05</td>
+              <td class="positive-value">3.50</td>
+            </tr>
+          </tbody>
+        </table>
+                       
+        <p class="table-caption" id="keyPoint3Caption" style="text-align: center !important; display: block; width: 100%; margin: 0 auto; padding: 10px 0; font-size: 0.9rem;">
+           Esperanza Matemática (resultado en R esperado por operación)
+        </p>
+
+        <div class="highlight-box">
+          <p id="keyPoint3Example"><strong>Ejemplo práctico:</strong> Con un 33% de aciertos y un ratio beneficio/riesgo de 2:1, la esperanza matemática es cero. Aumentando los aciertos al 40% con el mismo ratio, la esperanza se vuelve positiva, lo que sugiere ganancias a largo plazo.</p>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <div class="key-point-icon">4</div>
+        <h3 id="keyPoint4Title">Gestión del Riesgo: El Escudo del Capital</h3>
+        <p id="keyPoint4Text">Una adecuada gestión del capital es vital para sobrevivir en los mercados. Algunas recomendaciones clave:</p>
+        <ul id="keyPoint4List">
+          <li>Limitar la pérdida diaria al 1%–5% del capital total.</li>
+          <li>Utilizar stop loss automáticos para contener las pérdidas.</li>
+          <li>Evitar el apalancamiento excesivo, que puede amplificar las pérdidas y poner en peligro la cuenta.</li>
+        </ul>
+      </div>
+
+      <div class="key-point">
+        <div class="key-point-icon">5</div>
+        <h3 id="keyPoint5Title">Psicotrading: El Factor Humano</h3>
+        <p id="keyPoint5Text">El mayor enemigo del trader no es el mercado, sino él mismo. El psicotrading busca fortalecer la mente para operar con claridad y objetividad. Sus tres ejes son:</p>
+        <ul id="keyPoint5List">
+          <li><strong>Autoconocimiento:</strong> Entender tu perfil de riesgo y tus reacciones emocionales.</li>
+          <li><strong>Disciplina:</strong> Seguir el sistema con rigurosidad, evitando decisiones impulsivas.</li>
+          <li><strong>Gestión del estrés:</strong> Mantener la calma ante la presión y la euforia.</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p id="keyPoint5Highlight">En resumen, un sistema de trading rentable se apoya en la lógica matemática, una ejecución disciplinada y un control emocional férreo. Solo así es posible aspirar a resultados consistentes en el tiempo.</p>
+        </div>
+        
+        <!-- Nuevo banner para el simulador -->
+        <div class="simulator-banner">
+          <h3 id="simulatorBannerTitle">¿Quieres probar estos conceptos en acción?</h3>
+          <p id="simulatorBannerText">Nuestro simulador de trading te permite experimentar con diferentes porcentajes de acierto y relaciones riesgo/beneficio para ver cómo afectan a tus resultados a largo plazo. Una herramienta esencial para entender la importancia de la gestión de riesgo y la esperanza matemática en el trading.</p>
+          <a href="https://ste2025llc.github.io/STEnueva/simulador.html" class="simulator-btn" id="simulatorBtn">
+            <i class="fas fa-calculator"></i>
+            <span>Ir al Simulador</span>
+          </a>
+        </div>
+      
+      </div>
+    </div>
   </section>
 
-  <!-- FOOTER: CONTACTO Y DATOS -->
+  <section id="productos-section" style="scroll-margin-top: 120px;">
+    <h2 id="servicesTitle">Nuestros Servicios</h2>
+
+    <div class="services-container">
+      <div class="service-item">
+        <div class="service-header" onclick="toggleService(this)" data-number="01">
+          <span id="service1">Sistemas de trading manual y algorítmico personalizados</span>
+          <span class="service-toggle">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <p id="serviceDetails1">Somos conscientes de que no todos soportamos la presión del mismo modo ni tenemos la misma paciencia. Aunque estas habilidades se pueden desarrollar, adaptamos cada sistema a la personalidad del usuario, para que sea capaz de aplicar la operativa sin sentir ansiedad o estrés añadido.</p>
+            <p id="serviceListTitle1">Nuestros sistemas personalizados incluyen:</p>
+            <ul id="serviceList1">
+              <li>Análisis completo de tu perfil psicológico como trader</li>
+              <li>Diseño de estrategias adaptadas a tu tolerancia al riesgo</li>
+              <li>Entrenamiento personalizado para la ejecución</li>
+              <li>Seguimiento continuo y ajustes según tu evolución</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header" onclick="toggleService(this)" data-number="02">
+          <span id="service2">Gestión de riesgos y análisis de rendimiento</span>
+          <span class="service-toggle">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <p id="serviceDetails2">Utilizamos herramientas profesionales para mantener nuestros sistemas seguros y optimizar el rendimiento.</p>
+            <p id="serviceListTitle2">Nuestro enfoque incluye:</p>
+            <ul id="serviceList2">
+              <li>Software avanzado de simulación de escenarios de riesgo</li>
+              <li>Herramienta profesional para que apliques una correcta gestión de riesgo</li>
+              <li>Herramienta para calcular automaticamente el tamaño de la posición</li>
+              <li>Software avanzado para ayudarte a controlar las pérdidas</li>
+              <li>Material profesional para ayudarte a que lleves una bitácora adecuada</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header" onclick="toggleService(this)" data-number="03">
+          <span id="service3">Soluciones de asignación estratégica y backtesting</span>
+          <span class="service-toggle">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <p id="serviceDetails3">Contamos con herramientas profesionales y plantillas optimizadas que facilitan el trabajo de backtesting y nos permiten:</p>
+            <ul id="serviceList3">
+              <li>Realizar pruebas en diferentes mercados y condiciones, de forma sencilla</li>
+              <li>Identificar los mejores parámetros para cada estrategia</li>
+              <li>Optimizar la asignación de capital entre diferentes sistemas</li>
+              <li>Evaluar el rendimiento de tu estrategia en diferentes escenarios</li>
+            </ul>
+            <p>Nuestras plantillas incluyen métricas avanzadas como el ratio de Sharpe, Calmar y otros indicadores clave.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header" onclick="toggleService(this)" data-number="04">
+          <span id="service4">Fortalecimiento psicológico adaptado al trading</span>
+          <span class="service-toggle">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <p id="serviceDetails4">Programa integral para desarrollar la mentalidad adecuada para el trading de alto rendimiento:</p>
+            <ul id="serviceList4">
+              <li>Técnicas de control emocional durante la operativa</li>
+              <li>Entrenamiento en disciplina y consistencia</li>
+              <li>Gestión de expectativas realistas</li>
+              <li>Protocolos para periodos de drawdown</li>
+              <li>Seguimiento personalizado de tu evolución psicológica</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header" onclick="toggleService(this)" data-number="05">
+          <span id="service5">Investigación de mercados y consultoría</span>
+          <span class="service-toggle">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <p id="serviceDetails5">Análisis profesional de mercados utilizando:</p>
+            <ul id="serviceList5">
+              <li>Herramientas avanzadas de análisis técnico</li>
+              <li>Detección de patrones y oportunidades</li>
+              <li>Informes periódicos con oportunidades destacadas</li>
+              <li>Sesiones personalizadas de consultoría estratégica</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="footer-container">
     <div class="footer-content">
       <div class="footer-contact">
         <h3 id="contactTitle">Contacto</h3>
-        <p id="contactEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85ecebe3eac5f6ecf6f1e0e8e4f6e1e0f1f7e4e1ecebe2e0e3ece6ece0ebf1e0f6abe6eae8">[email&#160;protected]</a></p>
-        <button class="contact-form-btn" onclick="toggleContactForm()" id="contactToggle">Formulario de contacto</button>
-      </div>
+        <p id="contactEmail">info@sistemasdetradingeficientes.com</p>
+        <button class="contact-form-btn" id="contacto-btn" onclick="toggleContactForm()">
+           <i class="fas fa-envelope"></i> 
+           <span id="contact-text">Formulario de contacto</span>
+       </button>
+       </div>
       <div class="footer-info">
-        <p class="footer-address" id="contactAddress">Dirección registrada: 30 N Gould St, Sheridan, WY 82801, EE.UU.</p>
-        <p class="copyright" id="copyright">
-          <span class="desktop-line">© 2025 Sistemas de Trading Eficientes LLC. Todos los derechos reservados</span>
-          <span class="mobile-line">© 2025 Sistemas de Trading Eficientes LLC.</span>
-          <span class="mobile-line">Todos los derechos reservados</span>
-        </p>
+        <p class="footer-address" id="contactAddress">5830 E 2ND ST, CASPER, WY 82690, EE.UU.</p>
+
+        <div class="footer-bottom">
+          <p class="copyright" id="copyright">© 2025 Sistemas de Trading Eficientes LLC.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- BOTÓN VOLVER ARRIBA -->
-  <button class="scroll-top-btn" onclick="scrollToTop()" id="scrollTopBtn">Volver Arriba</button>
-
-  <!-- POPUP DEL FORMULARIO DE CONTACTO OPTIMIZADO -->
+  <p class="risk-disclaimer-link">
+    <a href="javascript:void(0);" onclick="showRiskDisclaimer()" id="riskLinkText">Declaración de riesgo</a>
+  </p>
+  
+  <button class="scroll-top-btn" onclick="scrollToTop()" id="scrollTopBtn">
+  <span>Ir Arriba</span>
+  </button>  
+  
   <div id="formPopup">
     <div class="form-container">
       <h2 id="formTitle">Contáctenos</h2>
       <form id="contactForm" action="https://formspree.io/f/xkgjlqnr" method="POST">
-
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
         <input type="hidden" name="_gotcha">
         <input type="hidden" name="_honey" value="">
-        
-        <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
-        <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
-        <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
-        
-        <!-- reCAPTCHA v2 -->
+
+        <input type="text" name="name" placeholder="Tu nombre" required title="" data-validation="validationName">
+        <input type="email" name="email" placeholder="Tu email" required title="" data-validation="validationEmail">
+        <textarea name="message" placeholder="Tu mensaje" required title="" data-validation="validationMessage"></textarea>
         <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
-        
+        <div class="recaptcha-error" id="recaptchaError"></div>
+
         <button type="submit" id="submitBtn">Enviar mensaje</button>
-        <button type="button" onclick="closeForm()">Cancelar</button>
+        <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
       </form>
     </div>
   </div>
-
-  <!-- POPUP DE CONFIRMACIÓN -->
   
   <div class="confirmation-popup" id="confirmationPopup">
     <div class="confirmation-content">
@@ -606,173 +2411,408 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  
+  <div class="risk-popup" id="riskPopup">
+    <div class="risk-popup-content">
+      <h2 id="riskTitle">DECLARACIÓN DE RIESGO</h2>
+      <p><strong>ADVERTENCIA SOBRE RIESGOS:</strong> El trading de instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Antes de decidir operar en los mercados financieros, debe considerar cuidadosamente sus objetivos de inversión, nivel de experiencia y tolerancia al riesgo.</p>
+
+      <p><strong>POSIBILIDAD DE PERDER DINERO:</strong> Existe la posibilidad de que pierda parte o la totalidad de su inversión inicial, por lo que no debe invertir dinero que no pueda permitirse perder. Debe ser consciente de todos los riesgos asociados con el trading de instrumentos financieros y buscar asesoramiento de un asesor financiero independiente si tiene dudas.</p>
+
+      <p><strong>RENDIMIENTOS PASADOS:</strong> Los resultados pasados no son indicativos de resultados futuros. Las declaraciones sobre rendimientos potenciales son ilustrativas y no garantizan resultados futuros. El trading con apalancamiento puede amplificar tanto ganancias como pérdidas.</p>
+
+      <p><strong>NO ES ASESORAMIENTO:</strong> La información proporcionada por Sistemas de Trading Eficientes LLC no constituye asesoramiento financiero, de inversión, fiscal o de ningún otro tipo. Todo el material proporcionado tiene únicamente fines educativos e informativos.</p>
+
+      <p><strong>RESPONSABILIDAD:</strong> Sistemas de Trading Eficientes LLC no asume responsabilidad alguna por pérdidas o daños como resultado del uso de la información contenida en este sitio web. Por favor, sea plenamente consciente de los riesgos y costes asociados con el trading en los mercados financieros.</p>
+
+      <p><strong>RESTRICCIONES LEGALES:</strong> Los productos y servicios descritos pueden no estar disponibles en todas las jurisdicciones o para todos los clientes. Es responsabilidad del cliente determinar qué transacciones están permitidas según las leyes de su país de residencia.</p>
+
+      <button class="risk-popup-close" onclick="closeRiskDisclaimer()" id="riskCloseBtn">Cerrar</button>
+    </div>
+  </div>
+
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  
-  <!-- reCAPTCHA API -->
-  
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
   
+  <script>
+    // Función para los acordeones de servicios - VERSIÓN CORREGIDA
+    function toggleService(header) {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+
+      // Cerrar todos los acordeones primero
+      document.querySelectorAll('.service-item').forEach(service => {
+        service.classList.remove('active');
+      });
+
+      // Abrir el acordeón clickeado si no estaba activo
+      if (!isActive) {
+        item.classList.add('active');
+        
+        // Esperar a que se complete la animación de apertura
+        setTimeout(() => {
+          // Calcular la posición del acordeón
+          const itemRect = item.getBoundingClientRect();
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const scrollPosition = window.scrollY;
+          const itemTop = itemRect.top + scrollPosition;
+          
+          // Calcular la posición de scroll deseada
+          // Restamos la altura del header y un pequeño margen (20px)
+          const targetScroll = itemTop - headerHeight - 20;
+          
+          // Hacer el scroll suave
+          window.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+          });
+        }, 300); // Esperar 300ms que es la duración de la animación de apertura
+      }
+    }
+    
     // Objeto de traducciones optimizado
     const translations = {
       en: {
-        companyNameLine1: "Sistemas de",
-        companyNameLine2: "Trading Eficientes LLC",
         tagline: "Manual & Algorithmic Trading",
         aboutTitle: "About Us",
-        aboutText: "Sistemas de Trading Eficientes LLC is a US-based company specializing in the development of both manual and algorithmic trading strategies, market analysis, risk management, and trader psychology – all essential for consistent and profitable trading.",
+        aboutText: `
+           Sistemas de Trading Eficientes LLC is an American company specialized in the development of manual and automated trading strategies, market analysis, risk management and trader psychology, fundamental to develop a profitable and consistent trading.
+           
+           In our company, we do not believe in generic solutions. We continuously accompany each of our clients, observing how they trade and analyzing their results in detail. This personalized follow-up allows us to offer real advice, adapted to your trading style and your psychological profile as a trader.
+           
+           Our goal is not to impose a system of work, but to help you find your own winning system: the one that fits your way of thinking, your risk tolerance and your lifestyle, because we understand that true growth in the financial markets begins when you work with an approach that aligns with you.
+          `,
+        
+        keySectionTitle: "Efficient Trading Systems: The Key to Success",
+        keyPoint1Title: "What is a Trading System?",
+        keyPoint1Text: "A trading system is much more than just a series of trades. It is a structured set of rules designed to be executed with discipline and focused on generating sustainable profits over time. The foundation of an effective system is having a positive mathematical expectation, meaning that, on average, trades generate long-term gains.",
+        keyPoint2Title: "Components of a Trading System",
+        keyPoint2TextA: "<strong>A) Trading Plan:</strong> Defines 'what' will be done, including assets, schedules, and market conditions.",
+        keyPoint2TextB: "<strong>B) Trading Strategy:</strong> Establishes 'how' the plan will be executed, detailing entry, exit, and risk management rules.",
+        keyPoint2Highlight: "Both elements rest on three fundamental pillars: Technical Analysis, Money Management, and Psychotrading.",
+        keyPoint3Title: "Mathematical Expectation",
+        keyPoint3Text1: "Mathematical expectation measures the average expected outcome per trade, combining the win rate with the risk/reward ratio. This concept is crucial for evaluating whether a strategy is profitable.",
+        keyPoint3Caption: "Mathematical Expectation (expected R-multiple per trade).",
+        keyPoint3Example: "<strong>Practical example:</strong> With a 33% win rate and a 2:1 risk/reward ratio, the mathematical expectation is zero. Increasing the win rate to 40% with the same ratio makes the expectation positive, suggesting long-term gains.",
+        simulatorBannerTitle: "Want to test these concepts in action?",
+        simulatorBannerText: "Our trading simulator allows you to experiment with different win rates and risk/reward ratios to see how they affect your long-term results. An essential tool to understand the importance of risk management and mathematical expectation in trading.",
+        simulatorBtn: "Go to Simulator",
+        keyPoint4Title: "Risk Management: The Capital Shield",
+        keyPoint4Text: "Proper capital management is vital for surviving in the markets. Some key recommendations:",
+        keyPoint4List: [
+          "Limit daily loss to 1%–5% of total capital.",
+          "Use automatic stop losses to contain losses.",
+          "Avoid excessive leverage, which can amplify losses and jeopardize the account."
+        ],
+        keyPoint5Title: "Psychotrading: The Human Factor",
+        keyPoint5Text: "The trader's biggest enemy is not the market, but themselves. Psychotrading aims to strengthen the mind to operate with clarity and objectivity. Its three axes are:",
+        keyPoint5List: [
+          "<strong>Self-awareness:</strong> Understand your risk profile and emotional reactions.",
+          "<strong>Discipline:</strong> Follow the system rigorously, avoiding impulsive decisions.",
+          "<strong>Stress management:</strong> Maintain composure under pressure and euphoria."
+        ],
+        keyPoint5Highlight: "In summary, a profitable trading system relies on mathematical logic, disciplined execution, and strong emotional control. Only then is it possible to aspire to consistent results over time.",
         servicesTitle: "Our Services",
-        service1: "Custom-built manual and algorithmic trading systems.",
-        service2: "Risk management and performance analytics.",
-        service3: "Market research and consulting.",
-        service4: "Strategic allocation and backtesting solutions.",
-        service5: "Psychological strengthening tailored to trading for high performance and resilience in adverse market conditions.",
+        service1: "Custom-built manual and algorithmic trading systems",
+        service2: "Risk management and performance analytics",
+        service3: "Strategic allocation and backtesting solutions",
+        service4: "Psychological strengthening tailored to trading",
+        service5: "Market research and consulting",
+        serviceDetails1: "We understand that not everyone handles pressure the same way or has the same level of patience. While these skills can be developed, we tailor each system to the user's personality, enabling them to apply the trading strategy without added anxiety or stress.",
+        serviceDetails2: "We use professional, cutting-edge tools to keep our systems safe and optimize performance.",
+        serviceDetails3: "We have professional tools and optimized templates that facilitate backtesting work and allow us to:",
+        serviceDetails4: "Comprehensive program to develop the right mindset for high-performance trading:",
+        serviceDetails5: "Professional market analysis using:",
+        serviceListTitle1: "Our custom systems include:",
+        serviceListTitle2: "Our approach includes:",
+        serviceList1: [
+          "Complete analysis of your psychological profile as a trader",
+          "Strategy design adapted to your risk tolerance",
+          "Personalized training for execution",
+          "Continuous monitoring and adjustments based on your progress"
+        ],
+        serviceList2: [
+          "Advanced risk scenario simulation software",
+          "Advanced software for proper risk management",
+          "Tool to automatically calculate position size",
+          "Professional material to help you keep an adequate log"
+        ],
+        serviceList3: [
+          "Perform tests in multiple markets and conditions",
+          "Identify the best parameters for each strategy",
+          "Optimize capital allocation between different systems",
+          "Evaluate performance in different macroeconomic scenarios"
+        ],
+         serviceList4: [
+          "Emotional control techniques during trading",
+          "Discipline and consistency training",
+          "Management of realistic expectations",
+          "Protocols for drawdown periods",
+          "Personalized monitoring of your psychological evolution"
+        ],
+        serviceList5: [
+          "Profesional technical analysis tools",
+          "Pattern and opportunity detection",
+          "Personalized strategic consulting sessions"
+        ],
         contactTitle: "Contact",
-        contactEmail: "info@sistemasdetradingeficientes.com",
-        contactAddress: "Registered Address: 30 N Gould St, Sheridan, WY 82801, USA",
         contactFormBtn: "Contact Form",
         formTitle: "Contact Us",
         placeholderName: "Your Name",
         placeholderEmail: "Your Email",
         placeholderMessage: "Your Message",
         requiredField: "Please fill out this field",
-        requiredField: "Please verify that you are not a robot",
+        validationName: "Please enter your name",
+        validationEmail: "Please enter a valid email",
+        validationMessage: "Please write your message",
         submitBtn: "Send Message",
         cancelBtn: "Cancel",
         sendingMessage: "Sending...",
         confirmBtn: "OK",
         confirmTitle: "Thank you!",
         confirmMessage: "Your message has been sent successfully. We will contact you as soon as possible.",
-        copyrightDesktop: "© 2025 Sistemas de Trading Eficientes LLC. All rights reserved",
-        copyrightLine1: "© 2025 Sistemas de Trading Eficientes LLC.",
-        copyrightLine2: "All rights reserved",
+        copyright: "© 2025 Sistemas de Trading Eficientes LLC.",
         scrollTop: "Scroll to top",
-        errorMessage: "Error sending message. Please try again later."
+        errorMessage: "Error sending message. Please try again later.",
+        recaptchaError: "Please complete the reCAPTCHA",
+        riskLinkText: "Risk Disclosure",
+        riskTitle: "RISK DISCLOSURE STATEMENT",
+        riskCloseBtn: "Close",
+        riskContent: `
+          <p><strong>RISK WARNING:</strong> Trading in financial instruments carries a high level of risk and may not be suitable for all investors. Before deciding to trade in the financial markets, you should carefully consider your investment objectives, level of experience and risk tolerance.</p>
+
+          <p><strong>POSSIBILITY OF LOSING MONEY:</strong> There is a possibility that you could lose some or all of your initial investment, so you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with trading financial instruments and seek advice from an independent financial advisor if you have any doubts.</p>
+
+          <p><strong>PAST PERFORMANCE:</strong> Past performance is not indicative of future results. Statements about potential returns are illustrative and do not guarantee actual results. Trading with leverage can amplify both profits and losses.</p>
+
+          <p><strong>NOT ADVICE:</strong> The information provided by Sistemas de Trading Eficientes LLC does not constitute financial, investment, tax or any other type of advice. All material provided is for educational and informational purposes only.</p>
+
+          <p><strong>LIABILITY:</strong> Sistemas de Trading Eficientes LLC assumes no liability for any loss or damage as a result of the use of the information contained in this website. Please be fully aware of the risks and costs associated with trading in the financial markets.</p>
+
+          <p><strong>LEGAL RESTRICTIONS:</strong> The products and services described may not be available in all jurisdictions or to all customers. It is the customer's responsibility to determine which transactions are permitted under the laws of their country of residence.</p>
+        `,
+        navProductsText: "Our Services",
+        navSimulatorText: "Simulator",
+        navContactText: "Contact",
+        scrollToProducts: "Scroll to Products"
       },
       es: {
-        companyNameLine1: "Sistemas de",
-        companyNameLine2: "Trading Eficientes LLC",
         tagline: "Trading Manual y Algorítmico",
         aboutTitle: "Sobre Nosotros",
-        aboutText: "Sistemas de Trading Eficientes LLC es una empresa con sede en EE. UU. especializada en el desarrollo de estrategias de trading tanto manuales como algorítmicas, análisis de mercados, gestión de riesgo y psicología del trader, fundamentales para desarrollar una operativa rentable y consistente.",
+        aboutText: `
+           Sistemas de Trading Eficientes LLC es una empresa con sede en Estados Unidos especializada en el desarrollo de estrategias de trading tanto manuales como automatizadas, análisis de mercados, gestión de riesgo y psicología del trader, fundamentales para desarrollar una operativa rentable y consistente.
+           
+           En nuestra empresa, no creemos en soluciones genéricas. Acompañamos de forma continua a cada uno de nuestros clientes, observando cómo operan y analizando sus resultados con detalle. Este seguimiento personalizado nos permite ofrecer un asesoramiento real, adaptado a su forma de operar y a su perfil psicológico como trader.
+           
+           Nuestro objetivo no es imponer un sistema de trabajo, sino ayudarte a encontrar tu propio sistema ganador: aquel que encaje con tu manera de pensar, tu tolerancia al riesgo y tu estilo de vida, porque entendemos que el verdadero crecimiento en los mercados financieros comienza cuando trabajas con un enfoque que se alinea contigo.
+        `,
+        
+        keySectionTitle: "Sistemas de Trading Eficientes: la clave del éxito",
+        keyPoint1Title: "¿Qué es un Sistema de Trading?",
+        keyPoint1Text: "Un sistema de trading es mucho más que una simple serie de operaciones. Se trata de un conjunto estructurado de reglas diseñado para ejecutarse con disciplina y enfocado en generar beneficios sostenibles en el tiempo. La base de un sistema eficaz es contar con una esperanza matemática positiva, es decir, que en promedio, las operaciones generen ganancias a largo plazo.",
+        keyPoint2Title: "Componentes de un Sistema de Trading",
+        keyPoint2TextA: "<strong>A) Plan de trading:</strong> Define el \"qué\" se va a hacer, incluyendo activos, horarios y condiciones del mercado.",
+        keyPoint2TextB: "<strong>B) Estrategia de trading:</strong> Establece el \"cómo\" se va a ejecutar el plan, detallando reglas de entrada, salida y gestión del riesgo.",
+        keyPoint2Highlight: "Ambos elementos descansan sobre tres pilares fundamentales: Análisis técnico, Gestión monetaria y Psicotrading.",
+        keyPoint3Title: "Esperanza Matemática",
+        keyPoint3Text1: "La esperanza matemática mide el resultado promedio esperado por operación, combinando el porcentaje de aciertos con la relación riesgo/beneficio. Este concepto es crucial para evaluar si una estrategia es rentable.",
+        keyPoint3Caption: "Esperanza Matemática (resultado en R esperado por operación).",
+        keyPoint3Example: "<strong>Ejemplo práctico:</strong> Con un 33% de aciertos y un ratio beneficio/riesgo de 2:1, la esperanza matemática es cero. Aumentando los aciertos al 40% con el mismo ratio, la esperanza se vuelve positiva, lo que sugiere ganancias a largo plazo.",
+        simulatorBannerTitle: "¿Quieres probar estos conceptos en acción?",
+        simulatorBannerText: "Nuestro simulador de trading te permite experimentar con diferentes porcentajes de acierto y relaciones riesgo/beneficio para ver cómo afectan a tus resultados a largo plazo. Una herramienta esencial para entender la importancia de la gestión de riesgo y la esperanza matemática en el trading.",
+        simulatorBtn: "Ir al Simulador",
+        keyPoint4Title: "Gestión del Riesgo: El Escudo del Capital",
+        keyPoint4Text: "Una adecuada gestión del capital es vital para sobrevivir en los mercados. Algunas recomendaciones clave:",
+        keyPoint4List: [
+          "Limitar la pérdida diaria al 1%–5% del capital total.",
+          "Utilizar stop loss automáticos para contener las pérdidas.",
+          "Evitar el apalancamiento excesivo, que puede amplificar las pérdidas y poner en peligro la cuenta."
+        ],
+        keyPoint5Title: "Psicotrading: El Factor Humano",
+        keyPoint5Text: "El mayor enemigo del trader no es el mercado, sino él mismo. El psicotrading busca fortalecer la mente para operar con claridad y objetividad. Sus tres ejes son:",
+        keyPoint5List: [
+          "<strong>Autoconocimiento:</strong> Entender tu perfil de riesgo y tus reacciones emocionales.",
+          "<strong>Disciplina:</strong> Seguir el sistema con rigurosidad, evitando decisiones impulsivas.",
+          "<strong>Gestión del estrés:</strong> Mantener la calma ante la presión y la euforia."
+        ],
+        keyPoint5Highlight: "En resumen, un sistema de trading rentable se apoya en la lógica matemática, una ejecución disciplinada y un control emocional férreo. Solo así es posible aspirar a resultados consistentes en el tiempo.",
         servicesTitle: "Nuestros Servicios",
-        service1: "Sistemas de trading manual y algorítmico personalizados.",
-        service2: "Gestión de riesgos y análisis de rendimiento.",
-        service3: "Investigación de mercados y consultoría.",
-        service4: "Soluciones de asignación estratégica y backtesting.",
-        service5: "Fortalecimiento psicológico adaptado al trading para lograr un alto rendimiento y resiliencia en entornos adversos.",
+        service1: "Sistemas de trading manual y algorítmico personalizados",
+        service2: "Gestión de riesgos y análisis de rendimiento",
+        service3: "Soluciones de asignación estratégica y backtesting",
+        service4: "Fortalecimiento psicológico adaptado al trading",
+        service5: "Investigación de mercados y consultoría",
+        serviceDetails1: "Somos conscientes de que no todos soportamos la presión del mismo modo ni tenemos la misma paciencia. Aunque estas habilidades se pueden desarrollar, adaptamos cada sistema a la personalidad del usuario, para que sea capaz de aplicar la operativa sin sentir ansiedad o estrés añadido.",
+        serviceDetails2: "Utilizamos herramientas profesionales para mantener nuestros sistemas seguros y optimizar el rendimiento a largo plazo.",
+        serviceDetails3: "Contamos con herramientas profesionales y plantillas optimizadas que facilitan el trabajo de backtesting y nos permiten:",
+        serviceDetails4: "Programa integral para desarrollar la mentalidad adecuada para el trading de alto rendimiento:",
+        serviceDetails5: "Análisis profesional de mercados utilizando:",
+        serviceListTitle1: "Nuestros sistemas personalizados incluyen:",
+        serviceListTitle2: "Nuestro enfoque incluye:",
+        serviceList1: [
+          "Análisis completo de tu perfil psicológico como trader",
+          "Diseño de estrategias adaptadas a tu tolerancia al riesgo",
+          "Entrenamiento personalizado para la ejecución",
+          "Seguimiento continuo y ajustes según tu evolución"
+        ],
+        serviceList2: [
+          "Software avanzado de simulación de escenarios de riesgo",
+          "Software profesional para una correcta gestión de riesgo",
+          "Herramienta para calcular automaticamente el tamaño de la posición",
+          "Material profesional para ayudarte a que lleves una bitácora adecuada"
+        ],
+         serviceList3: [
+          "Realizar pruebas en diferentes mercados y condiciones",
+          "Identificar los mejores parámetros para cada estrategia",
+          "Optimizar la asignación de capital entre diferentes sistemas",
+          "Evaluar el rendimiento en diferentes escenarios"
+        ],
+        serviceList4: [
+          "Técnicas de control emocional durante la operativa",
+          "Entrenamiento en disciplina y consistencia",
+          "Gestión de expectativas realistas",
+          "Protocolos para periodos de drawdown",
+          "Seguimiento personalizado de tu evolución psicológica"
+        ],
+        serviceList5: [
+          "Herramientas profesionales de análisis técnico",
+          "Detección de patrones y oportunidades",
+          "Sesiones personalizadas de consultoría estratégica"
+        ],
         contactTitle: "Contacto",
-        contactEmail: "info@sistemasdetradingeficientes.com",
-        contactAddress: "Dirección registrada: 30 N Gould St, Sheridan, WY 82801, EE.UU.",
         contactFormBtn: "Formulario de contacto",
         formTitle: "Contáctenos",
         placeholderName: "Tu nombre",
         placeholderEmail: "Tu email",
         placeholderMessage: "Tu mensaje",
         requiredField: "Por favor, completa este campo",
-        requiredField: "Por favor, verifica que no eres un robot",
+        validationName: "Por favor, ingresa tu nombre",
+        validationEmail: "Por favor, ingresa un email válido",
+        validationMessage: "Por favor, escribe tu mensaje",
         submitBtn: "Enviar mensaje",
         cancelBtn: "Cancelar",
         sendingMessage: "Enviando...",
         confirmBtn: "Aceptar",
         confirmTitle: "¡Gracias!",
         confirmMessage: "Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo lo antes posible.",
-        copyrightDesktop: "© 2025 Sistemas de Trading Eficientes LLC. Todos los derechos reservados",
-        copyrightLine1: "© 2025 Sistemas de Trading Eficientes LLC.",
-        copyrightLine2: "Todos los derechos reservados",
-        scrollTop: "Volver Arriba",
-        errorMessage: "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
+        copyright: "© 2025 Sistemas de Trading Eficientes LLC.",
+        scrollTop: "Ir Arriba",
+        errorMessage: "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
+        recaptchaError: "Por favor, completa el reCAPTCHA",
+        riskLinkText: "Declaración de riesgo",
+        riskTitle: "DECLARACIÓN DE RIESGO",
+        riskCloseBtn: "Cerrar",
+        riskContent: `
+          <p><strong>ADVERTENCIA SOBRE RIESGOS:</strong> El trading de instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Antes de decidir operar en los mercados financieros, debe considerar cuidadosamente sus objetivos de inversión, nivel de experiencia y tolerancia al riesgo.</p>
+
+          <p><strong>POSIBILIDAD DE PERDER DINERO:</strong> Existe la posibilidad de que pierda parte o la totalidad de su inversión inicial, por lo que no debe invertir dinero que no pueda permitirse perder. Debe ser consciente de todos los riesgos asociados con el trading de instrumentos financieros y buscar asesoramiento de un asesor financiero independiente si tiene dudas.</p>
+
+          <p><strong>RENDIMIENTOS PASADOS:</strong> Los resultados pasados no son indicativos de resultados futuros. Las declaraciones sobre rendimientos potenciales son ilustrativas y no garantizan resultados futuros. El trading con apalancamiento puede amplificar tanto ganancias como pérdidas.</p>
+
+          <p><strong>NO ES ASESORAMIENTO:</strong> La información proporcionada por Sistemas de Trading Eficientes LLC no constituye asesoramiento financiero, de inversión, fiscal o de ningún otro tipo. Todo el material proporcionado tiene únicamente fines educativos e informativos.</p>
+
+          <p><strong>RESPONSABILIDAD:</strong> Sistemas de Trading Eficientes LLC no asume responsabilidad alguna por pérdidas o daños como resultado del uso de la información contenida en este sitio web. Por favor, sea plenamente consciente de los riesgos y costes asociados con el trading en los mercados financieros.</p>
+
+          <p><strong>RESTRICCIONES LEGALES:</strong> Los productos y servicios descritos pueden no estar disponibles en todas las jurisdicciones o para todos los clientes. Es responsabilidad del cliente determinar qué transacciones están permitidas según las leyes de su país de residencia.</p>`,
+        
+        navProductsText: "Nuestros Servicios",
+        navSimulatorText: "Simulador",
+        navContactText: "Contacto",
+        scrollToProducts: "Desplazarse a Productos"
       }
     };
 
+
     let currentLanguage = 'es';
 
-    function updateContent() {
+    // Función para cambiar el tema
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      updateThemeIcon();
+    }
+
+    // Función para actualizar el icono del tema
+    function updateThemeIcon() {
+      const themeToggle = document.querySelector('.theme-toggle svg');
+      if (document.body.classList.contains('dark-mode')) {
+        themeToggle.innerHTML = '<path class="moon" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"/>';
+      } else {
+        themeToggle.innerHTML = '<path class="sun" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>';
+      }
+    }
+
+    // Verificar preferencia de tema al cargar
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+    updateThemeIcon();
+
+    // Función para mostrar declaración de riesgo
+    function showRiskDisclaimer() {
+      const popup = document.getElementById("riskPopup");
+      popup.style.display = "flex";
+      document.body.style.overflow = "hidden";
+      
+      // Actualizar el contenido del popup según el idioma actual
       const t = translations[currentLanguage];
-      document.getElementById("tagline").innerText = t.tagline;
-      document.getElementById("aboutTitle").innerText = t.aboutTitle;
-      document.getElementById("aboutText").innerText = t.aboutText;
-      document.getElementById("servicesTitle").innerText = t.servicesTitle;
-      document.getElementById("service1").innerText = t.service1;
-      document.getElementById("service2").innerText = t.service2;
-      document.getElementById("service3").innerText = t.service3;
-      document.getElementById("service4").innerText = t.service4;
-      document.getElementById("service5").innerText = t.service5;
-      document.getElementById("contactTitle").innerText = t.contactTitle;
-      document.getElementById("contactEmail").innerText = t.contactEmail;
-      document.getElementById("contactAddress").innerText = t.contactAddress;
-      document.getElementById("contactToggle").innerText = t.contactFormBtn;
-      document.getElementById("formTitle").innerText = t.formTitle;
-      document.getElementById("submitBtn").innerText = t.submitBtn;
-      document.querySelector('#formPopup button[type="button"]').innerText = t.cancelBtn;
-      document.getElementById("confirmBtn").innerText = t.confirmBtn;
-      document.getElementById("confirmTitle").innerText = t.confirmTitle;
-      document.getElementById("confirmMessage").innerText = t.confirmMessage;
+      document.getElementById("riskTitle").textContent = t.riskTitle;
+      document.getElementById("riskCloseBtn").textContent = t.riskCloseBtn;
       
-      // Actualizar copyright
-      document.querySelector('.copyright .desktop-line').textContent = t.copyrightDesktop;
-      document.querySelectorAll('.copyright .mobile-line')[0].textContent = t.copyrightLine1;
-      document.querySelectorAll('.copyright .mobile-line')[1].textContent = t.copyrightLine2;
-      
-      document.getElementById('scrollTopBtn').textContent = t.scrollTop;
-
-      // Actualizar placeholders y mensajes de validación
-      
-      const nameField = document.querySelector('#formPopup input[name="name"]');
-      const emailField = document.querySelector('#formPopup input[name="email"]');
-      const messageField = document.querySelector('#formPopup textarea');
-
-      nameField.placeholder = t.placeholderName;
-      emailField.placeholder = t.placeholderEmail;
-      messageField.placeholder = t.placeholderMessage;
-
-      // Configurar mensajes de validación personalizados
-      nameField.title = t.requiredField;
-      emailField.title = t.requiredField;
-      
-      messageField.title = t.requiredField;
-
-      nameField.oninvalid = (e) => {
-        e.target.setCustomValidity(t.requiredField);
-      };
-      emailField.oninvalid = (e) => {
-        e.target.setCustomValidity(t.requiredField);
-      };
-      
-      messageField.oninvalid = (e) => {
-        e.target.setCustomValidity(t.requiredField);
-      };
-
-      nameField.oninput = (e) => e.target.setCustomValidity('');
-      emailField.oninput = (e) => e.target.setCustomValidity('');
-      messageField.oninput = (e) => e.target.setCustomValidity('');
+      // Actualizar el contenido de riesgo
+      const riskContent = document.querySelector('.risk-popup-content');
+      riskContent.innerHTML = `
+        <h2 id="riskTitle">${t.riskTitle}</h2>
+        ${t.riskContent}
+        <button class="risk-popup-close" onclick="closeRiskDisclaimer()" id="riskCloseBtn">${t.riskCloseBtn}</button>
+      `;
     }
 
-    function switchLang() {
-      currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
-      document.querySelector('.lang-switch').innerText = currentLanguage.toUpperCase();
-      updateContent();
+    // Función para cerrar declaración de riesgo
+    function closeRiskDisclaimer() {
+      document.getElementById("riskPopup").style.display = "none";
+      document.body.style.overflow = "auto";
     }
 
+    // Función para abrir el formulario de contacto
     function toggleContactForm() {
       const formPopup = document.getElementById("formPopup");
       formPopup.style.display = "flex";
+      document.body.style.overflow = "hidden";
       updateContent();
     }
 
-    function closeForm() {
-      document.getElementById("formPopup").style.display = "none";
-    }
+    // Funciones para cerrar los popups - solo con botones
+function closeForm() {
+  document.getElementById("formPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+  // Resetear el formulario al cerrar
+  document.getElementById("contactForm").reset();
+  grecaptcha.reset();
+}
 
-    function showConfirmation() {
-      document.getElementById("confirmationPopup").style.display = "flex";
-    }
+function closeConfirmation() {
+  document.getElementById("confirmationPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+}
 
-    function closeConfirmation() {
-      document.getElementById("confirmationPopup").style.display = "none";
-    }
+function closeRiskDisclaimer() {
+  document.getElementById("riskPopup").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+// Prevenir cierre al hacer clic fuera
+document.addEventListener('click', function(e) {
+  // Si el clic fue en el fondo oscuro pero NO en el contenido del popup
+  if (e.target.classList.contains('confirmation-popup')) {
+    e.stopPropagation();
+  }
+  if (e.target.classList.contains('risk-popup')) {
+    e.stopPropagation();
+  }
+  if (e.target.id === 'formPopup') {
+    e.stopPropagation();
+  }
+});
 
     function scrollToTop() {
       window.scrollTo({
@@ -781,109 +2821,319 @@
       });
     }
 
-    window.addEventListener('scroll', function() {
+    function updateContent() {
+      const t = translations[currentLanguage];
+      
+      // Actualizar contenido general
+      document.getElementById("tagline").innerText = t.tagline;
+      document.getElementById("aboutTitle").innerText = t.aboutTitle;
+      document.getElementById("aboutText").innerText = t.aboutText;
+
+      // Actualizar Sección "La clave del éxito"
+      document.getElementById("keySectionTitle").innerText = t.keySectionTitle;
+      document.getElementById("keyPoint1Title").innerText = t.keyPoint1Title;
+      document.getElementById("keyPoint1Text").innerText = t.keyPoint1Text;
+      document.getElementById("keyPoint2Title").innerText = t.keyPoint2Title;
+      document.getElementById("keyPoint2TextA").innerHTML = t.keyPoint2TextA;
+      document.getElementById("keyPoint2TextB").innerHTML = t.keyPoint2TextB;
+      document.getElementById("keyPoint2Highlight").innerText = t.keyPoint2Highlight;
+      document.getElementById("keyPoint3Title").innerText = t.keyPoint3Title;
+      document.getElementById("keyPoint3Text1").innerText = t.keyPoint3Text1;
+      document.getElementById("keyPoint3Caption").innerText = t.keyPoint3Caption;
+      document.getElementById("keyPoint3Example").innerHTML = t.keyPoint3Example;
+      
+      // Actualizar banner del simulador
+      document.getElementById("simulatorBannerTitle").innerText = t.simulatorBannerTitle;
+      document.getElementById("simulatorBannerText").innerText = t.simulatorBannerText;
+      document.getElementById("simulatorBtn").innerHTML = `<i class="fas fa-calculator"></i><span>${t.simulatorBtn}</span>`;
+      
+      document.getElementById("keyPoint4Title").innerText = t.keyPoint4Title;
+      document.getElementById("keyPoint4Text").innerText = t.keyPoint4Text;
+      
+      // Actualizar lista keyPoint4List
+      const keyPoint4ListEl = document.getElementById("keyPoint4List");
+      keyPoint4ListEl.innerHTML = '';
+      t.keyPoint4List.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          keyPoint4ListEl.appendChild(li);
+      });
+      document.getElementById("keyPoint5Title").innerText = t.keyPoint5Title;
+      document.getElementById("keyPoint5Text").innerText = t.keyPoint5Text;
+      
+      // Actualizar lista keyPoint5List
+      const keyPoint5ListEl = document.getElementById("keyPoint5List");
+      keyPoint5ListEl.innerHTML = '';
+      t.keyPoint5List.forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = item;
+          keyPoint5ListEl.appendChild(li);
+      });
+      document.getElementById("keyPoint5Highlight").innerText = t.keyPoint5Highlight;
+
+      // Actualizar sección de servicios
+      document.getElementById("servicesTitle").innerText = t.servicesTitle;
+      document.getElementById("service1").innerText = t.service1;
+      document.getElementById("service2").innerText = t.service2;
+      document.getElementById("service3").innerText = t.service3;
+      document.getElementById("service4").innerText = t.service4;
+      document.getElementById("service5").innerText = t.service5;
+      document.getElementById("serviceDetails1").innerText = t.serviceDetails1;
+      document.getElementById("serviceDetails2").innerText = t.serviceDetails2;
+      document.getElementById("serviceDetails3").innerText = t.serviceDetails3;
+      document.getElementById("serviceDetails4").innerText = t.serviceDetails4;
+      document.getElementById("serviceDetails5").innerText = t.serviceDetails5;
+
+      // Actualizar títulos de listas
+      document.getElementById("serviceListTitle1").innerText = t.serviceListTitle1;
+      document.getElementById("serviceListTitle2").innerText = t.serviceListTitle2;
+
+      // Actualizar listas de servicios
+      const updateServiceList = (listId, items) => {
+        const list = document.getElementById(listId);
+        list.innerHTML = '';
+        items.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          list.appendChild(li);
+      
+      // Actualizar mensaje de error del reCAPTCHA
+      const recaptchaError = document.getElementById("recaptchaError");
+      if (recaptchaError) {
+        recaptchaError.textContent = t.recaptchaError;
+      }
+      
+      // Actualizar mensajes de validación
+      document.querySelector('input[name="name"]').title = t.validationName;
+      document.querySelector('input[name="email"]').title = t.validationEmail;
+      document.querySelector('textarea[name="message"]').title = t.validationMessage;
+      });
+      
+      };
+
+      updateServiceList("serviceList1", t.serviceList1);
+      updateServiceList("serviceList2", t.serviceList2);
+      updateServiceList("serviceList3", t.serviceList3);
+      updateServiceList("serviceList4", t.serviceList4);
+      updateServiceList("serviceList5", t.serviceList5);
+
+      // Actualizar sección de contacto
+      document.getElementById("contactTitle").innerText = t.contactTitle;
+      document.getElementById("contact-text").innerText = t.contactFormBtn;
+      document.getElementById("riskLinkText").innerText = t.riskLinkText;
+
+      // Actualizar formulario
+      document.getElementById("formTitle").innerText = t.formTitle;
+      document.getElementById("submitBtn").innerText = t.submitBtn;
+      document.getElementById("cancelBtn").innerText = t.cancelBtn;
+
+      // Actualizar placeholders del formulario
+      document.querySelector('#formPopup input[name="name"]').placeholder = t.placeholderName;
+      document.querySelector('#formPopup input[name="email"]').placeholder = t.placeholderEmail;
+      document.querySelector('#formPopup textarea[name="message"]').placeholder = t.placeholderMessage;
+
+      // Actualizar popup de confirmación
+      document.getElementById("confirmBtn").innerText = t.confirmBtn;
+      document.getElementById("confirmTitle").innerText = t.confirmTitle;
+      document.getElementById("confirmMessage").innerText = t.confirmMessage;
+
+      // Actualizar copyright
+      document.getElementById("copyright").textContent = t.copyright;
+
+      // Actualizar botón scroll top
+      document.querySelector('#scrollTopBtn span').textContent = t.scrollTop;
+
+      // Actualizar botones de navegación
+      document.getElementById("nav-products-text").textContent = t.navProductsText;
+      document.getElementById("nav-simulator-text").textContent = t.navSimulatorText;
+      document.getElementById("nav-contact-text").textContent = t.navContactText;
+      }
+
+      function switchLang() {
+      currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
+      document.documentElement.lang = currentLanguage;
+      document.querySelector('.lang-switch span').innerText = (currentLanguage === 'es') ? 'EN' : 'ES';
+  
+      // Actualizar todo el contenido
+      updateContent();
+      
+      // Si hay un mensaje de error del reCAPTCHA visible, actualizarlo
+      const recaptchaError = document.getElementById("recaptchaError");
+      if (recaptchaError && recaptchaError.style.display === "block") {
+        recaptchaError.textContent = translations[currentLanguage].recaptchaError;
+      }
+
+      // Si el popup de riesgo está abierto, actualizarlo específicamente
+      if (document.getElementById("riskPopup").style.display === "flex") {
+        const t = translations[currentLanguage];
+        const riskContent = document.querySelector('.risk-popup-content');
+        riskContent.innerHTML = `
+          <h2 id="riskTitle" style="text-align: left;">${t.riskTitle}</h2>
+          ${t.riskContent}
+          <button class="risk-popup-close" onclick="closeRiskDisclaimer()" id="riskCloseBtn">${t.riskCloseBtn}</button>
+        `;
+      }
+
+      // Animación suave al cambiar idioma
+      document.documentElement.style.transition = 'opacity 0.2s ease-in-out';
+      document.documentElement.style.opacity = 0.8;
+      setTimeout(() => {
+        document.documentElement.style.opacity = 1;
+      }, 50);
+      setTimeout(() => {
+        document.documentElement.style.transition = '';
+      }, 250);
+    }
+    
+    // =================================
+    // EFECTO DE SCROLL PARA EL ENCABEZADO
+    // =================================
+    
+    const header = document.querySelector('header');
+    const scrollThreshold = 50;
+
+    function handleScroll() {
+      if (window.scrollY > scrollThreshold) {
+        header.classList.add('small-header');
+        document.body.classList.add('small-header-padding');
+      } else {
+        header.classList.remove('small-header');
+        document.body.classList.remove('small-header-padding');
+      }
+
+      // Mostrar/ocultar botón de scroll top y enlace de riesgo
       const scrollBtn = document.getElementById('scrollTopBtn');
-      if (window.pageYOffset > 300) {
+      const riskLink = document.querySelector('.risk-disclaimer-link');
+      const scrollPosition = window.innerHeight + window.pageYOffset;
+      const pageHeight = document.documentElement.scrollHeight;
+      const threshold = pageHeight * 0.99;
+    
+      if (scrollPosition > threshold) {
         scrollBtn.classList.add('visible');
+        riskLink.classList.add('visible');
       } else {
         scrollBtn.classList.remove('visible');
+        riskLink.classList.remove('visible');
+      }
+    }
+
+    // Usar requestAnimationFrame para mejor performance
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     });
 
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    
-    // Verificar reCAPTCHA
-    const response = grecaptcha.getResponse();
-    if (response.length == 0) {
-        // Mostrar mensaje de error debajo del reCAPTCHA
-        const errorElement = document.createElement('div');
-        errorElement.id = 'recaptchaError';
-        errorElement.style.color = 'red';
-        errorElement.style.marginBottom = '15px';
-        errorElement.style.textAlign = 'center';
-        errorElement.textContent = translations[currentLanguage].requiredField;
-        
-        // Eliminar mensaje anterior si existe
-        const existingError = document.getElementById('recaptchaError');
-        if (existingError) {
-            existingError.remove();
-        }
-        
-        // Insertar mensaje de error debajo del reCAPTCHA
-        const recaptchaContainer = document.querySelector('.g-recaptcha');
-        recaptchaContainer.parentNode.insertBefore(errorElement, recaptchaContainer.nextSibling);
-        
-        return false;
-    }
-
-    // Resto del código (no lo modifiques)
-    const form = e.target;
-    const submitBtn = document.getElementById("submitBtn");
-    const originalBtnText = submitBtn.textContent;
-    const t = translations[currentLanguage];
-    
-    submitBtn.textContent = t.sendingMessage;
-    submitBtn.disabled = true;
-    
-    const urlWithCacheBuster = `${form.action}?t=${Date.now()}`;
-    
-    fetch(urlWithCacheBuster, {
-        method: "POST",
-        body: new FormData(form),
-        headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            showConfirmation();
-            closeForm();
-            form.reset();
-            grecaptcha.reset();
-        } else {
-            throw new Error('Error en el envío');
-        }
-    })
-    .catch(error => {
-        console.error("Error con fetch:", error);
-        if (navigator.sendBeacon) {
-            const formData = new FormData(form);
-            if (navigator.sendBeacon(form.action, formData)) {
-                showConfirmation();
-                closeForm();
-                form.reset();
-                grecaptcha.reset();
-                return;
-            }
-        }
-        alert(t.errorMessage);
-    })
-    .finally(() => {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-    });
-});
-
+    // Inicialización al cargar
     document.addEventListener("DOMContentLoaded", function() {
-      updateContent();
+      // Establecer estado inicial del header
+      handleScroll();
       
+      // Establecer idioma inicial basado en el navegador o por defecto 'es'
+      const userLang = navigator.language || navigator.userLanguage;
+      if (userLang.startsWith('en')) {
+          currentLanguage = 'en';
+          document.documentElement.lang = 'en';
+          document.querySelector('.lang-switch span').innerText = 'ES';
+      } else {
+          currentLanguage = 'es';
+          document.documentElement.lang = 'es';
+          document.querySelector('.lang-switch span').innerText = 'EN';
+      }
+
+      updateContent();
+      updateThemeIcon();
+
       // Prevenir spam en el campo honey
       document.querySelector('input[name="_honey"]').addEventListener('input', function(e) {
         if(e.target.value) {
-          // Si un bot llena este campo oculto, no enviar el formulario
           document.getElementById("contactForm").removeAttribute('action');
+          console.warn("Posible bot detectado (campo honey llenado).");
         }
       });
-    });
-  </script>
-  <script>
-    // Desactivar el clic derecho
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
+
+      // Manejar envío del formulario
+      document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const t = translations[currentLanguage];
+  const response = grecaptcha.getResponse();
+  const errorElement = document.getElementById("recaptchaError");
+
+  // Validación de campos vacíos (nuevo código)
+  const nameField = document.querySelector('input[name="name"]');
+  const emailField = document.querySelector('input[name="email"]');
+  const messageField = document.querySelector('textarea[name="message"]');
+  
+  let isValid = true;
+
+  if (!nameField.value.trim()) {
+    alert(t.requiredField + " (Nombre)");
+    isValid = false;
+  }
+  if (!emailField.value.trim()) {
+    alert(t.requiredField + " (Email)");
+    isValid = false;
+  }
+  if (!messageField.value.trim()) {
+    alert(t.requiredField + " (Mensaje)");
+    isValid = false;
+  }
+  if (!isValid) return false;
+
+  // Validación reCAPTCHA (código existente)
+  if(response.length == 0) {
+    errorElement.textContent = t.recaptchaError;
+    errorElement.style.display = "block";
+    document.querySelector('.g-recaptcha').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  } else {
+    errorElement.style.display = "none";
+  }
+
+  // Resto del código de envío (mantén esto igual)
+  const form = e.target;
+  const submitBtn = document.getElementById("submitBtn");
+  const originalBtnText = submitBtn.textContent;
+
+  submitBtn.textContent = t.sendingMessage;
+  submitBtn.disabled = true;
+
+  const urlWithCacheBuster = `${form.action}?t=${Date.now()}`;
+
+  fetch(urlWithCacheBuster, {
+    method: "POST",
+    body: new FormData(form),
+    headers: {
+      'Accept': 'application/json',
+      'Cache-Control': 'no-cache'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      showConfirmation();
+      closeForm();
+      form.reset();
+      grecaptcha.reset();
+    } else {
+      throw new Error('Error en el envío');
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert(t.errorMessage);
+  })
+  .finally(() => {
+    submitBtn.textContent = originalBtnText;
+    submitBtn.disabled = false;
+  });
+});
+});
   </script>
 </body>
 </html>
-
