@@ -1280,25 +1280,30 @@
       transform: translateY(-2px);
     }
     
-    /* Estilo del contenedor del reCAPTCHA */
+    /* Contenedor del reCAPTCHA con margen fijo */
     .g-recaptcha {
-      margin: 15px 0; /* Mismo espacio arriba y abajo (15px) */
+      margin: 15px 0; /* Espacio igual arriba y abajo */
       display: flex;
       justify-content: center;
     }
     
-    /* Estilo del mensaje de error */
+    /* Contenedor del mensaje de error (ocupa espacio siempre) */
+    .recaptcha-error-container {
+      min-height: 15px; /* Altura fija (igual que el mensaje de error) */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px; /* Pequeño ajuste si es necesario */
+    }
+    
+    /* Mensaje de error (centrado dentro del contenedor) */
     .recaptcha-error-message {
       color: red;
-      text-align: center;
       font-size: 0.9rem;
-      width: 100%;
-      margin: 0; /* Elimina márgenes innecesarios */
-      padding: 5px 0; /* Pequeño espacio interno */
-      display: none;
-      position: relative;
-      top: -5px; /* Ajuste fino para centrarlo mejor */
-    }   
+      text-align: center;
+      display: none; /* Inicialmente oculto */
+      transform: translateY(-4px);
+    }  
 
     /* ========================
        POPUP DE CONFIRMACIÓN
@@ -2410,9 +2415,12 @@
         <input type="email" name="email" placeholder="Tu email" required title="" data-validation="validationEmail">
         <textarea name="message" placeholder="Tu mensaje" required title="" data-validation="validationMessage"></textarea>
       
-        <!-- Añade esto justo antes de los botones -->
+
         <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
-        <div id="recaptchaError" class="recaptcha-error-message" style="display: none;"></div>
+
+        <div class="recaptcha-error-container">
+          <div id="recaptchaError" class="recaptcha-error-message"></div>
+        </div>
         
         <button type="submit" id="submitBtn">Enviar mensaje</button>
         <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
@@ -3139,5 +3147,3 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   </script>
 </body>
 </html>
-
-
