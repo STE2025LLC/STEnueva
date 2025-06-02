@@ -3064,61 +3064,49 @@ document.addEventListener('click', function(e) {
   const t = translations[currentLanguage];
   const response = grecaptcha.getResponse();
   const errorElement = document.getElementById("recaptchaError");
+  const submitBtn = document.getElementById("submitBtn");
+  const originalBtnText = submitBtn.textContent;
 
-  // Validación de campos vacíos (nuevo código)
-  const nameField = document.querySelector('input[name="name"]');
-  const emailField = document.querySelector('input[name="email"]');
-  const messageField = document.querySelector('textarea[name="message"]');
-  
-  let isValid = true;
+  // Validar campos
+  const name = document.querySelector('input[name="name"]').value.trim();
+  const email = document.querySelector('input[name="email"]').value.trim();
+  const message = document.querySelector('textarea[name="message"]').value.trim();
 
-  if (!nameField.value.trim()) {
-    alert(t.requiredField + " (Nombre)");
-    isValid = false;
+  if (!name || !email || !message) {
+    alert(t.requiredField);
+    return false;
   }
-  if (!emailField.value.trim()) {
-    alert(t.requiredField + " (Email)");
-    isValid = false;
-  }
-  if (!messageField.value.trim()) {
-    alert(t.requiredField + " (Mensaje)");
-    isValid = false;
-  }
-  if (!isValid) return false;
 
-  // Validación reCAPTCHA (código existente)
-  if(response.length == 0) {
+  // Validar email
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("Por favor ingresa un email válido");
+    return false;
+  }
+
+  // Validar reCAPTCHA
+  if (!response.length) {
     errorElement.textContent = t.recaptchaError;
     errorElement.style.display = "block";
     document.querySelector('.g-recaptcha').scrollIntoView({ behavior: 'smooth', block: 'center' });
     return false;
-  } else {
-    errorElement.style.display = "none";
   }
-
-  // Resto del código de envío (mantén esto igual)
-  const form = e.target;
-  const submitBtn = document.getElementById("submitBtn");
-  const originalBtnText = submitBtn.textContent;
 
   submitBtn.textContent = t.sendingMessage;
   submitBtn.disabled = true;
 
-  const urlWithCacheBuster = `${form.action}?t=${Date.now()}`;
-
-  fetch(urlWithCacheBuster, {
+  // Enviar formulario
+  fetch(this.action, {
     method: "POST",
-    body: new FormData(form),
+    body: new FormData(this),
     headers: {
-      'Accept': 'application/json',
-      'Cache-Control': 'no-cache'
+      'Accept': 'application/json'
     }
   })
   .then(response => {
     if (response.ok) {
       showConfirmation();
       closeForm();
-      form.reset();
+      this.reset();
       grecaptcha.reset();
     } else {
       throw new Error('Error en el envío');
