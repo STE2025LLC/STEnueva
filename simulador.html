@@ -26,7 +26,7 @@
     </style>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
     <style>
@@ -2332,7 +2332,7 @@
         <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
         <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
         <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
-        <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
+        <div id="recaptcha-container"></div>
         <div class="recaptcha-error" id="recaptchaError"></div>
 
         <button type="submit" id="submitBtn">Enviar mensaje</button>
@@ -3418,6 +3418,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Botón de scroll para móviles
   document.getElementById('mobileScrollTopBtn')?.addEventListener('click', scrollToTop);
 });
+</script>
+
+<script>
+  var onloadCallback = function() {
+    grecaptcha.render('recaptcha-container', {
+      'sitekey': '6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ',
+      'size': 'normal',  // Asegura que sea el checkbox normal
+      'theme': 'light'   // Opcional: elige 'light' o 'dark'
+    });
+  };
 </script>
 
 </body>
