@@ -455,14 +455,14 @@
     }
     
     /* Iconos dentro de los botones */
-.header-nav-btn i {
+  .header-nav-btn i {
     font-size: 0.9rem;
     transition: all var(--transition-medium);
-}
+  }
 
-.header-nav-btn:hover i {
+  .header-nav-btn:hover i {
     color: white !important;
-}
+  }
 
     /* Mostrar botones solo en encabezado pequeño y pantallas grandes */
     @media (min-width: 1350px) {
@@ -973,27 +973,29 @@
 
     .contact-form-btn {
       background-color: transparent;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 8px 20px;
-  border-radius: var(--radius-small);
-  cursor: pointer;
-  font-size: 0.95rem;
-  margin-top: 15px;
-  transition: all var(--transition-medium), transform 0.3s ease;
-  font-weight: 500;
-  min-height: 40px;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;    }
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 20px;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 15px;
+      transition: all var(--transition-medium), transform 0.3s ease;
+      font-weight: 500;
+      min-height: 40px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
     .contact-form-btn:hover {
       background-color: var(--accent-color);
-  border-color: var(--accent-color);
-  transform: translateX(5px) translateY(-2px); /* Combina el movimiento horizontal con el vertical existente */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);    }
+      border-color: var(--accent-color);
+      transform: translateX(5px) translateY(-2px); /* Combina el movimiento horizontal con el vertical existente */
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+   }
 
     .footer-address {
       color: #bbb;
@@ -1284,6 +1286,13 @@
       display: flex;
       justify-content: center;
     }  
+
+    .error-message {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      text-align: center;
+    }
     
     /* ========================
        POPUP DE CONFIRMACIÓN
@@ -2397,6 +2406,7 @@
       
         <!-- Añade esto justo antes de los botones -->
         <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
+        <div id="recaptchaError" class="error-message" style="color: red; margin-top: 10px; display: none;"></div>
         
         <button type="submit" id="submitBtn">Enviar mensaje</button>
         <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
@@ -2784,6 +2794,7 @@
 
     // Funciones para cerrar los popups - solo con botones
 function closeForm() {
+  document.getElementById("recaptchaError").style.display = "none";
   document.getElementById("formPopup").style.display = "none";
   document.body.style.overflow = "auto";
   // Resetear el formulario al cerrar
@@ -3076,8 +3087,11 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
   // Validar reCAPTCHA
   if (!recaptchaResponse) {
-    alert(t.recaptchaError);
+    document.getElementById("recaptchaError").textContent = t.recaptchaError;
+    document.getElementById("recaptchaError").style.display = "block";
     return false;
+  } else {
+    document.getElementById("recaptchaError").style.display = "none";
   }
 
   submitBtn.textContent = t.sendingMessage;
