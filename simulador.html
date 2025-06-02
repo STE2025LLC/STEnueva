@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1234,41 +1235,19 @@
     }    
     
     .g-recaptcha {
-      margin: 5px 0; /* Espacio igual arriba y abajo */
+      margin-bottom: 20px;
       display: flex;
       justify-content: center;
     }
-    
-    /* Asegurar que el contenedor del error siempre ocupe espacio */
-    .recaptcha-error-container {
-      min-height: 20px; /* Altura fija suficiente para el mensaje */
-      margin: 5px 0;
-      transition: all 0.3s ease;
-    }
-    
-    /* Mensaje de error con posición absoluta para no afectar el layout */
-    .recaptcha-error-message {
-      color: red;
-      font-size: 0.8rem;
+
+    .recaptcha-error {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: none;
       text-align: center;
-      display: block;
-      opacity: 1;
-      transform: translateY(-4px);
-      transition: all 0.3s ease;
-      margin-top: 5px;
-      min-height: 15px; /* Mantiene el espacio reservado */
     }
 
-    /* Estas clases se aplicarán dinámicamente */
-    .recaptcha-error-message.hidden {
-      opacity: 0;
-      transform: translateY(-10px);
-      height: 0;
-      min-height: 0;
-      margin-top: 0;
-      overflow: hidden;
-    }
-    
     .scroll-top-btn {
       position: fixed;
       bottom: 20px;
@@ -1838,7 +1817,7 @@
       word-break: break-all;
     }
     
-        /* IMAGEN DE FONDO 100% FUNCIONAL */
+    /* IMAGEN DE FONDO */
     body::before {
       content: "";
       position: fixed;
@@ -1847,13 +1826,20 @@
       width: 100%;
       height: 100%;
       background-image: url('https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
-      background-size: 100%;
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.1;
+      background-attachment: fixed;
+      opacity: 0.15; /* Opacidad para modo claro (más visible) */
       z-index: -9999;
       pointer-events: none;
+      transition: opacity 0.3s ease; /* Transición suave al cambiar modo */
     }
+
+    /* Cuando esté en modo oscuro, reducir opacidad */
+    body.dark-mode::before {
+      opacity: 0.07; /* Opacidad para modo oscuro (más discreta) */
+    } 
 
 
   </style>
@@ -2347,12 +2333,9 @@
         <input type="text" name="name" placeholder="Tu nombre" required title="Por favor, ingresa tu nombre">
         <input type="email" name="email" placeholder="Tu email" required title="Por favor, ingresa un email válido">
         <textarea name="message" placeholder="Tu mensaje" required title="Por favor, escribe tu mensaje"></textarea>
-        <div style="text-align: center; margin: 10px 0;">
-          <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ" style="display: inline-block;"></div>
-        </div>
-        <div class="recaptcha-error-container">
-          <div class="recaptcha-error-message hidden" id="recaptchaError"></div>
-        </div>
+        <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
+        <div class="recaptcha-error" id="recaptchaError"></div>
+
         <button type="submit" id="submitBtn">Enviar mensaje</button>
         <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
       </form>
@@ -2586,7 +2569,7 @@
             'validation-message': 'Please write your message',
             'submitBtnText': 'Send message',
             'cancelBtnText': 'Cancel',
-            'recaptchaErrorText': 'Please verify the reCAPTCHA',
+            'recaptchaErrorText': 'Please complete the reCAPTCHA',
             'closeBtnText': 'Close',
             'welcome-title': 'Welcome to the Trading Simulator',
             'welcome-text': 'This simulator allows you to project potential results based on trading statistics.',
@@ -3243,16 +3226,15 @@
                 e.preventDefault();
 
                 const recaptchaResponse = grecaptcha.getResponse();
-                const recaptchaError = document.getElementById('recaptchaError');
-
                 if (!recaptchaResponse) {
-                  recaptchaError.textContent = currentLanguage === 'es' ? 
-                      'Por favor, verifica el reCAPTCHA' : 'Please verify the reCAPTCHA';
-                  recaptchaError.classList.remove('hidden');
-                  return;
+                    document.getElementById('recaptchaError').style.display = 'block';
+                    document.getElementById('recaptchaError').textContent = currentLanguage === 'es' ? 
+                        'Por favor, verifica el reCAPTCHA' : 'Please verify the reCAPTCHA';
+                    return;
                 }
                 
-                recaptchaError.classList.add('hidden');
+                document.getElementById('recaptchaError').style.display = 'none';
+
                 const formData = new FormData(contactForm);
                 
                 fetch(contactForm.action, {
@@ -3362,7 +3344,17 @@ document.addEventListener('DOMContentLoaded', function() {
     'tempmail.com', 'mailinator.com', '10minutemail.com', 'guerrillamail.com',
     'yopmail.com', 'throwawaymail.com', 'temp-mail.org', 'fakeinbox.com',
     'trashmail.com', 'maildrop.cc', 'getnada.com', 'tempail.com',
-    'dispostable.com', 'mailnesia.com', 'mytemp.email', 'tmpmail.org'
+    'dispostable.com', 'mailnesia.com', 'mytemp.email', 'tmpmail.org',
+    'acedby.com', 'blueportalmail.com', 'knmcadibav.com', 'vwhins.com', 
+    'smykwb.com', 'wywnxa.com', 'qacmjeq.com', 'qejjyl.com', 'zvvzuv.com', 
+    'bltiwd.com', 'qzueos.com', 'jxpomup.com', 'ibolinva.com', 'wyoxafp.com',
+    'osxofulk.com', 'jkotypc.com', 'cmhvzlmfc.com', 'zudpck.com', 'daouse.com',
+    'illubd.com', 'mkzaso.com', 'mrotzis.com', 'xkxkud.com', 'sindwir.com',
+    'vigilantkeep.net', 'miistermail.fr', 'hunnur.com', 'fhpfhp.fr.nf',
+    'exzeo.com', 'letterprotect.com', 'teleworm.us', 'armyspy.com',
+    'cuvox.de', 'dayrep.com', 'einrot.com', 'fleckens.hu', 'gustr.com',
+    'jourrapide.com', 'rhyta.com', 'superrito.com', 'emaily.pro', 'gufum.com',
+    'gukox.org', 'jioso.com', 'toaik.com'
   ];
 
   // Verificar email válido
