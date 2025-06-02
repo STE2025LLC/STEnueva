@@ -2363,7 +2363,7 @@ body.dark-mode::before {
         <button class="contact-form-btn" id="contacto-btn" onclick="toggleContactForm()">
            <i class="fas fa-envelope"></i> 
            <span id="contact-text">Formulario de contacto</span>
-        </button>
+       </button>
        </div>
       <div class="footer-info">
         <p class="footer-address" id="contactAddress">5830 E 2ND ST, CASPER, WY 82690, EE.UU.</p>
@@ -3087,16 +3087,13 @@ document.addEventListener('click', function(e) {
   if (!isValid) return false;
 
   // Validación reCAPTCHA (código existente)
-  if(!response || response.length === 0) {
+  if(response.length == 0) {
     errorElement.textContent = t.recaptchaError;
     errorElement.style.display = "block";
-    window.scrollTo({
-      top: document.querySelector('.g-recaptcha').offsetTop - 100,
-      behavior: 'smooth'
-  });
-  return false;
-}
-  errorElement.style.display = "none";
+    document.querySelector('.g-recaptcha').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  } else {
+    errorElement.style.display = "none";
   }
 
   // Resto del código de envío (mantén esto igual)
