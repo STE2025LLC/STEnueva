@@ -67,6 +67,22 @@
       margin: 0;
       padding: 0;
     }
+    
+    /* Estilo infalible para el input de email */
+    .email-input-popup {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .dark-mode .email-input-popup {
+      color: var(--dark-text-primary) !important;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -1799,6 +1815,24 @@
       white-space: normal;
       word-break: break-all;
     }
+    
+        /* IMAGEN DE FONDO 100% FUNCIONAL */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.1;
+      z-index: -9999;
+      pointer-events: none;
+    }
+
 
   </style>
 </head>
@@ -2312,6 +2346,11 @@
 
     const translations = {
         'es': {
+            'understand-text': 'Continuar al Simulador',
+            'email-prompt': 'Para acceder al simulador, por favor ingresa tu email:',
+            'email-placeholder': 'Tu email válido',
+            'email-disclaimer': 'Solo usaremos tu email para enviarte ofertas exclusivas cuando las tengamos. No compartiremos tu información con terceros.',
+            'email-error': 'Por favor ingresa un email válido (no se permiten emails temporales)',
             'companyName': 'Sistemas de Trading Eficientes LLC',
             'tagline': 'Trading Manual y Algorítmico',
             'main-title': 'SIMULADOR PROBABILÍSTICO DE TRADING',
@@ -2422,6 +2461,11 @@
             'understand-text': 'Entendido'
         },
         'en': {
+            'understand-text': 'Continue to Simulator',
+            'email-prompt': 'To access the simulator, please enter your email:',
+            'email-placeholder': 'Your valid email',
+            'email-disclaimer': 'We will only use your email to send you exclusive offers when we have them. We will not share your information with third parties.',
+            'email-error': 'Please enter a valid email (temporary emails not allowed)',
             'companyName': 'Sistemas de Trading Eficientes LLC',
             'tagline': 'Manual & Algorithmic Trading',
             'main-title': 'PROBABILISTIC TRADING SIMULATOR',
@@ -2666,6 +2710,11 @@
         updateRiskDisclaimer();
         updateWelcomePopup();
         calculateInitialValues();
+        
+        document.getElementById('email-prompt-text').textContent = langData['email-prompt'];
+        document.getElementById('userEmail').placeholder = langData['email-placeholder'];
+        document.getElementById('email-disclaimer-text').textContent = langData['email-disclaimer'];
+        document.getElementById('emailError').textContent = langData['email-error'];
     }
 
     function updateChartLabels() {
@@ -3262,29 +3311,97 @@
       </ol>
     </div>
     
-    <button class="risk-popup-close" id="closePopupBtn" style="margin-top: 20px;">
-      <span id="understand-text">Entendido</span>
+    <div style="margin: 25px 0;">
+      <p style="margin-bottom:15px;color:var(--text-secondary);" id="email-prompt-text">Para acceder al simulador, por favor ingresa tu email:</p>
+      <input type="email" id="userEmail" class="email-input-popup" placeholder="Tu email válido" required>
+      <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:15px;" id="email-disclaimer-text">Solo usaremos tu email para enviarte ofertas exclusivas cuando las tengamos. No compartiremos tu información con terceros.</p>
+      <p style="font-size:0.8rem; color:#dc3545; display:none;" id="emailError"></p>
+    </div>    
+    
+    <button class="risk-popup-close" id="closePopupBtn" style="margin-top: 10px; width:100%;" disabled>
+      <span id="understand-text">Continuar al Simulador</span>
     </button>
   </div>
 </div>
 
 <script>
-
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('closePopupBtn')?.addEventListener('click', function() {
-    const popup = document.getElementById('initPopup');
-    if (popup) {
-      popup.style.display = 'none';
-      document.body.style.overflow = '';
-    }
+  const emailInput = document.getElementById('userEmail');
+  const closeBtn = document.getElementById('closePopupBtn');
+  const emailError = document.getElementById('emailError');
+  const initPopup = document.getElementById('initPopup');
+
+  // Lista de dominios de email temporales a bloquear
+  const tempEmailDomains = [
+    'tempmail.com', 'mailinator.com', '10minutemail.com', 'guerrillamail.com',
+    'yopmail.com', 'throwawaymail.com', 'temp-mail.org', 'fakeinbox.com',
+    'trashmail.com', 'maildrop.cc', 'getnada.com', 'tempail.com',
+    'dispostable.com', 'mailnesia.com', 'mytemp.email', 'tmpmail.org'
+  ];
+
+  // Verificar email válido
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(email)) return false;
+    
+    const domain = email.split('@')[1].toLowerCase();
+    return !tempEmailDomains.some(temp => domain.includes(temp));
+  }
+
+  // Verificar si ya hay un email guardado
+  const savedEmail = localStorage.getItem('userEmail');
+  if (savedEmail) {
+    // Si existe, ocultar el popup y permitir el acceso
+    initPopup.style.display = 'none';
+    document.body.style.overflow = '';
+  } else {
+    // Si no existe, mostrar el popup y bloquear el scroll
+    initPopup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Habilitar/deshabilitar botón según email válido
+  emailInput.addEventListener('input', function() {
+    const isValid = validateEmail(this.value);
+    closeBtn.disabled = !isValid;
+    emailError.style.display = isValid ? 'none' : 'block';
+    emailError.textContent = translations[currentLanguage]['email-error'];
   });
 
-  document.body.style.overflow = 'hidden';
-
-  document.getElementById('mobileScrollTopBtn')?.addEventListener('click', scrollToTop);
+  // Al hacer clic en continuar
+  closeBtn.addEventListener('click', function() {
+    const email = emailInput.value;
+    if (!validateEmail(email)) {
+      emailError.style.display = 'block';
+      return;
+    }
     
-});
+    // Guardar el email en localStorage
+    localStorage.setItem('userEmail', email);
+    
+    // Enviar el email a Formspree (opcional)
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('_subject', 'Nuevo acceso al simulador');
+    formData.append('_replyto', email);
+    
+    fetch('https://formspree.io/f/xkgjlqnr', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).catch(error => console.error('Error al enviar email:', error));
 
+    // Cerrar el popup
+    initPopup.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  // Botón de scroll para móviles
+  document.getElementById('mobileScrollTopBtn')?.addEventListener('click', scrollToTop);
+});
 </script>
+
 </body>
 </html>
