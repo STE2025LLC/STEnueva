@@ -1276,7 +1276,15 @@
     .dark-mode #formPopup button[type="button"]:hover {
       background: rgba(255,255,255,0.05);
       transform: translateY(-2px);
-    }    
+    }
+    
+    /* Estilos para reCAPTCHA */
+    .g-recaptcha {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+      
     
     /* ========================
        POPUP DE CONFIRMACIÓN
@@ -1874,6 +1882,12 @@
        hyphens: auto;
        word-spacing: -0.05em;
       }
+      
+      .g-recaptcha {
+        transform: scale(0.85);
+        transform-origin: center;
+      }
+
   
       .math-expectation-table th,
       .math-expectation-table td {
@@ -1883,32 +1897,32 @@
     
     /* IMAGEN DE FONDO */
     body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.15; /* Opacidad para modo claro (más visible) */
-  z-index: -9999;
-  pointer-events: none;
-  transition: opacity 0.3s ease; /* Transición suave al cambiar modo */
-}
-
-/* Cuando esté en modo oscuro, reducir opacidad */
-body.dark-mode::before {
-  opacity: 0.07; /* Opacidad para modo oscuro (más discreta) */
-}    
-
-  </style>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.15; /* Opacidad para modo claro (más visible) */
+      z-index: -9999;
+      pointer-events: none;
+      transition: opacity 0.3s ease; /* Transición suave al cambiar modo */
+    }
+    
+    /* Cuando esté en modo oscuro, reducir opacidad */
+    body.dark-mode::before {
+      opacity: 0.07; /* Opacidad para modo oscuro (más discreta) */
+    }    
+    
+</style>
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      
 </head>
 
 <body>
@@ -2377,11 +2391,14 @@ body.dark-mode::before {
         <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
         <input type="hidden" name="_gotcha">
         <input type="hidden" name="_honey" value="">
-
+      
         <input type="text" name="name" placeholder="Tu nombre" required title="" data-validation="validationName">
         <input type="email" name="email" placeholder="Tu email" required title="" data-validation="validationEmail">
         <textarea name="message" placeholder="Tu mensaje" required title="" data-validation="validationMessage"></textarea>
-
+      
+        <!-- Añade esto justo antes de los botones -->
+        <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
+        
         <button type="submit" id="submitBtn">Enviar mensaje</button>
         <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
       </form>
@@ -2415,6 +2432,7 @@ body.dark-mode::before {
     </div>
   </div>
 
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   
   <script>
@@ -3042,6 +3060,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   const name = document.querySelector('input[name="name"]').value.trim();
   const email = document.querySelector('input[name="email"]').value.trim();
   const message = document.querySelector('textarea[name="message"]').value.trim();
+  const recaptchaResponse = grecaptcha.getResponse();
 
   if (!name || !email || !message) {
     alert(t.requiredField);
@@ -3054,13 +3073,23 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     return false;
   }
 
+  // Validar reCAPTCHA
+  if (!recaptchaResponse) {
+    alert("Por favor completa la verificación reCAPTCHA");
+    return false;
+  }
+
   submitBtn.textContent = t.sendingMessage;
   submitBtn.disabled = true;
+
+  // Crear FormData y añadir recaptcha
+  const formData = new FormData(this);
+  formData.append('g-recaptcha-response', recaptchaResponse);
 
   // Enviar formulario
   fetch(this.action, {
     method: "POST",
-    body: new FormData(this),
+    body: formData,
     headers: {
       'Accept': 'application/json'
     }
@@ -3071,6 +3100,8 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
       document.getElementById("confirmationPopup").style.display = "flex";
       document.body.style.overflow = "hidden";
       this.reset();
+      // Resetear reCAPTCHA
+      grecaptcha.reset();
     } else {
       throw new Error('Error en el envío');
     }
@@ -3083,6 +3114,8 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     confirmPopup.querySelector("p").textContent = t.errorMessage;
     confirmPopup.style.display = "flex";
     document.body.style.overflow = "hidden";
+    // Resetear reCAPTCHA
+    grecaptcha.reset();
   })
   .finally(() => {
     submitBtn.textContent = originalBtnText;
