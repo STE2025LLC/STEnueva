@@ -1894,6 +1894,30 @@
       }
     }
     
+    /* IMAGEN DE FONDO */
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://raw.githubusercontent.com/STE2025LLC/STEnueva/refs/heads/main/Fondo.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.15; /* Opacidad para modo claro (más visible) */
+  z-index: -9999;
+  pointer-events: none;
+  transition: opacity 0.3s ease; /* Transición suave al cambiar modo */
+}
+
+/* Cuando esté en modo oscuro, reducir opacidad */
+body.dark-mode::before {
+  opacity: 0.07; /* Opacidad para modo oscuro (más discreta) */
+}    
+
   </style>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -2176,7 +2200,7 @@
         <h3 id="keyPoint4Title">Gestión del Riesgo: El Escudo del Capital</h3>
         <p id="keyPoint4Text">Una adecuada gestión del capital es vital para sobrevivir en los mercados. Algunas recomendaciones clave:</p>
         <ul id="keyPoint4List">
-          <li>Limitar la pérdida diaria al 1%–3% del capital total.</li>
+          <li>Limitar la pérdida diaria al 1%–5% del capital total.</li>
           <li>Utilizar stop loss automáticos para contener las pérdidas.</li>
           <li>Evitar el apalancamiento excesivo, que puede amplificar las pérdidas y poner en peligro la cuenta.</li>
         </ul>
@@ -2475,7 +2499,7 @@
         keyPoint4Title: "Risk Management: The Capital Shield",
         keyPoint4Text: "Proper capital management is vital for surviving in the markets. Some key recommendations:",
         keyPoint4List: [
-          "Limit daily loss to 1%–3% of total capital.",
+          "Limit daily loss to 1%–5% of total capital.",
           "Use automatic stop losses to contain losses.",
           "Avoid excessive leverage, which can amplify losses and jeopardize the account."
         ],
@@ -2599,7 +2623,7 @@
         keyPoint4Title: "Gestión del Riesgo: El Escudo del Capital",
         keyPoint4Text: "Una adecuada gestión del capital es vital para sobrevivir en los mercados. Algunas recomendaciones clave:",
         keyPoint4List: [
-          "Limitar la pérdida diaria al 1%–3% del capital total.",
+          "Limitar la pérdida diaria al 1%–5% del capital total.",
           "Utilizar stop loss automáticos para contener las pérdidas.",
           "Evitar el apalancamiento excesivo, que puede amplificar las pérdidas y poner en peligro la cuenta."
         ],
