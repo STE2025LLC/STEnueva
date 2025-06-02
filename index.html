@@ -2397,6 +2397,7 @@
       
         <!-- Añade esto justo antes de los botones -->
         <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
+        <div id="recaptchaError" style="color: red; margin-top: 10px; display: none;"></div>
         
         <button type="submit" id="submitBtn">Enviar mensaje</button>
         <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
@@ -2788,6 +2789,7 @@ function closeForm() {
   document.body.style.overflow = "auto";
   // Resetear el formulario al cerrar
   document.getElementById("contactForm").reset();
+  document.getElementById("recaptchaError").style.display = "none";
 }
 
 function closeConfirmation() {
@@ -3076,8 +3078,11 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
   // Validar reCAPTCHA
   if (!recaptchaResponse) {
-    alert(t.recaptchaError);
+    document.getElementById("recaptchaError").textContent = t.recaptchaError;
+    document.getElementById("recaptchaError").style.display = "block";
     return false;
+  } else {
+    document.getElementById("recaptchaError").style.display = "none";
   }
 
   submitBtn.textContent = t.sendingMessage;
