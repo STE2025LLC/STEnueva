@@ -1280,22 +1280,26 @@
       transform: translateY(-2px);
     }
     
-    /* Estilos para reCAPTCHA */
+    /* Estilo del contenedor del reCAPTCHA */
     .g-recaptcha {
-      margin: 20px 0;
+      margin: 15px 0; /* Mismo espacio arriba y abajo (15px) */
       display: flex;
       justify-content: center;
-    }  
-   
+    }
+    
+    /* Estilo del mensaje de error */
     .recaptcha-error-message {
       color: red;
-      margin: 10px 0;
       text-align: center;
       font-size: 0.9rem;
       width: 100%;
+      margin: 0; /* Elimina márgenes innecesarios */
+      padding: 5px 0; /* Pequeño espacio interno */
       display: none;
-    }
-    
+      position: relative;
+      top: -5px; /* Ajuste fino para centrarlo mejor */
+    }   
+
     /* ========================
        POPUP DE CONFIRMACIÓN
        ======================== */
@@ -2961,24 +2965,25 @@ document.addEventListener('click', function(e) {
       }
 
       function switchLang() {
-  currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
-  document.documentElement.lang = currentLanguage;
-  document.querySelector('.lang-switch span').innerText = (currentLanguage === 'es') ? 'EN' : 'ES';
-  
-  // Actualizar todo el contenido
-  updateContent();
-  
-  // Forzar la actualización del mensaje de reCAPTCHA si está visible
-  const recaptchaError = document.getElementById("recaptchaError");
-  if (recaptchaError.style.display === "block") {
-    const t = translations[currentLanguage];
-    recaptchaError.textContent = t.recaptchaError;
-    recaptchaError.style.display = "none"; // Resetear visualmente
-    setTimeout(() => {
-      recaptchaError.style.display = "block";
-    }, 50);
-  }
-}    
+        currentLanguage = (currentLanguage === 'es') ? 'en' : 'es';
+        document.documentElement.lang = currentLanguage;
+        document.querySelector('.lang-switch span').innerText = (currentLanguage === 'es') ? 'EN' : 'ES';
+        
+        // Actualizar todo el contenido
+        updateContent();
+        
+        // Forzar la actualización del mensaje de reCAPTCHA si está visible
+        const recaptchaError = document.getElementById("recaptchaError");
+        if (recaptchaError.style.display === "block") {
+          const t = translations[currentLanguage];
+          recaptchaError.textContent = t.recaptchaError;
+          recaptchaError.style.display = "none"; // Resetear visualmente
+          setTimeout(() => {
+            recaptchaError.style.display = "block";
+          }, 50);
+        }
+      }    
+
     // =================================
     // EFECTO DE SCROLL PARA EL ENCABEZADO
     // =================================
@@ -3134,3 +3139,5 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   </script>
 </body>
 </html>
+
+
