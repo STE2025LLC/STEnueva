@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1277,20 +1278,6 @@
       transform: translateY(-2px);
     }    
     
-    .g-recaptcha {
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .recaptcha-error {
-      color: #dc3545;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      display: none;
-      text-align: center;
-    }
-
     /* ========================
        POPUP DE CONFIRMACIÓN
        ======================== */
@@ -2394,8 +2381,6 @@ body.dark-mode::before {
         <input type="text" name="name" placeholder="Tu nombre" required title="" data-validation="validationName">
         <input type="email" name="email" placeholder="Tu email" required title="" data-validation="validationEmail">
         <textarea name="message" placeholder="Tu mensaje" required title="" data-validation="validationMessage"></textarea>
-        <div class="g-recaptcha" data-sitekey="6LcgDVMrAAAAAKgNnOLsJ_IvzXQJ9Ep2G3GjAsuZ"></div>
-        <div class="recaptcha-error" id="recaptchaError"></div>
 
         <button type="submit" id="submitBtn">Enviar mensaje</button>
         <button type="button" onclick="closeForm()" id="cancelBtn">Cancelar</button>
@@ -2431,7 +2416,6 @@ body.dark-mode::before {
   </div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   
   <script>
     // Función para los acordeones de servicios - VERSIÓN CORREGIDA
@@ -2573,7 +2557,6 @@ body.dark-mode::before {
         copyright: "© 2025 Sistemas de Trading Eficientes LLC.",
         scrollTop: "Scroll to top",
         errorMessage: "Error sending message. Please try again later.",
-        recaptchaError: "Please complete the reCAPTCHA",
         riskLinkText: "Risk Disclosure",
         riskTitle: "RISK DISCLOSURE STATEMENT",
         riskCloseBtn: "Close",
@@ -2697,7 +2680,6 @@ body.dark-mode::before {
         copyright: "© 2025 Sistemas de Trading Eficientes LLC.",
         scrollTop: "Ir Arriba",
         errorMessage: "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.",
-        recaptchaError: "Por favor, completa el reCAPTCHA",
         riskLinkText: "Declaración de riesgo",
         riskTitle: "DECLARACIÓN DE RIESGO",
         riskCloseBtn: "Cerrar",
@@ -2787,12 +2769,15 @@ function closeForm() {
   document.body.style.overflow = "auto";
   // Resetear el formulario al cerrar
   document.getElementById("contactForm").reset();
-  grecaptcha.reset();
 }
 
 function closeConfirmation() {
   document.getElementById("confirmationPopup").style.display = "none";
   document.body.style.overflow = "auto";
+  // Restaurar el mensaje original por si se usó para mostrar error
+  const t = translations[currentLanguage];
+  document.getElementById("confirmTitle").textContent = t.confirmTitle;
+  document.getElementById("confirmMessage").textContent = t.confirmMessage;
 }
 
 function closeRiskDisclaimer() {
@@ -2896,13 +2881,7 @@ document.addEventListener('click', function(e) {
           const li = document.createElement('li');
           li.textContent = item;
           list.appendChild(li);
-      
-      // Actualizar mensaje de error del reCAPTCHA
-      const recaptchaError = document.getElementById("recaptchaError");
-      if (recaptchaError) {
-        recaptchaError.textContent = t.recaptchaError;
-      }
-      
+         
       // Actualizar mensajes de validación
       document.querySelector('input[name="name"]').title = t.validationName;
       document.querySelector('input[name="email"]').title = t.validationEmail;
@@ -2957,12 +2936,6 @@ document.addEventListener('click', function(e) {
       // Actualizar todo el contenido
       updateContent();
       
-      // Si hay un mensaje de error del reCAPTCHA visible, actualizarlo
-      const recaptchaError = document.getElementById("recaptchaError");
-      if (recaptchaError && recaptchaError.style.display === "block") {
-        recaptchaError.textContent = translations[currentLanguage].recaptchaError;
-      }
-
       // Si el popup de riesgo está abierto, actualizarlo específicamente
       if (document.getElementById("riskPopup").style.display === "flex") {
         const t = translations[currentLanguage];
@@ -3058,12 +3031,10 @@ document.addEventListener('click', function(e) {
       });
 
       // Manejar envío del formulario
-      document.getElementById("contactForm").addEventListener("submit", function(e) {
+document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const t = translations[currentLanguage];
-  const response = grecaptcha.getResponse();
-  const errorElement = document.getElementById("recaptchaError");
   const submitBtn = document.getElementById("submitBtn");
   const originalBtnText = submitBtn.textContent;
 
@@ -3083,14 +3054,6 @@ document.addEventListener('click', function(e) {
     return false;
   }
 
-  // Validar reCAPTCHA
-  if (!response.length) {
-    errorElement.textContent = t.recaptchaError;
-    errorElement.style.display = "block";
-    document.querySelector('.g-recaptcha').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return false;
-  }
-
   submitBtn.textContent = t.sendingMessage;
   submitBtn.disabled = true;
 
@@ -3104,24 +3067,32 @@ document.addEventListener('click', function(e) {
   })
   .then(response => {
     if (response.ok) {
-      showConfirmation();
-      closeForm();
+      // Mostrar popup de confirmación
+      document.getElementById("confirmationPopup").style.display = "flex";
+      document.body.style.overflow = "hidden";
       this.reset();
-      grecaptcha.reset();
     } else {
       throw new Error('Error en el envío');
     }
   })
   .catch(error => {
     console.error("Error:", error);
-    alert(t.errorMessage);
+    // Mostrar popup de error personalizado
+    const confirmPopup = document.getElementById("confirmationPopup");
+    confirmPopup.querySelector("h2").textContent = "Error";
+    confirmPopup.querySelector("p").textContent = t.errorMessage;
+    confirmPopup.style.display = "flex";
+    document.body.style.overflow = "hidden";
   })
   .finally(() => {
     submitBtn.textContent = originalBtnText;
     submitBtn.disabled = false;
+    // Cerrar el formulario
+    closeForm();
   });
 });
 });
   </script>
 </body>
 </html>
+
