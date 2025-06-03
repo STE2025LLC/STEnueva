@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -3247,14 +3245,16 @@
           <div class="risk-popup-content" style="text-align: center;">
             <h2 id="thankYouTitle">¡Gracias por contactarnos!</h2>
             <p id="thankYouMessage">Hemos recibido tu mensaje y nos pondremos en contacto contigo lo antes posible.</p>
-            <button class="risk-popup-close" onclick="closeThankYouPopup()">
+            <button class="risk-popup-close" id="thankYouCloseBtn">
               <span id="thankYouCloseText">Cerrar</span>
             </button>
           </div>
         </div>
         `);
         
-        // Agrega estas funciones en la sección de funciones generales (busca donde están las otras funciones como showRiskDisclaimer)
+        // Agrega este código justo después del anterior
+        document.getElementById('thankYouCloseBtn')?.addEventListener('click', closeThankYouPopup);
+        
         function showThankYouPopup() {
           const popup = document.getElementById('thankYouPopup');
           if (popup) {
@@ -3263,16 +3263,12 @@
             
             // Actualizar textos según idioma
             const langData = translations[currentLanguage];
-            document.getElementById('thankYouTitle').textContent = 
-              currentLanguage === 'es' ? '¡Gracias por contactarnos!' : 'Thank you for contacting us!';
-            document.getElementById('thankYouMessage').textContent = 
-              currentLanguage === 'es' ? 'Hemos recibido tu mensaje y nos pondremos en contacto contigo lo antes posible.' : 
-              'We have received your message and will contact you as soon as possible.';
-            document.getElementById('thankYouCloseText').textContent = 
-              langData['closeBtnText'];
+            document.getElementById('thankYouTitle').textContent = langData['thankYouTitle'];
+            document.getElementById('thankYouMessage').textContent = langData['thankYouMessage'];
+            document.getElementById('thankYouCloseText').textContent = langData['closeBtnText'];
           }
         }
-                
+        
         function closeThankYouPopup() {
           const popup = document.getElementById('thankYouPopup');
           if (popup) {
@@ -3487,3 +3483,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
