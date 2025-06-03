@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -2810,14 +2808,14 @@
         }
 
         const scrollPercentage = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
-        const isNearBottom = scrollPercentage > 99;
+        const isNearBottom = scrollPercentage > 98;
         
         if (riskLink) {
             riskLink.classList.toggle('visible', isNearBottom);
         }
 
         if (scrollBtn) {
-            scrollBtn.classList.toggle('visible', scrollPercentage > 99);
+            scrollBtn.classList.toggle('visible', scrollPercentage > 98);
         }
     }
 
