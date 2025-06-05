@@ -688,31 +688,18 @@
     .result-card .label {
       font-size: 0.85rem;
       color: var(--text-secondary);
-      margin-bottom: auto; /* Esto empuja el contenido hacia arriba */
-      padding-top: 8px; /* Espacio arriba para consistencia */
+      margin-bottom: 5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* Alinea al inicio (arriba) */
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
       min-height: 40px;
     }
-    
-    .result-card .value-container {
-      margin-top: auto; /* Esto empuja el contenido hacia abajo */
-      padding-bottom: 8px; /* Espacio abajo para consistencia */
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      flex-grow: 1;
-    }
 
-    .result-card .value, 
-    .result-card .value-large {
-      margin-top: auto; /* Alinea al fondo */
-    }
-    
     .result-card .label span {
       display: block;
       line-height: 1.2;
@@ -778,18 +765,14 @@
     
     .result-details {
       font-size: 0.85rem;
-      margin: 8px 0; /* Espacio equilibrado arriba y abajo */
+      margin: 5px 0;
       color: var(--text-secondary);
-      text-align: center;
-    }    
-   
-    .result-card .streak-value {
-      margin-top: auto;
-      padding-bottom: 8px;
-      font-size: 1rem;
-      font-weight: 700;
-    }   
-   
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: font-size 0.2s ease;
+    }
+    
     .result-details.large-number {
       font-size: 0.8rem;
       white-space: normal;
@@ -2347,7 +2330,8 @@
                                </div>
                                <div class="streak-value" id="streak-1000">0</div>
                                </div>
-                           </div>                    
+                           </div>
+                                               
                     <button class="toggle-rows-btn" id="toggle-rows-1000" aria-expanded="false">
                        <i class="fas fa-eye"></i> 
                        <span id="show1000-text">Mostrar todas las operaciones</span>
@@ -3336,19 +3320,14 @@
         // Función para exportar a Excel
         async function exportToExcel() {
     try {
-        // Verificar si hay datos de simulación
-        const hasData = ['30', '60', '200', '600', '1000'].some(numOps => {
-            const balance = document.getElementById(`balance-${numOps}`)?.textContent;
-            return balance && balance !== '$0.00' && balance !== '$10,000.00';
-        });
-        
-        if (!hasData) {
+        if (!simulationData || Object.keys(simulationData).length === 0) {
             alert(currentLanguage === 'es' ? 
                 'No hay datos para exportar. Ejecuta una simulación primero.' : 
                 'No data to export. Run a simulation first.');
             return;
         }
 
+        // Crear nuevo libro Excel
         const workbook = new ExcelJS.Workbook();
         workbook.creator = 'Sistemas de Trading Eficientes LLC';
         workbook.created = new Date();
@@ -3357,7 +3336,7 @@
         for (const numOps of ['30', '60', '200', '600', '1000']) {
             const worksheet = workbook.addWorksheet(`${numOps}ops`);
             
-            // 1. Añadir parámetros
+            // 1. AÑADIR PARÁMETROS
             worksheet.addRow([currentLanguage === 'es' ? 'PARÁMETROS' : 'PARAMETERS']).font = { bold: true };
             worksheet.addRow([currentLanguage === 'es' ? 'Capital:' : 'Capital:', document.getElementById('capital').value]);
             worksheet.addRow([currentLanguage === 'es' ? 'Riesgo por operación:' : 'Risk per trade:', 
@@ -3368,17 +3347,20 @@
                             document.getElementById('risk-reward').value]);
             worksheet.addRow([]);
             
-            // 2. Añadir resultados
+            // 2. AÑADIR RESULTADOS
             worksheet.addRow([currentLanguage === 'es' ? 'RESULTADOS' : 'RESULTS']).font = { bold: true };
-            const balanceEl = document.getElementById(`balance-${numOps}`);
-            if (balanceEl) {
-                worksheet.addRow([currentLanguage === 'es' ? 'Saldo final:' : 'Final balance:', 
-                                balanceEl.textContent]);
-            }
+            worksheet.addRow([currentLanguage === 'es' ? 'Saldo final:' : 'Final balance:', 
+                            document.getElementById(`balance-${numOps}`).textContent]);
+            worksheet.addRow([currentLanguage === 'es' ? 'Beneficio:' : 'Profit:', 
+                            document.getElementById(`profit-${numOps}`).textContent]);
+            worksheet.addRow([currentLanguage === 'es' ? 'Máximo drawdown:' : 'Max drawdown:', 
+                            document.getElementById(`drawdown-amount-${numOps}`).textContent + 
+                            ' (' + document.getElementById(`drawdown-percent-${numOps}`).textContent + ')']);
+            worksheet.addRow([currentLanguage === 'es' ? 'Racha pérdidas:' : 'Losing streak:', 
+                            document.getElementById(`streak-${numOps}`).textContent]);
+            worksheet.addRow([]);
             
-            // ... resto del código para añadir resultados ...
-            
-            // 3. Añadir tabla de operaciones
+            // 3. AÑADIR TABLA DE OPERACIONES
             const table = document.getElementById(`table-${numOps}`);
             if (table) {
                 // Añadir encabezados
@@ -3400,13 +3382,40 @@
                     }
                 });
             }
-            
-            // Ajustar el ancho de las columnas
-            worksheet.columns = [
-                { width: 10 }, // Número de operación
-                { width: 20 }, // Resultado
-                { width: 20 }  // Saldo
-            ];
+
+            // 4. AÑADIR GRÁFICO (versión mejorada)
+            const canvasElement = document.getElementById(`chart-${numOps}`);
+            if (canvasElement) {
+                try {
+                    // Convertir canvas a imagen
+                    const imageData = await new Promise((resolve) => {
+                        canvasElement.toBlob((blob) => {
+                            const reader = new FileReader();
+                            reader.onload = () => resolve(reader.result.split(',')[1]);
+                            reader.readAsDataURL(blob);
+                        }, 'image/png');
+                    });
+
+                    const imageId = workbook.addImage({
+                        base64: imageData,
+                        extension: 'png'
+                    });
+                    
+                    // Insertar imagen con tamaño adecuado
+                    worksheet.addImage(imageId, {
+                        tl: { col: 0, row: worksheet.rowCount + 2 },
+                        ext: { width: 1080, height: 400 },
+                        editAs: 'oneCell'
+                    });
+                    
+                    // Añadir espacio después de la imagen
+                    for (let i = 0; i < 25; i++) {
+                        worksheet.addRow([]);
+                    }
+                } catch (e) {
+                    console.error('Error al agregar imagen:', e);
+                }
+            }
         }
 
         // Generar y descargar archivo
@@ -3420,7 +3429,8 @@
             'Error al exportar. Por favor, inténtalo de nuevo.' : 
             'Export error. Please try again.');
     }
-}                
+}
+                
         // Asignar la función al botón de exportación
         document.getElementById('export-btn')?.addEventListener('click', exportToExcel);
         document.getElementById('scrollTopBtn')?.addEventListener('click', scrollToTop);
