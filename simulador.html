@@ -708,10 +708,10 @@
       flex-grow: 1;
     }
 
-.result-card .value, 
-.result-card .value-large {
-    margin-top: auto; /* Alinea al fondo */
-}
+    .result-card .value, 
+    .result-card .value-large {
+      margin-top: auto; /* Alinea al fondo */
+    }
     
     .result-card .label span {
       display: block;
@@ -2035,23 +2035,27 @@
                                <div class="result-details negative" id="losses-amount-30">-$0.00</div>
                            </div>  
                            
-                          <div class="result-card has-large-number">
-                               <span id="balance-label-30">Saldo Final</span>
-                               <div class="value value-large" id="balance-30">$10,000.00</div>
-                           </div>
-                       
                            <div class="result-card has-large-number">
-                               <span id="profit-label-30">Rentabilidad</span>
+                               <div class="label" id="balance-label-30">Saldo Final</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="balance-30">$10,000.00</div>
+                               </div>
+                           </div>                       
+                           
+                           <div class="result-card has-large-number">
+                               <div class="label" id="profit-label-30">Rentabilidad</div>
                                <div class="result-details" id="profit-percent-30">0%</div>
-                               <div class="value value-large" id="profit-30">$0.00</div>
-                           </div>
-                       
+                               <div class="value-container">
+                                   <div class="value value-large" id="profit-30">$0.00</div>
+                               </div>
+                           </div>                       
+                           
                            <div class="result-card has-large-number">
-                               <span id="drawdown-label-30">Máx. Drawdown</span>
+                               <div class="label" id="drawdown-label-30">Máx. Drawdown</div>
                                <div class="result-details negative" id="drawdown-percent-30">0%</div>
-                               <div class="value negative" id="drawdown-amount-30">$0.00</div>
+                               <div class="value value-large negative" id="drawdown-amount-30">$0.00</div>
                            </div>
-
+                           
                            <div class="result-card">
                                <div class="label two-lines">
                                    <span id="streak-line1-30">Racha de</span>
@@ -2102,21 +2106,25 @@
                                <div class="result-details negative" id="losses-amount-60">-$0.00</div>
                            </div>  
                            
-                          <div class="result-card has-large-number">
-                               <span id="balance-label-60">Saldo Final</span>
-                               <div class="value value-large" id="balance-60">$10,000.00</div>
-                           </div>
-                       
                            <div class="result-card has-large-number">
-                               <span id="profit-label-60">Rentabilidad</span>
+                               <div class="label" id="balance-label-60">Saldo Final</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="balance-60">$10,000.00</div>
+                               </div>
+                           </div>                       
+                           
+                           <div class="result-card has-large-number">
+                               <div class="label" id="profit-label-60">Rentabilidad</div>
                                <div class="result-details" id="profit-percent-60">0%</div>
-                               <div class="value value-large" id="profit-60">$0.00</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="profit-60">$0.00</div>
+                               </div>
                            </div>
-                       
+                                                  
                            <div class="result-card has-large-number">
-                               <span id="drawdown-label-60">Máx. Drawdown</span>
+                               <div class="label" id="drawdown-label-60">Máx. Drawdown</div>
                                <div class="result-details negative" id="drawdown-percent-60">0%</div>
-                               <div class="value negative" id="drawdown-amount-60">$0.00</div>
+                               <div class="value value-large negative" id="drawdown-amount-60">$0.00</div>
                            </div>
 
                            <div class="result-card">
@@ -2169,21 +2177,25 @@
                                <div class="result-details negative" id="losses-amount-200">-$0.00</div>
                            </div>  
                            
-                          <div class="result-card has-large-number">
-                               <span id="balance-label-200">Saldo Final</span>
-                               <div class="value value-large" id="balance-200">$10,000.00</div>
-                           </div>
-                       
                            <div class="result-card has-large-number">
-                               <span id="profit-label-200">Rentabilidad</span>
+                               <div class="label" id="balance-label-200">Saldo Final</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="balance-200">$10,000.00</div>
+                               </div>
+                           </div>                       
+                           
+                           <div class="result-card has-large-number">
+                               <div class="label" id="profit-label-200">Rentabilidad</div>
                                <div class="result-details" id="profit-percent-200">0%</div>
-                               <div class="value value-large" id="profit-200">$0.00</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="profit-200">$0.00</div>
+                               </div>
                            </div>
-                       
+                                                  
                            <div class="result-card has-large-number">
-                               <span id="drawdown-label-200">Máx. Drawdown</span>
+                               <div class="label" id="drawdown-label-200">Máx. Drawdown</div>
                                <div class="result-details negative" id="drawdown-percent-200">0%</div>
-                               <div class="value negative" id="drawdown-amount-200">$0.00</div>
+                               <div class="value value-large negative" id="drawdown-amount-200">$0.00</div>
                            </div>
 
                            <div class="result-card">
@@ -2236,21 +2248,25 @@
                                <div class="result-details negative" id="losses-amount-600">-$0.00</div>
                            </div>  
                            
-                          <div class="result-card has-large-number">
-                               <span id="balance-label-600">Saldo Final</span>
-                               <div class="value value-large" id="balance-600">$10,000.00</div>
+                           <div class="result-card has-large-number">
+                               <div class="label" id="balance-label-600">Saldo Final</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="balance-600">$10,000.00</div>
+                               </div>
                            </div>
                        
                            <div class="result-card has-large-number">
-                               <span id="profit-label-600">Rentabilidad</span>
+                               <div class="label" id="profit-label-600">Rentabilidad</div>
                                <div class="result-details" id="profit-percent-600">0%</div>
-                               <div class="value value-large" id="profit-600">$0.00</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="profit-600">$0.00</div>
+                               </div>
                            </div>
-                       
+                                                  
                            <div class="result-card has-large-number">
-                               <span id="drawdown-label-600">Máx. Drawdown</span>
+                               <div class="label" id="drawdown-label-600">Máx. Drawdown</div>
                                <div class="result-details negative" id="drawdown-percent-600">0%</div>
-                               <div class="value negative" id="drawdown-amount-600">$0.00</div>
+                               <div class="value value-large negative" id="drawdown-amount-600">$0.00</div>
                            </div>
 
                            <div class="result-card">
@@ -2303,21 +2319,25 @@
                                <div class="result-details negative" id="losses-amount-1000">-$0.00</div>
                            </div>  
                            
-                          <div class="result-card has-large-number">
-                               <span id="balance-label-1000">Saldo Final</span>
-                               <div class="value value-large" id="balance-1000">$10,000.00</div>
+                           <div class="result-card has-large-number">
+                               <div class="label" id="balance-label-1000">Saldo Final</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="balance-1000">$10,000.00</div>
+                               </div>
                            </div>
                        
                            <div class="result-card has-large-number">
-                               <span id="profit-label-1000">Rentabilidad</span>
+                               <div class="label" id="profit-label-30">Rentabilidad</div>
                                <div class="result-details" id="profit-percent-1000">0%</div>
-                               <div class="value value-large" id="profit-1000">$0.00</div>
+                               <div class="value-container">
+                                   <div class="value value-large" id="profit-1000">$0.00</div>
+                               </div>
                            </div>
-                       
+                                                  
                            <div class="result-card has-large-number">
-                               <span id="drawdown-label-1000">Máx. Drawdown</span>
+                               <div class="label" id="drawdown-label-1000">Máx. Drawdown</div>
                                <div class="result-details negative" id="drawdown-percent-1000">0%</div>
-                               <div class="value negative" id="drawdown-amount-1000">$0.00</div>
+                               <div class="value value-large negative" id="drawdown-amount-1000">$0.00</div>
                            </div>
 
                            <div class="result-card">
